@@ -1,0 +1,7 @@
+{
+  "name": "gradebooklet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
