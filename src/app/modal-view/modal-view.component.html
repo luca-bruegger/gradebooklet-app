@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Edit {{editModule.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Edit {{editModule.name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-input [(ngModel)]="editModule.name" value="{{editModule.name}}"></ion-input>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" (click)="closeModal()">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
