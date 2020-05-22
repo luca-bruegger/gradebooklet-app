@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+        <ion-title>
+            New Module
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-textarea [placeholder]="'Module Name'"></ion-textarea>
+            </ion-col>
+            <ion-col>
+                <ion-textarea [placeholder]="'Teacher Name'"></ion-textarea>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div>
+                    1 of 3
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div>
+                    1 of 3
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="closeModal()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

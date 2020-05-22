@@ -1,0 +1,14 @@
+ion-content{
+  --background: transparent;
+}
+
+ion-grid {
+  height: 100%;
+
+  ion-row:first-child {
+    height: 10%;
+  }
+  ion-row {
+    height: 20%;
+  }
+}
