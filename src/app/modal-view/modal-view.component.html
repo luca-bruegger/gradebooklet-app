@@ -1,24 +1,76 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Edit {{editModule.name}}
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-title>
+            {{editModule.name}}
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="danger" (click)="deleteModule()">
+                <ion-icon name="trash" color="danger"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Edit {{editModule.name}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div style="padding: 20px 20px 20px 20px">
+        <ion-grid>
+            <ion-label>{{'module.about' | translate}}</ion-label>
+            <ion-card style="margin-left: 0 !important; margin-right: 0 !important; padding-left: 20px !important;">
+                <ion-row>
+                    <ion-col>
+                        <ion-input [placeholder]="'module.name' | translate"
+                                   [(ngModel)]="this.editModule.name" [maxlength]="'30'"></ion-input>
+                        <ion-input [placeholder]="'module.room' | translate"
+                                   [(ngModel)]="this.editModule.room" [maxlength]="'30'"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-input [placeholder]="'module.teacher' | translate"
+                                   [(ngModel)]="this.editModule.teacher" [maxlength]="'30'"></ion-input>
+                        <ion-input [placeholder]="'module.building' | translate"
+                                   [(ngModel)]="this.editModule.building" [maxlength]="'30'"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+            <ion-label>{{'module.exams' | translate}}</ion-label>
+            <ion-card style="margin-left: 0 !important; margin-right: 0 !important;">
+                <ion-row>
+                    <ion-col>
+                        <ion-list>
+                            <div *ngIf="!!this.editModule.exams">
+                                <ion-item *ngFor="let exam of editModule.exams" style="padding-right: 20px">
+                                    <ion-input [(ngModel)]="exam.name"></ion-input>
+                                    <ion-label style="text-align: right; max-width: 20%">{{exam.grade}}</ion-label>
+                                    <ion-button style="text-align: right; max-width: 20%; margin-left: 20px"
+                                                fill="clear" (click)="removeExam(exam)">
+                                        <ion-icon color="danger" name="trash"></ion-icon>
+                                    </ion-button>
+                                </ion-item>
+                            </div>
+                            <div style="padding: 10px 20px 16px 20px">
+                                <ion-input [placeholder]="'module.exam_name' | translate" [maxlength]="'30'"
+                                           [(ngModel)]="exam.name"></ion-input>
+                                <ion-input [placeholder]="'module.exam_grade' | translate" [maxlength]="'3'"
+                                           [(ngModel)]="exam.grade"></ion-input>
+                                <ion-button color="success" expand="full" fill="solid" size="small" (click)="newExam();">
+                                    <ion-icon name="add"></ion-icon>
+                                </ion-button>
+                            </div>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+        </ion-grid>
+    </div>
 
-  <ion-input [(ngModel)]="editModule.name" value="{{editModule.name}}"></ion-input>
-
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="success" (click)="closeModal()">
-      <ion-icon name="checkmark"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="saveModule()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
+

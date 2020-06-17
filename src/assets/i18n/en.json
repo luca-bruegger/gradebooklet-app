@@ -1,0 +1,69 @@
+{
+	"about": {
+		"bug": "Report a Bug",
+		"feature": "Request a Feature",
+		"me": "gradebooklet get's maintained and developed by",
+		"privacy": "Privacy Policy",
+		"text": "First off, thank you for downloading gradebooklet. gradebooklet helps you organize your grades in a more intuitive and easier way. If you don't think so, request a feature or report a bug.",
+		"title": "About gradebooklet"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "General Module Informations",
+		"add": "Add Module",
+		"building": "Building",
+		"exam_grade": "Exam Grade e.g. 5.0",
+		"exam_name": "Exam Name",
+		"exams": "Your Exams",
+		"name": "Module Name",
+		"new_title": "New Module",
+		"room": "Room",
+		"teacher": "Teacher"
+	},
+	"modules": {
+		"addModule": "Add Module",
+		"title": "Modules"
+	},
+	"popup": {
+		"close": "Close",
+		"continue": "Continue",
+		"exam_warning": "Grade doesn't match example. It should look like 5.5 or 5",
+		"exams_without_names": "Cannot save. Some Exams are missing names.",
+		"fix_error": "Fix",
+		"module_error": "Please fill in Module and Teacher name, as well as an Exam.",
+		"not_saved": "Not saved",
+		"not_saved_warning": "You will lose your Progress if you continue.",
+		"ok": "Ok",
+		"warning": "Warning"
+	},
+	"settings": {
+		"darkmode": "Darkmode",
+		"language": "Language",
+		"title": "Settings"
+	},
+	"slides": {
+		"first": {
+			"text": "Do you know that you just made the <b> best decision </b> of your life to manage your grades? Let me show you...",
+			"title": "Welcome"
+		},
+		"fourth": {
+			"button": "Continue",
+			"title": "Ready, Set, Go!"
+		},
+		"second": {
+			"text": "gradebooklet is the <b> most versatile </b> gradebook you've ever seen. The focus was to <b> make it simple </b> for you to organize your grades in an easier and better way.",
+			"title": "What is gradebooklet?"
+		},
+		"third": {
+			"text": "The Creator of gradebooklet is still a Student, therefore he knows what <b> you'll really need </b> to keep track your grades.",
+			"title": "Easy to use"
+		}
+	}
+}
