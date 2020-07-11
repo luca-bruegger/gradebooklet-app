@@ -16,20 +16,24 @@
 		"zh": "中文"
 	},
 	"module": {
-		"about": "General Module Informations",
-		"add": "Add Module",
+		"about": "General Subject Informations",
+		"add": "Add Subject",
 		"building": "Building",
 		"exam_grade": "Exam Grade e.g. 5.0",
 		"exam_name": "Exam Name",
 		"exams": "Your Exams",
-		"name": "Module Name",
-		"new_title": "New Module",
+		"name": "Subject Name",
+		"new_title": "New Subject",
 		"room": "Room",
-		"teacher": "Teacher"
+		"teacher": "Teacher",
+		"swipe": "Slide to delete",
+		"average": "Average",
+		"date": "Date",
+		"grade": "Grade"
 	},
 	"modules": {
-		"addModule": "Add Module",
-		"title": "Modules"
+		"addModule": "Add Subject",
+		"title": "Subjects"
 	},
 	"popup": {
 		"close": "Close",
@@ -37,7 +41,7 @@
 		"exam_warning": "Grade doesn't match example. It should look like 5.5 or 5",
 		"exams_without_names": "Cannot save. Some Exams are missing names.",
 		"fix_error": "Fix",
-		"module_error": "Please fill in Module and Teacher name, as well as an Exam.",
+		"module_error": "Please fill in Subject and Teacher name, as well as an Exam.",
 		"not_saved": "Not saved",
 		"not_saved_warning": "You will lose your Progress if you continue.",
 		"ok": "Ok",

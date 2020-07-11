@@ -1,0 +1,69 @@
+{
+	"about": {
+		"bug": "报告错误",
+		"feature": "请求功能",
+		"me": "gradebooklet get的维护和开发",
+		"privacy": "隐私政策",
+		"text": "首先，感谢您下载成绩手册。 gradebooklet可帮助您以更直观，更轻松的方式组织成绩。如果您不这样认为，请请求功能或报告错误。",
+		"title": "关于成绩册"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "通用模块信息",
+		"add": "添加模块",
+		"building": "建造",
+		"exam_grade": "考试成绩，例如5.0",
+		"exam_name": "考试名称",
+		"exams": "您的考试",
+		"name": "模块名称",
+		"new_title": "新模块",
+		"room": "房间",
+		"teacher": "老师"
+	},
+	"modules": {
+		"addModule": "添加模块",
+		"title": "模组"
+	},
+	"popup": {
+		"close": "关",
+		"continue": "继续",
+		"exam_warning": "成绩与示例不符。应该看起来像5.5或5",
+		"exams_without_names": "无法保存。有些考试缺少名字。",
+		"fix_error": "固定",
+		"module_error": "请填写模块名称和教师名称，以及考试。",
+		"not_saved": "未保存",
+		"not_saved_warning": "如果继续，您将失去进度。",
+		"ok": "好",
+		"warning": "警告"
+	},
+	"settings": {
+		"darkmode": "Darkmode",
+		"language": "语言",
+		"title": "设置"
+	},
+	"slides": {
+		"first": {
+			"text": "您是否知道自己刚刚做出了人生最好的决定 <b> （ </b> ）来管理自己的成绩？让我给你演示...",
+			"title": "欢迎"
+		},
+		"fourth": {
+			"button": "继续",
+			"title": "预备，准备，开始！"
+		},
+		"second": {
+			"text": "gradebooklet是您见过的 <b> 用途最广泛的 </b> 成绩册。重点是让 <b> 变得更简单 </b> ，以便您以更轻松，更好的方式组织成绩。",
+			"title": "什么是成绩册？"
+		},
+		"third": {
+			"text": "成绩册的创建者仍然是学生，因此他知道 <b> 真正需要您 </b> 来跟踪成绩的情况。",
+			"title": "易于使用"
+		}
+	}
+}

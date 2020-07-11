@@ -1,0 +1,69 @@
+{
+	"about": {
+		"bug": "버그 신고",
+		"feature": "기능 요청",
+		"me": "gradebooklet get에 의해 유지되고 개발됩니다",
+		"privacy": "개인 정보 정책",
+		"text": "먼저, 성적표를 다운로드 해 주셔서 감사합니다. gradebooklet은보다 직관적이고 쉬운 방법으로 성적을 구성하는 데 도움이됩니다. 그렇게 생각하지 않으면 기능을 요청하거나 버그를보고하십시오.",
+		"title": "성적 책자에 대하여"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "일반 모듈 정보",
+		"add": "모듈 추가",
+		"building": "건물",
+		"exam_grade": "시험 등급 예 : 5.0",
+		"exam_name": "시험 명",
+		"exams": "시험",
+		"name": "모듈 이름",
+		"new_title": "새로운 모듈",
+		"room": "방",
+		"teacher": "선생님"
+	},
+	"modules": {
+		"addModule": "모듈 추가",
+		"title": "모듈"
+	},
+	"popup": {
+		"close": "닫기",
+		"continue": "잇다",
+		"exam_warning": "등급이 예와 일치하지 않습니다. 5.5 또는 5처럼 보일 것입니다",
+		"exams_without_names": "저장할 수 없습니다. 일부 시험에 이름이 없습니다.",
+		"fix_error": "고치다",
+		"module_error": "시험뿐만 아니라 모듈 및 교사 이름을 기입하십시오.",
+		"not_saved": "저장되지 않음",
+		"not_saved_warning": "계속하면 진행 상황이 사라집니다.",
+		"ok": "승인",
+		"warning": "경고"
+	},
+	"settings": {
+		"darkmode": "다크 모드",
+		"language": "언어",
+		"title": "설정"
+	},
+	"slides": {
+		"first": {
+			"text": "당신은 당신의 성적을 관리하기 위해 인생의 <b> 최선의 결정 </b> 을 내렸다는 것을 알고 있습니까? 보여 줄게 ...",
+			"title": "환영"
+		},
+		"fourth": {
+			"button": "잇다",
+			"title": "준비, 설정, 이동!"
+		},
+		"second": {
+			"text": "gradebooklet은 지금까지 본 <b> 가장 다재다능한 </b> 그레이드 북입니다. 보다 쉽고 좋은 방법으로 성적을 체계화 할 수 있도록 <b> 을 (를) 간단하게 </b> 으로 설정했습니다.",
+			"title": "성적 책자 란 무엇입니까?"
+		},
+		"third": {
+			"text": "성적 책자의 작성자는 여전히 학생이므로 성적을 추적하기 위해 <b> 이 (가) 실제로 필요한 </b> 을 알고 있습니다.",
+			"title": "사용하기 쉬운"
+		}
+	}
+}

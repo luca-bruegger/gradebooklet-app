@@ -1,8 +1,18 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "ch.lucabruegger.gradebooklet",
   "appName": "gradebooklet",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
   "webDir": "www",
-  "cordova": {}
+  "npmClient": "npm",
+  "cordova": {
+    "preferences": {
+      "ScrollEnabled": "false",
+      "android-minSdkVersion": "19",
+      "BackupWebStorage": "none",
+      "SplashMaintainAspectRatio": "true",
+      "FadeSplashScreenDuration": "300",
+      "SplashShowOnlyFirstTime": "false",
+      "SplashScreen": "screen",
+      "SplashScreenDelay": "3000"
+    }
+  }
 }

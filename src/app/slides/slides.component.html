@@ -1,0 +1,44 @@
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+            <div class="slide">
+                <div style="height: 280px">
+                    <img src="../../assets/images/happy.png"
+                         style="max-height: 80% !important;max-width: 80% !important;"/>
+                </div>
+                <h2>{{'slides.first.title' | translate}}</h2>
+                <p [innerHTML]="'slides.first.text' | translate"></p>
+            </div>
+        </ion-slide>
+
+        <ion-slide>
+            <div style="height: 280px">
+                <img src="../../assets/images/grades.png"
+                     style="max-height: 80% !important;max-width: 80% !important;"/>
+            </div>
+            <h2>{{'slides.second.title' | translate}}</h2>
+            <p [innerHTML]="'slides.second.text' | translate"></p>
+        </ion-slide>
+
+        <ion-slide>
+            <div style="height: 280px">
+                <img src="../../assets/images/stats.png"
+                     style="max-height: 80% !important;max-width: 80% !important;"/>
+            </div>
+            <h2>{{'slides.third.title' | translate}}</h2>
+            <p [innerHTML]="'slides.third.text' | translate"></p>
+        </ion-slide>
+
+        <ion-slide>
+            <div style="height: 280px">
+                <img src="../../assets/images/ballons.png"
+                     style="max-height: 80% !important;max-width: 80% !important;"/>
+            </div>
+            <h2>{{'slides.fourth.title' | translate}}</h2>
+            <ion-button fill="clear" class="headShake" (click)="closeSlides()">{{'slides.fourth.button' | translate}}
+                <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-slide>
+
+    </ion-slides>
+</ion-content>

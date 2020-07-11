@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
+        <ion-buttons slot="end" collapse="true">
+            <ion-button (click)="exportModulesAsPDF()"><ion-icon color="medium" name="download-outline"></ion-icon></ion-button>
+        </ion-buttons>
         <ion-title>
             {{'modules.title' | translate}}
         </ion-title>
@@ -9,6 +12,9 @@
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
         <ion-toolbar>
+            <ion-buttons slot="end" collapse="true">
+                <ion-button (click)="exportModulesAsPDF()"><ion-icon color="medium" name="download-outline"></ion-icon></ion-button>
+            </ion-buttons>
             <ion-title size="large">{{'modules.title' | translate}}</ion-title>
         </ion-toolbar>
     </ion-header>
@@ -28,7 +34,7 @@
      align-items: center!important;
 justify-content: flex-end !important;">
                 <ion-card-content style="padding-left: 10px !important;">
-                    <ion-label style="font-size: 4.3rem; font-weight: bold;" color="dark" [style.color]="textColorForAverage(module)">{{module.average}}</ion-label>
+                    <ion-label style="font-size: 4.3rem; text-align: right; font-weight: bold;" color="dark" [style.color]="textColorForAverage(module)">{{module.average}}</ion-label>
                 </ion-card-content>
             </div>
         </ion-card>

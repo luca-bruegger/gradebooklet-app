@@ -1,0 +1,73 @@
+{
+	"about": {
+		"bug": "Fehler melden",
+		"feature": "Funktion anfordern",
+		"me": "gradebooklet wird entwickelt und unterhalten von",
+		"privacy": "Datenschutz",
+		"text": "Zunächst einmal vielen Dank, dass Sie gradebooklet heruntergeladen haben. Mit gradebooklet können Sie Ihre Noten intuitiver und einfacher organisieren. Wenn Sie dies nicht glauben, fordern Sie eine Funktion an oder melden Sie einen Fehler.",
+		"title": "Über gradebooklet"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "Modulinformationen",
+		"add": "Modul hinzufügen",
+		"building": "Gebäude",
+		"exam_grade": "Prüfungsnote, z.B. 5.0",
+		"exam_name": "Prüfungsname",
+		"exams": "Prüfungen",
+		"name": "Modulname",
+		"new_title": "Neues Modul",
+		"room": "Zimmer",
+		"teacher": "Lehrperson",
+		"swipe": "Schieben zum löschen",
+		"average": "Durchschnitt",
+		"date": "Datum",
+		"grade": "Note"
+	},
+	"modules": {
+		"addModule": "Modul hinzufügen",
+		"title": "Module"
+	},
+	"popup": {
+		"close": "Schliessen",
+		"continue": "Fortsetzen",
+		"exam_warning": "Note stimmt nicht mit Beispiel überein. Es sollte wie 5.5 oder 5 aussehen",
+		"exams_without_names": "Kann nicht speichern. Bei einigen Prüfungen fehlen Namen.",
+		"fix_error": "Beheben",
+		"module_error": "Bitte geben Sie den Namen des Moduls und des Lehrers sowie eine Prüfung ein.",
+		"not_saved": "Nicht gespeichert",
+		"not_saved_warning": "Sie verlieren Ihren Fortschritt, wenn Sie fortfahren.",
+		"ok": "OK",
+		"warning": "Warnung"
+	},
+	"settings": {
+		"darkmode": "Darkmode",
+		"language": "Sprache",
+		"title": "Einstellungen"
+	},
+	"slides": {
+		"first": {
+			"text": "Wissen Sie, dass Sie gerade die <b> beste Entscheidung </b> Ihres Lebens getroffen haben, um Ihre Noten zu verwalten?",
+			"title": "Herzlich willkommen"
+		},
+		"fourth": {
+			"button": "Beginnen",
+			"title": "Achtung, fertig, los!"
+		},
+		"second": {
+			"text": "gradebooklet (Notenbüchlein) ist das <b> vielseitigste </b> Notenbuch, das Sie jemals gesehen haben. Der Fokus liegt darauf, <b> es Ihnen einfach zu machen</b>, Ihre Noten einfacher und besser zu organisieren.",
+			"title": "Was ist gradebooklet?"
+		},
+		"third": {
+			"text": "Der Ersteller des Notenbuchs ist noch ein Schüler, daher weiß er, welche <b> Sie wirklich benötigen</b>, um Ihre Noten zu verfolgen.",
+			"title": "Einfach zu verwenden"
+		}
+	}
+}

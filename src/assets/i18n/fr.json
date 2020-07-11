@@ -1,0 +1,73 @@
+{
+	"about": {
+		"bug": "Signaler un bug",
+		"feature": "Demander une fonctionnalité",
+		"me": "gradebooklet est maintenu et développé par",
+		"privacy": "Confidentialité",
+		"text": "Tout d'abord, merci d'avoir téléchargé gradebooklet. gradebooklet vous aide à organiser vos notes de manière plus intuitive et plus simple. Si vous ne le pensez pas, demandez une fonctionnalité ou signalez un bug.",
+		"title": "gradebooklet"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "Informations générales sur le module",
+		"add": "Ajouter un module",
+		"building": "bâtiment",
+		"exam_grade": "Examen par ex. 5.0",
+		"exam_name": "Nom de l'examen",
+		"exams": "Vos examens",
+		"name": "Nom du module",
+		"new_title": "Nouveau module",
+		"room": "Pièce",
+		"teacher": "Prof",
+		"swipe": "Glisser pour déverrouiller",
+		"average": "Moyenne",
+		"date": "Date",
+		"grade": "Note"
+	},
+	"modules": {
+		"addModule": "Ajouter un module",
+		"title": "Modules"
+	},
+	"popup": {
+		"close": "Fermer",
+		"continue": "Continuer",
+		"exam_warning": "La note ne correspond pas à l'exemple. Il devrait ressembler à 5.5 ou 5",
+		"exams_without_names": "Impossible d'enregistrer. Certains examens manquent de noms.",
+		"fix_error": "réparer",
+		"module_error": "Veuillez remplir le module et le nom de l'enseignant, ainsi qu'un examen.",
+		"not_saved": "Non enregistré",
+		"not_saved_warning": "Vous perdrez votre progression si vous continuez.",
+		"ok": "D'accord",
+		"warning": "Attention"
+	},
+	"settings": {
+		"darkmode": "Darkmode",
+		"language": "Langue",
+		"title": "Réglages"
+	},
+	"slides": {
+		"first": {
+			"text": "Savez-vous que vous venez de prendre la <b> meilleure décision </b> de votre vie pour gérer vos notes? Laisse moi te montrer...",
+			"title": "Bienvenue"
+		},
+		"fourth": {
+			"button": "Continuer",
+			"title": "Prêt, prêt, partez!"
+		},
+		"second": {
+			"text": "carnet de notes est le carnet de notes <b> le plus polyvalent </b> que vous ayez jamais vu. L'objectif était de <b> simplifier </b> pour que vous puissiez organiser vos notes de manière plus simple et meilleure.",
+			"title": "Qu'est-ce que le carnet de notes?"
+		},
+		"third": {
+			"text": "Le Créateur de carnet de notes est toujours un étudiant, il sait donc de quoi <b> vous aurez vraiment besoin </b> pour suivre vos notes.",
+			"title": "Facile à utiliser"
+		}
+	}
+}

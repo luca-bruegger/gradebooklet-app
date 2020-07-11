@@ -1,0 +1,73 @@
+{
+	"about": {
+		"bug": "Segnalare un bug",
+		"feature": "Richiedi una funzione",
+		"me": "gradebooklet get è gestito e sviluppato da",
+		"privacy": "Riservatezza",
+		"text": "Prima di tutto, grazie per aver scaricato gradebooklet. gradebooklet ti aiuta a organizzare i tuoi voti in un modo più intuitivo e più facile. Se non la pensi così, richiedi una funzione o segnala un bug.",
+		"title": "gradebooklet"
+	},
+	"languages": {
+		"de": "Deutsch",
+		"en": "English",
+		"fr": "Français",
+		"it": "Italiano",
+		"ko": "한국어",
+		"zh": "中文"
+	},
+	"module": {
+		"about": "Informazioni generali sul modulo",
+		"add": "Aggiungi modulo",
+		"building": "Costruzione",
+		"exam_grade": "Grado di esame ad es. 5.0",
+		"exam_name": "Nome dell'esame",
+		"exams": "I tuoi esami",
+		"name": "Nome del modulo",
+		"new_title": "Nuovo modulo",
+		"room": "Camera",
+		"teacher": "Insegnante",
+		"swipe": "Scorrere per sbloccare",
+		"average": "Media",
+		"date": "Data",
+		"grade": "Nota"
+	},
+	"modules": {
+		"addModule": "Aggiungi modulo",
+		"title": "Moduli"
+	},
+	"popup": {
+		"close": "Vicino",
+		"continue": "Continua",
+		"exam_warning": "Il voto non corrisponde all'esempio. Dovrebbe apparire come 5.5 o 5",
+		"exams_without_names": "Impossibile salvare. Ad alcuni esami mancano i nomi.",
+		"fix_error": "Fix",
+		"module_error": "Inserisci il modulo e il nome dell'insegnante, nonché un esame.",
+		"not_saved": "Non salvato",
+		"not_saved_warning": "Perderai i tuoi progressi se continui.",
+		"ok": "Ok",
+		"warning": "Avvertimento"
+	},
+	"settings": {
+		"darkmode": "Darkmode",
+		"language": "Linguaggio",
+		"title": "Impostazioni"
+	},
+	"slides": {
+		"first": {
+			"text": "Sai che hai appena preso la <b> migliore decisione </b> della tua vita per gestire i tuoi voti? Lascia che ti mostri...",
+			"title": "benvenuto"
+		},
+		"fourth": {
+			"button": "CONTINUA",
+			"title": "Pronto, Set, Go!"
+		},
+		"second": {
+			"text": "gradebooklet è il <b> classificatore </b> più versatile che tu abbia mai visto. L'obiettivo era <b> semplificare </b> per organizzare i tuoi voti in modo più semplice e migliore.",
+			"title": "Che cos'è il bookbook?"
+		},
+		"third": {
+			"text": "Il creatore di gradebooklet è ancora uno studente, quindi sa di quali <b> avrai davvero bisogno </b> per tenere traccia dei tuoi voti.",
+			"title": "Facile da usare"
+		}
+	}
+}

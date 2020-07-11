@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar color="light">
+        <ion-title>
+            {{editModule.name}}
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-button color="danger" (click)="deleteModule()">
+                <ion-icon name="trash" color="danger"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div style="padding: 0 0 20px 0">
+
+        <div style="padding-left: 20px; padding-right: 20px">
+            <ion-text>
+                <h3>{{'module.about' | translate}}</h3>
+            </ion-text>
+            <ion-card style="margin-left: 0 !important; margin-right: 0 !important; padding-left: 20px !important;">
+                <ion-row>
+                    <ion-col>
+                        <ion-input [placeholder]="'module.name' | translate"
+                                   [(ngModel)]="this.editModule.name" [maxlength]="'30'"></ion-input>
+                        <ion-input [placeholder]="'module.room' | translate"
+                                   [(ngModel)]="this.editModule.room" [maxlength]="'30'"></ion-input>
+                    </ion-col>
+                    <ion-col>
+                        <ion-input [placeholder]="'module.teacher' | translate"
+                                   [(ngModel)]="this.editModule.teacher" [maxlength]="'30'"></ion-input>
+                        <ion-input [placeholder]="'module.building' | translate"
+                                   [(ngModel)]="this.editModule.building" [maxlength]="'30'"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+            <ion-text style="margin-top: 16px;">
+                <h3 style="margin-top: 20px !important;">{{'module.exams' | translate}}</h3>
+            </ion-text>
+        </div>
+
+
+    <ion-list *ngIf="!!this.editModule.exams" style="padding-left: 4px !important;" lines="none">
+        <ion-item-sliding *ngFor="let exam of this.editModule.exams">
+            <ion-item-options side="end">
+                <ion-item-option color="danger" style="padding-bottom: 16px" type="ios" (click)="removeExam(exam)">
+                    <h3 slot="top" style="margin-bottom: 0 !important;">
+                        <ion-icon name="trash"></ion-icon>
+                    </h3>
+                    <ion-label slot="top">Delete</ion-label>
+                </ion-item-option>
+            </ion-item-options>
+            <ion-item style="display: flex;">
+                <div style="padding: 10px 0 16px 0; min-width: 70%">
+                    <ion-input style="font-size: 1.3rem; margin-top: 0; padding-left: 20px !important;"
+                               [(ngModel)]="exam.name"></ion-input>
+                    <ion-datetime placeholder="Date" max="{{today}}" displayFormat="DD.M.YYYY" mode="ios"
+                                  [(ngModel)]="exam.date"></ion-datetime>
+                </div>
+
+
+                <h1 style="text-align: right; max-width: 30%;margin-top: 0; font-size: 3rem">{{exam.grade}}</h1>
+            </ion-item>
+        </ion-item-sliding>
+        <div style="padding-left: 20px; padding-right: 20px">
+            <ion-card style="margin-left: 0 !important; margin-right: 0 !important;">
+                <div style="padding: 10px 20px 16px 20px">
+            <ion-input [placeholder]="'module.exam_name' | translate" [maxlength]="'30'"
+                       [(ngModel)]="exam.name"></ion-input>
+            <ion-input [placeholder]="'module.exam_grade' | translate" [maxlength]="'3'"
+                       [(ngModel)]="exam.grade"></ion-input>
+            <ion-button color="success" expand="full" fill="solid" size="small" (click)="newExam();">
+                <ion-icon name="add"></ion-icon>
+            </ion-button>
+                </div>
+            </ion-card>
+        </div>
+    </ion-list>
+
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="saveModule()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    </div>
+</ion-content>
+

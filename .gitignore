@@ -31,3 +31,12 @@ npm-debug.log*
 /www
 
 .now
+
+node_modules
+.sass-cache
+**/bower_components or sometimes it is lib/**
+platforms
+plugins
+*.swp
+*.swo
+*.DS_Store

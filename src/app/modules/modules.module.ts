@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ModulesPage } from './modules.page';
-import {ModalViewComponent} from '../modal-view/modal-view.component';
-import {AddModuleModalComponent} from '../add-module-modal/add-module-modal.component';
+import {EditModuleComponent} from '../edit-module/edit-module.component';
+import {AddModuleComponent} from '../add-module/add-module.component';
 import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
@@ -17,7 +17,7 @@ import {TranslateModule} from '@ngx-translate/core';
         TranslateModule,
         ReactiveFormsModule
     ],
-  declarations: [ModulesPage, ModalViewComponent, AddModuleModalComponent],
-  entryComponents: [ModalViewComponent, AddModuleModalComponent]
+  declarations: [ModulesPage, EditModuleComponent, AddModuleComponent],
+  entryComponents: [EditModuleComponent, AddModuleComponent]
 })
 export class ModulesPageModule {}

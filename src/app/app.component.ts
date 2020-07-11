@@ -6,7 +6,6 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
 import {SlidesComponent} from './slides/slides.component';
-import {Globalization} from '@ionic-native/globalization';
 
 @Component({
   selector: 'app-root',
@@ -25,18 +24,18 @@ export class AppComponent {
     public modalController: ModalController
   ) {
     const customLocale = localStorage.getItem('customLocale');
-    console.log(translate.getBrowserLang());
     if (customLocale !== null) {
       translate.setDefaultLang(customLocale);
     } else {
       if (this.languages.includes(translate.getBrowserLang().substr(0, 2))) {
-        translate.setDefaultLang(translate.getBrowserLang().substr(0, 2));
+        translate.setDefaultLang(translate.getBrowserLang());
         localStorage.setItem('customLocale', translate.getBrowserLang().substr(0, 2));
       } else {
         translate.setDefaultLang('en');
         localStorage.setItem('customLocale', 'en');
       }
     }
+
     this.initializeApp();
   }
   initializeApp() {

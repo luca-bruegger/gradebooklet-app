@@ -1,10 +1,8 @@
-import {Component, Inject, LOCALE_ID} from '@angular/core';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Component} from '@angular/core';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
-import {ModalViewComponent} from '../modal-view/modal-view.component';
 import {ModalController} from '@ionic/angular';
 import {AboutComponent} from '../about/about.component';
-import {AddModuleModalComponent} from '../add-module-modal/add-module-modal.component';
 
 
 @Component({
@@ -14,7 +12,7 @@ import {AddModuleModalComponent} from '../add-module-modal/add-module-modal.comp
 })
 export class SettingsPage {
     darkmodeToggled: boolean;
-    languages: string[] = ['de', 'en', 'it', 'fr', 'ko', 'zh'];
+    languages: string[] = ['de', 'en', 'it', 'fr'];
     customLocale = this.translate.instant('languages.' + localStorage.getItem('customLocale'));
 
     constructor(private statusBar: StatusBar,
