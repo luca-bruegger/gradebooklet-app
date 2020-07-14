@@ -1,5 +1,5 @@
 import {AfterContentChecked, Component} from '@angular/core';
-import {ModalController, Platform} from '@ionic/angular';
+import {ModalController, NavController, Platform} from '@ionic/angular';
 import {AddModuleComponent} from '../add-module/add-module.component';
 import {EditModuleComponent} from '../edit-module/edit-module.component';
 import {Module} from '../models/module';
@@ -12,6 +12,9 @@ import {File} from '@ionic-native/file/ngx';
 import {AuthComponent} from '../auth/auth.component';
 import {PdfController} from '../controller/pdf-controller';
 import {ModulesController} from '../controller/modules-controller';
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
+import {SlidesComponent} from "../slides/slides.component";
+import {Router} from "@angular/router";
 
 
 
@@ -20,7 +23,7 @@ import {ModulesController} from '../controller/modules-controller';
     templateUrl: 'modules.page.html',
     styleUrls: ['modules.page.scss']
 })
-export class ModulesPage extends AuthComponent implements AfterContentChecked {
+export class ModulesPage implements AfterContentChecked {
     color: string;
     modules: Module[] = [];
     pdfController: PdfController;
@@ -33,8 +36,26 @@ export class ModulesPage extends AuthComponent implements AfterContentChecked {
                 public datePipe: DatePipe,
                 private plt: Platform,
                 private fileOpener: FileOpener,
-                private file: File) {
-        super();
+                private file: File,
+                private faio: FingerprintAIO,
+                private platform: Platform,
+                private navCtrl: NavController) {
+
+        this.platform.resume.subscribe(() => {
+            this.navCtrl.navigateForward([''], {animated: false});
+        });
+
+        this.storage.get('firstLaunch').then(async val => {
+            if (val === null) {
+                await this.storage.set('firstLaunch', JSON.stringify(false));
+                const modal = await this.modalController.create({
+                    component: SlidesComponent,
+                    backdropDismiss: false
+                });
+                return modal.present();
+            }
+        });
+
         this.pdfController = new PdfController(datePipe, plt, file, fileOpener, translate, this.modules);
 
         storage.get('modules').then(data => {

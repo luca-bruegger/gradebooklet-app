@@ -7,8 +7,10 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {AuthComponent} from "../auth/auth.component";
 
 @NgModule({
+    entryComponents: [AuthComponent],
     imports: [
         IonicModule,
         CommonModule,
@@ -16,7 +18,7 @@ import {TranslateModule} from '@ngx-translate/core';
         TabsPageRoutingModule,
         TranslateModule
     ],
-  declarations: [TabsPage]
+  declarations: [AuthComponent, TabsPage]
 })
 export class TabsPageModule {}
 

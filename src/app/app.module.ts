@@ -18,6 +18,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import {DatePipe} from '@angular/common';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
+import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, SlidesComponent],
@@ -34,6 +35,7 @@ import { File } from '@ionic-native/file/ngx';
     StatusBar,
     SplashScreen,
     DatePipe,
+    FingerprintAIO,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       InAppBrowser,
       FileOpener,

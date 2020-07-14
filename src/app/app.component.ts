@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {Storage} from '@ionic/storage';
-import {SlidesComponent} from './slides/slides.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private translate: TranslateService,
     public storage: Storage,
-    public modalController: ModalController
+    public modalController: ModalController,
   ) {
     const customLocale = localStorage.getItem('customLocale');
     if (customLocale !== null) {
@@ -57,18 +56,6 @@ export class AppComponent {
         }
       }
       this.splashScreen.hide();
-
-
-      this.storage.get('firstLaunch').then(async val => {
-        if (val === null) {
-          await this.storage.set('firstLaunch', JSON.stringify(false));
-          const modal = await this.modalController.create({
-            component: SlidesComponent,
-            backdropDismiss: false
-          });
-          return modal.present();
-        }
-      });
     });
   }
 
