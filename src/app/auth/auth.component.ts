@@ -13,12 +13,12 @@ export class AuthComponent {
 
     ionViewDidEnter(){
         if (this.plt.is('cordova')) {
-            this.faio.isAvailable().then(isAvailable => {
-                if (isAvailable) {
-                    this.faio.show({}).then(() => {
-                        this.navCtrl.navigateForward(['/tabs'], {animated: false});
-                    }).catch(error => console.log(error));
-                }
+            this.faio.isAvailable().then(() => {
+                this.faio.show({}).then(() => {
+                    setTimeout(() => this.navCtrl.navigateForward(['/tabs'], {animated: false}), 1500)
+                }).catch(error => console.log(error));
+            }).catch(() => {
+                this.navCtrl.navigateForward(['/tabs'], {animated: false});
             });
         } else {
             this.navCtrl.navigateForward(['/tabs'], {animated: false});

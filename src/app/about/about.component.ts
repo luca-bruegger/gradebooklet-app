@@ -23,17 +23,17 @@ export class AboutComponent {
 
 
     openPrivacy() {
-        const browser = this.iab.create('https://gradebooklet.lucabruegger.ch/privacy-policy.html', '_system');
+        const browser = this.iab.create('https://gradebooklet.com/privacy-policy', '_system');
         browser.show();
     }
 
     openBugReport() {
-        const browser = this.iab.create('https://gradebooklet.lucabruegger.ch/report-bug.html', '_system');
+        const browser = this.iab.create('https://gradebooklet.com/report-bug', '_system');
         browser.show();
     }
 
     openFeatureRequest() {
-        const browser = this.iab.create('https://gradebooklet.lucabruegger.ch/request-feature.html', '_system');
+        const browser = this.iab.create('https://gradebooklet.com/request-feature', '_system');
         browser.show();
     }
 }
