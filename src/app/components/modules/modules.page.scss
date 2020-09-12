@@ -1,0 +1,20 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-item {
+  --inner-padding-end: 0;
+}
+
+ion-list {
+  --offset-bottom: 0;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;  // IE 10+
+  scrollbar-width: none;  // Firefox
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+  }
+}

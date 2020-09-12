@@ -1,0 +1,101 @@
+{
+  "about": {
+    "bug": "Segnalare un bug",
+    "feature": "Richiedi una funzione",
+    "me": "gradebooklet get è gestito e sviluppato da",
+    "privacy": "Riservatezza",
+    "text": "Prima di tutto, grazie per aver scaricato gradebooklet. gradebooklet ti aiuta a organizzare i tuoi voti in un modo più intuitivo e più facile. Se non la pensi così, richiedi una funzione o segnala un bug.",
+    "title": "gradebooklet"
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français",
+    "it": "Italiano",
+    "ko": "한국어",
+    "zh": "中文"
+  },
+  "module": {
+    "about": "Informazioni generali sul modulo",
+    "add": "Aggiungi modulo",
+    "building": "Costruzione",
+    "exam_name": "Nome dell'esame",
+    "exams": "I tuoi esami",
+    "name": "Nome del modulo",
+    "new-title": "Nuovo modulo",
+    "room": "Camera",
+    "teacher": "Insegnante",
+    "swipe": "Scorrere per sbloccare",
+    "average": "Media",
+    "date": "Data",
+    "grade": "Nota",
+    "exam": {
+      "delete": "Eliminare",
+      "grade-doesnt-match-example": "Nota Non corrisponde all'esempio.",
+      "grade-without-name": "Il controllo esiste senza nome",
+      "max-points": "'Punti massimi'",
+      "max-points-range-error": "Il punteggio massimo dovrebbe essere compreso tra 0,0 e 999,9.",
+      "reached-points": "'Punti guadagnati'",
+      "reached-points-range-error": "Il punteggio ottenuto dovrebbe essere compreso tra 0 e il punteggio massimo."
+    },
+    "gradesystem": "Sistema di classificazione",
+    "gradesystem-selection-change-error": "I controlli già inseriti vengono eliminati al cambio dell'organico."
+  },
+  "modules": {
+    "addModule": "Aggiungi modulo",
+    "title": "Moduli",
+    "no-further-information": "Non ci sono altre informazioni",
+    "no-grades-available": "Non ci sono note disponibili"
+  },
+  "popup": {
+    "close": "Vicino",
+    "continue": "Continua",
+    "exam_warning": "Il voto non corrisponde all'esempio. Dovrebbe apparire come 5.5 o 5",
+    "exams_without_names": "Impossibile salvare. Ad alcuni esami mancano i nomi.",
+    "fix_error": "Fix",
+    "module_error": "Inserisci il modulo nome.",
+    "not_saved": "Non salvato",
+    "not_saved_warning": "Perderai i tuoi progressi se continui.",
+    "ok": "Ok",
+    "warning": "Avvertimento",
+    "accept": "Capito",
+    "adjust-exams": "Si prega di adattare i test.",
+    "exams-pdf-warning": "Aggiungere un modulo per creare un PDF dei moduli.",
+    "module-no-name": "Il modulo non contiene alcun nome",
+    "warning-grades-deletion": "Se lo fate, tutti i controlli saranno cancellati"
+  },
+  "settings": {
+    "darkmode": "Darkmode",
+    "language": "Linguaggio",
+    "title": "Impostazioni"
+  },
+  "slides": {
+    "first": {
+      "text": "Sai che hai appena preso la <b> migliore decisione </b> della tua vita per gestire i tuoi voti? Lascia che ti mostri...",
+      "title": "benvenuto"
+    },
+    "fourth": {
+      "button": "CONTINUA",
+      "title": "Pronto, Set, Go!"
+    },
+    "second": {
+      "text": "gradebooklet è il <b> classificatore </b> più versatile che tu abbia mai visto. L'obiettivo era <b> semplificare </b> per organizzare i tuoi voti in modo più semplice e migliore.",
+      "title": "Che cos'è il bookbook?"
+    },
+    "third": {
+      "text": "Il creatore di gradebooklet è ancora uno studente, quindi sa di quali <b> avrai davvero bisogno </b> per tenere traccia dei tuoi voti.",
+      "title": "Facile da usare"
+    }
+  },
+  "gradesystem": {
+    "german": "Tedesco semplice",
+    "german.exam_warning": "Segno d'esame, ad es. 2.0",
+    "title": "Sistema di classificazione:",
+    "swiss": "Svizzera Semplice",
+    "swiss.exam_warning": "Segno d'esame, ad es. 5.0",
+    "swiss_advanced": "Svizzera Estesa",
+    "swiss_advanced.exam_max": "Massimo di punti",
+    "swiss_advanced.exam_min": "Punti ottenuti",
+    "swiss_advanced.exam_warning": "Segno d'esame, ad es. 5.0"
+  }
+}

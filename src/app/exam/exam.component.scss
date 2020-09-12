@@ -1,0 +1,58 @@
+.custom-delete-label {
+  align-items: center;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.custom-delete-icon {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.pl-4 {
+  padding-left: 4px !important;
+}
+
+.pb-16 {
+  padding-bottom: 16px;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.first-time-removal-container {
+  padding: 10px 0 16px 0;
+  min-width: 70%;
+}
+
+.exam-name {
+  font-size: 1.3rem;
+  margin-top: 0;
+  padding-left: 20px;
+}
+
+.exam-grade {
+  text-align: right;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 60px;
+}
+
+.datetime-picker {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+}
+
+.faded-label {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  opacity: .5;
+  font-size: 12px;
+}
+
+.exam-card:first-child {
+  margin-top: 0;
+}
