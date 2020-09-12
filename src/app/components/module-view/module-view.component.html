@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-title>
+            {{isEditModule ? editModule.name : ('module.new-title' | translate)}}
+        </ion-title>
+        <ion-buttons *ngIf="isEditModule" slot="start">
+            <ion-button color="danger" (click)="deleteModule()">
+                <ion-icon name="trash"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="container-wrapper">
+        <div class="container">
+            <ion-text>
+                <h3>{{'module.about' | translate}}</h3>
+            </ion-text>
+            <ion-card class="module-information-card">
+                <ion-row>
+                    <ion-col>
+                        <ion-input [placeholder]="'module.name' | translate" [(ngModel)]="this.editModule.name"
+                                   maxlength="50"></ion-input>
+                        <ion-input [placeholder]="'module.room' | translate" [(ngModel)]="this.editModule.room"
+                                   maxlength="50"></ion-input>
+                    </ion-col>
+                    <ion-col style="float: bottom">
+                        <ion-input [placeholder]="'module.teacher' | translate" [(ngModel)]="this.editModule.teacher"
+                                   maxlength="50"></ion-input>
+                        <ion-input [placeholder]="'module.building' | translate" [(ngModel)]="this.editModule.building"
+                                   maxlength="50"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+
+            <ion-card class="gradesystem-card">
+                <ion-item lines="none">
+                    <ion-label class="faded-label">{{ 'module.gradesystem' | translate }}</ion-label>
+                    <ion-select
+                            [interfaceOptions]="editModule.exams.length > 0 ? {header: 'module.gradesystem' | translate, subHeader: 'module.gradesystem-selection-change-error' | translate}: {}"
+                            interface="alert" slot="end"
+                            okText="{{'popup.ok' | translate}}" cancelText="{{'popup.close' | translate}}"
+                            class="gradesystem-select"
+                            (ngModelChange)="resetExams()" [(ngModel)]="editModule.gradesystemType"
+                            [disabled]="isEditModule">
+                        <ion-select-option *ngFor="let gradesystem of gradesystemTypes" [value]="gradesystem">
+                            {{gradesystem | translate}}
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card>
+
+            <ion-text class="mt-16">
+                <h3 class="mt-20">{{'module.exams' | translate}}</h3>
+            </ion-text>
+        </div>
+
+        <app-exam [moduleGradeType]="editModule.gradesystemType" [moduleExams]="editModule.exams" [popupController]="popupController"></app-exam>
+    </div>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="success" (click)="prepareModuleSave()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-title>
+            {{'about.title' | translate}}
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-card>
+        <ion-card-content>
+            {{'about.text' | translate}}
+        </ion-card-content>
+    </ion-card>
+    <ion-button color="warning" (click)="openBugReport()"
+                style="width: 100%; padding-left: 16px; padding-right: 16px; margin-bottom: 12px">{{'about.bug' | translate}}</ion-button>
+    <ion-button color="secondary" (click)="openFeatureRequest()"
+                style="width: 100%; padding-left: 16px; padding-right: 16px; margin-bottom: 12px">{{'about.feature' | translate}}</ion-button>
+    <ion-button color="tertiary" (click)="openPrivacy()"
+                style="width: 100%; padding-left: 16px; padding-right: 16px">{{'about.privacy' | translate}}</ion-button>
+</ion-content>
+<ion-footer>
+    <ion-grid style="width: 100%; padding-bottom: 20px">
+        <ion-row style="justify-content: center">
+            <ion-label color="dark" style="font-size: smaller;">{{'about.me' | translate}}</ion-label>
+        </ion-row>
+        <ion-row style="justify-content: center">
+            <ion-label color="dark" style="font-size: smaller;">Luca Brügger</ion-label>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

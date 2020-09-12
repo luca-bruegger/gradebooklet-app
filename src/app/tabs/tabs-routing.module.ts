@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
-import {AuthComponent} from "../auth/auth.component";
+import {AuthComponent} from "../components/auth/auth.component";
 
 const routes: Routes = [
     {
@@ -18,7 +18,7 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: () =>
-                            import('../modules/modules.module').then(m => m.ModulesPageModule)
+                            import('../components/modules/modules.module').then(m => m.ModulesPageModule)
                     }
                 ]
             },
@@ -28,7 +28,7 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: () =>
-                            import('../settings/settings.module').then(m => m.Tab3PageModule)
+                            import('../components/settings/settings.module').then(m => m.Tab3PageModule)
                     }
                 ]
             },

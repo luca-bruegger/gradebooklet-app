@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="end" collapse="true">
+            <ion-button (click)="exportModulesAsPDF()">
+                <ion-icon color="medium" name="download-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            {{'modules.title' | translate}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-buttons slot="end" collapse="true">
+                <ion-button (click)="exportModulesAsPDF()">
+                    <ion-icon color="medium" name="download-outline"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title size="large">{{'modules.title' | translate}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-grid>
+        <ion-list lines="none" *ngIf="modules.length > 0" style="background: transparent; padding-bottom: 50px">
+            <ion-item *ngFor="let m of modules" class="ion-no-padding">
+                <ion-card [style.backgroundColor]="m.backgroundColor" (click)="openEditModal(m)" style="width: 100%">
+                    <ion-card-content>
+                        <ion-card-title>{{m.name}}</ion-card-title>
+                        <ion-grid>
+                            <ion-row>
+                                <!--Module does contain normal informations-->
+                                <ion-col
+                                        style="padding: 0!important; display: flex!important; align-content: center!important; align-items: center!important;"
+                                        size="6"
+                                        *ngIf="createRoomTextForModule(m) !== ''">
+                                    <div style="max-width: 100%;">
+                                        <ion-label color="dark" style="word-break: break-all;">{{m.teacher}}</ion-label>
+                                        <br>
+                                        <ion-label color="dark">{{createRoomTextForModule(m)}}</ion-label>
+                                    </div>
+                                </ion-col>
+
+                                <!--Module doesn't contain room, teacher nor Exams-->
+                                <ion-col
+                                        style="padding: 0!important; display: flex!important; align-content: center!important; align-items: center!important;"
+                                        size="6"
+                                        *ngIf="createRoomTextForModule(m) == '' && m.exams.length !== 0">
+                                    <ion-label color="dark"
+                                               class="ion-text-wrap">{{'modules.no-further-information' | translate}}</ion-label>
+                                </ion-col>
+
+                                <!--Module grades-->
+                                <ion-col style="padding: 0!important; text-align: center !important;">
+                                    <ion-label style="font-size: 4.9rem; font-weight: bold;"
+                                               *ngIf="m.exams.length > 0" color="dark">{{m.average}}</ion-label>
+                                    <div *ngIf="m.exams.length == 0"
+                                         style="min-height: 93px !important; display: flex!important; align-content: center!important; align-items: center!important;">
+                                        <ion-label color="dark" style="font-weight: bold;">
+                                            {{'modules.no-grades-available' | translate}}
+                                        </ion-label>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ion-item>
+        </ion-list>
+    </ion-grid>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <div *ngIf="modules.length == 0" class="animated headShake slower infinite"
+             style="width:200px;position: absolute;right: 60px;align-items: center; height: 56px; display: flex;margin-bottom: 0;"
+             [style.color]="this.color">
+            {{'module.add' | translate}}
+            <ion-icon style="font-size: 1.8rem; margin-left: 10px" name="arrow-forward"></ion-icon>
+        </div>
+        <ion-fab-button color="primary" (click)="openAddModal()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

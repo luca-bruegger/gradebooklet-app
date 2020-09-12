@@ -1,0 +1,110 @@
+<div style="padding-left: 20px; padding-right: 20px">
+    <ion-card style="margin-left: 0 !important; margin-right: 0 !important;">
+        <div style="padding: 10px 20px 16px 20px">
+            <ion-segment [(ngModel)]="this.selectedExamGradeType" (ionChange)="segmentChanged($event)"
+                         *ngIf="moduleGradeType == this.gradesystem.SwissAdvancedGradesystem">
+                <ion-segment-button value="{{examGradeType.grade}}">
+                    <ion-label>Note</ion-label>
+                </ion-segment-button>
+                <ion-segment-button aria-selected="true" value="{{examGradeType.points}}">
+                    <ion-label>Punkte</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+            <div *ngIf="this.selectedExamGradeType !== 'points'">
+                <ion-input [placeholder]="'module.exam_name' | translate" maxlength="50"
+                           [(ngModel)]="exam.name" *ngIf="moduleGradeType == gradesystem.SwissGradesystem"></ion-input>
+                <ion-row *ngIf="moduleGradeType == gradesystem.SwissAdvancedGradesystem">
+                    <ion-col size="9" style="padding: 0;">
+                        <ion-input [placeholder]="'module.exam_name' | translate" maxlength="50"
+                                   [(ngModel)]="exam.name"></ion-input>
+                    </ion-col>
+                    <ion-col size="3" style="padding: 0;">
+                        <ion-select style="padding-left: 10px; padding-right: 10px;" interface="popover"
+                                    [(ngModel)]="this.exam.gradeWeight">
+                            <ion-select-option *ngFor="let weight of examsController.getPossibleExamWeights()"
+                                               [value]="weight">
+                                {{weight * 100 }}%
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+                <ion-input [placeholder]="moduleGradeType + '.exam_warning' | translate" maxlength="3"
+                           [(ngModel)]="exam.grade" (keyup.enter)="newExam()"></ion-input>
+            </div>
+            <div *ngIf="this.selectedExamGradeType == 'points'">
+                <ion-row>
+                    <ion-col size="9" style="padding: 0;">
+                        <ion-input [placeholder]="'module.exam_name' | translate" maxlength="50"
+                                   [(ngModel)]="exam.name"></ion-input>
+                    </ion-col>
+                    <ion-col size="3" style="padding: 0;">
+                        <ion-select style="padding-left: 10px; padding-right: 10px;" interface="popover"
+                                    [(ngModel)]="this.exam.gradeWeight">
+                            <ion-select-option *ngFor="let weight of examsController.getPossibleExamWeights()"
+                                               [value]="weight">
+                                {{weight * 100 }}%
+                            </ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="padding: 0">
+                        <ion-input [placeholder]="'module.exam.reached-points' | translate" maxlength="10"
+                                   [(ngModel)]="exam.reachedPoints"></ion-input>
+                    </ion-col>
+                    <ion-col style="padding: 0">
+                        <ion-input [placeholder]="'module.exam.max-points' | translate" maxlength="10"
+                                   [(ngModel)]="exam.maxPointsPossible"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-button color="success" expand="block" fill="solid" size="small"
+                        (click)="newExam();">
+                <ion-icon name="add"></ion-icon>
+            </ion-button>
+        </div>
+    </ion-card>
+</div>
+
+<div *ngIf="isFirstTimeExamRemovalForUser && moduleExams.length === 1"
+     class="animated headShake slower infinite custom-delete-label"
+     [style.color]="'#e3445a'">
+    <ion-icon class="custom-delete-icon" name="arrow-back"></ion-icon>
+    {{'module.swipe' | translate}}
+</div>
+
+<ion-list *ngIf="!!moduleExams" class="pl-4" lines="none" style="background: transparent">
+    <ion-card *ngFor="let exam of moduleExams" class="exam-card"
+              [ngClass]="{'animated pulse delay-3s repeat-3': isFirstTimeExamRemovalForUser}">
+        <ion-item-sliding>
+            <ion-item-options side="end">
+                <ion-item-option color="danger" class="pb-16" type="ios" (click)="removeExam(exam)">
+                    <h3 slot="top" class="mb-0">
+                        <ion-icon name="trash"></ion-icon>
+                    </h3>
+                    <ion-label slot="top">{{'module.exam.delete' | translate}}</ion-label>
+                </ion-item-option>
+            </ion-item-options>
+
+            <ion-item style="display: flex;">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="8">
+                            <ion-input class="exam-name" [(ngModel)]="exam.name"></ion-input>
+                            <ion-datetime class="datetime-picker" placeholder="Date" max="{{today}}" displayFormat="DD.M.YYYY" mode="ios" doneText="{{'popup.ok' | translate}}" cancelText="{{'popup.close' | translate}}"
+                                          [ngModel]="exam.date"></ion-datetime>
+                        </ion-col>
+                        <ion-col size="4">
+                            <div style="width: 100%; display: flex; justify-content: center;">
+                                <h1 class="exam-grade">{{exam.grade}}</h1>
+                            </div>
+                            <div style="width: 100%; display: flex; justify-content: center;">
+                                <p class="faded-label">{{exam.gradeWeight * 100}}%</p>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-card>
+</ion-list>

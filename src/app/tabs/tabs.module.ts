@@ -7,7 +7,7 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {AuthComponent} from "../auth/auth.component";
+import {AuthComponent} from "../components/auth/auth.component";
 
 @NgModule({
     entryComponents: [AuthComponent],

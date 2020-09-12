@@ -1,73 +1,101 @@
 {
-	"about": {
-		"bug": "Report a Bug",
-		"feature": "Request a Feature",
-		"me": "gradebooklet get's maintained and developed by",
-		"privacy": "Privacy Policy",
-		"text": "First off, thank you for downloading gradebooklet. gradebooklet helps you organize your grades in a more intuitive and easier way. If you don't think so, request a feature or report a bug.",
-		"title": "About gradebooklet"
-	},
-	"languages": {
-		"de": "Deutsch",
-		"en": "English",
-		"fr": "Français",
-		"it": "Italiano",
-		"ko": "한국어",
-		"zh": "中文"
-	},
-	"module": {
-		"about": "General Subject Informations",
-		"add": "Add Subject",
-		"building": "Building",
-		"exam_grade": "Exam Grade e.g. 5.0",
-		"exam_name": "Exam Name",
-		"exams": "Your Exams",
-		"name": "Subject Name",
-		"new_title": "New Subject",
-		"room": "Room",
-		"teacher": "Teacher",
-		"swipe": "Slide to delete",
-		"average": "Average",
-		"date": "Date",
-		"grade": "Grade"
-	},
-	"modules": {
-		"addModule": "Add Subject",
-		"title": "Subjects"
-	},
-	"popup": {
-		"close": "Close",
-		"continue": "Continue",
-		"exam_warning": "Grade doesn't match example. It should look like 5.5 or 5",
-		"exams_without_names": "Cannot save. Some Exams are missing names.",
-		"fix_error": "Fix",
-		"module_error": "Please fill in Subject and Teacher name, as well as an Exam.",
-		"not_saved": "Not saved",
-		"not_saved_warning": "You will lose your Progress if you continue.",
-		"ok": "Ok",
-		"warning": "Warning"
-	},
-	"settings": {
-		"darkmode": "Darkmode",
-		"language": "Language",
-		"title": "Settings"
-	},
-	"slides": {
-		"first": {
-			"text": "Do you know that you just made the <b> best decision </b> of your life to manage your grades? Let me show you...",
-			"title": "Welcome"
-		},
-		"fourth": {
-			"button": "Continue",
-			"title": "Ready, Set, Go!"
-		},
-		"second": {
-			"text": "gradebooklet is the <b> most versatile </b> gradebook you've ever seen. The focus was to <b> make it simple </b> for you to organize your grades in an easier and better way.",
-			"title": "What is gradebooklet?"
-		},
-		"third": {
-			"text": "The Creator of gradebooklet is still a Student, therefore he knows what <b> you'll really need </b> to keep track your grades.",
-			"title": "Easy to use"
-		}
-	}
+  "about": {
+    "bug": "Report a Bug",
+    "feature": "Request a Feature",
+    "me": "gradebooklet get's maintained and developed by",
+    "privacy": "Privacy Policy",
+    "text": "First off, thank you for downloading gradebooklet. gradebooklet helps you organize your grades in a more intuitive and easier way. If you don't think so, request a feature or report a bug.",
+    "title": "About gradebooklet"
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français",
+    "it": "Italiano",
+    "ko": "한국어",
+    "zh": "中文"
+  },
+  "module": {
+    "about": "General Subject Informations",
+    "add": "Add Subject",
+    "building": "Building",
+    "exam_name": "Exam Name",
+    "exams": "Your Exams",
+    "name": "Subject Name",
+    "new-title": "New Subject",
+    "room": "Room",
+    "teacher": "Teacher",
+    "swipe": "Slide to delete",
+    "average": "Average",
+    "date": "Date",
+    "grade": "Grade",
+    "exam": {
+      "delete": "Delete",
+      "grade-doesnt-match-example": "Grade does not match the example.",
+      "grade-without-name": "Exam without name available",
+      "max-points": "'Maximum points'",
+      "max-points-range-error": "Maximum score should be between 0.0 and 999.9.",
+      "reached-points": "'Points Achieved'",
+      "reached-points-range-error": "Achieved score should be between 0 and maximum score."
+    },
+    "gradesystem": "Gradesystem",
+    "gradesystem-selection-change-error": "Existing exams are deleted when the gradesystem is changed."
+  },
+  "modules": {
+    "addModule": "Add Subject",
+    "title": "Subjects",
+    "no-further-information": "No further information",
+    "no-grades-available": "No grades available"
+  },
+  "popup": {
+    "close": "Close",
+    "continue": "Continue",
+    "exam_warning": "Grade doesn't match example. It should look like 5.5 or 5",
+    "exams_without_names": "Cannot save. Some Exams are missing names.",
+    "fix_error": "Fix",
+    "module_error": "Please fill in Subject name.",
+    "not_saved": "Not saved",
+    "not_saved_warning": "You will lose your Progress if you continue.",
+    "ok": "Ok",
+    "warning": "Warning",
+    "accept": "Got it",
+    "adjust-exams": "Please adapt exams.",
+    "exams-pdf-warning": "Add module to create a PDF of the modules.",
+    "module-no-name": "Module does not contain a name",
+    "warning-grades-deletion": "If you do so, all exams will be deleted"
+  },
+  "settings": {
+    "darkmode": "Darkmode",
+    "language": "Language",
+    "title": "Settings"
+  },
+  "slides": {
+    "first": {
+      "text": "Do you know that you just made the <b> best decision </b> of your life to manage your grades? Let me show you...",
+      "title": "Welcome"
+    },
+    "fourth": {
+      "button": "Continue",
+      "title": "Ready, Set, Go!"
+    },
+    "second": {
+      "text": "gradebooklet is the <b> most versatile </b> gradebook you've ever seen. The focus was to <b> make it simple </b> for you to organize your grades in an easier and better way.",
+      "title": "What is gradebooklet?"
+    },
+    "third": {
+      "text": "The Creator of gradebooklet is still a Student, therefore he knows what <b> you'll really need </b> to keep track your grades.",
+      "title": "Easy to use"
+    }
+  },
+  "gradesystem": {
+    "german": "German Simple",
+    "german.exam_warning": "Examination mark, e.g. 2.0",
+    "title": "Gradesystem:",
+    "swiss_advanced.exam_warning": "Exam grade, e.g. 5.0",
+    "swiss_advanced.exam_min": "Achieved points",
+    "swiss_advanced.exam_max": "Maximum score",
+    "swiss_advanced": "Switzerland Extended",
+    "swiss": "Switzerland Simple",
+    "swiss.exam_warning": "Examination mark, e.g. 5.0"
+  }
 }
