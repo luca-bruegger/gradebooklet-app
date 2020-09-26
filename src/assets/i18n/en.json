@@ -33,10 +33,12 @@
       "delete": "Delete",
       "grade-doesnt-match-example": "Grade does not match the example.",
       "grade-without-name": "Exam without name available",
-      "max-points": "'Maximum points'",
+      "max-points": "Maximum points",
       "max-points-range-error": "Maximum score should be between 0.0 and 999.9.",
-      "reached-points": "'Points Achieved'",
-      "reached-points-range-error": "Achieved score should be between 0 and maximum score."
+      "reached-points": "Points Achieved",
+      "reached-points-range-error": "Achieved score should be between 0 and maximum score.",
+      "grade": "Grade",
+      "points": "Points"
     },
     "gradesystem": "Gradesystem",
     "gradesystem-selection-change-error": "Existing exams are deleted when the gradesystem is changed."

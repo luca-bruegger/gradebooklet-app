@@ -33,10 +33,12 @@
       "delete": "Supprimer",
       "grade-doesnt-match-example": "Note Ne correspond pas à l'exemple.",
       "grade-without-name": "Le contrôle existe sans nom",
-      "max-points": "'Points maximaux'",
+      "max-points": "Points maximaux",
       "max-points-range-error": "La note maximale doit être comprise entre 0,0 et 999,9.",
-      "reached-points": "'Points gagnés'",
-      "reached-points-range-error": "Le score obtenu doit être compris entre 0 et le score maximum."
+      "reached-points": "Points gagnés",
+      "reached-points-range-error": "Le score obtenu doit être compris entre 0 et le score maximum.",
+      "points": "Points",
+      "grade": "Note"
     },
     "gradesystem": "Système d'évaluation",
     "gradesystem-selection-change-error": "Les données de contrôle déjà saisies sont supprimées lors d'un changement de personnel."
@@ -52,7 +54,7 @@
     "continue": "Continuer",
     "exam_warning": "La note ne correspond pas à l'exemple. Il devrait ressembler à 5.5 ou 5",
     "exams_without_names": "Impossible d'enregistrer. Certains examens manquent de noms.",
-    "fix_error": "réparer",
+    "fix_error": "Réparer",
     "module_error": "Veuillez remplir le module nom.",
     "not_saved": "Non enregistré",
     "not_saved_warning": "Vous perdrez votre progression si vous continuez.",
