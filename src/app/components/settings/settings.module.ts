@@ -16,4 +16,4 @@ import {TranslateModule} from '@ngx-translate/core';
     ],
   declarations: [SettingsPage]
 })
-export class Tab3PageModule {}
+export class SettingsPageModule {}
