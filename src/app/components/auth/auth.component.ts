@@ -1,28 +1,29 @@
 import {Component} from '@angular/core';
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
-import {NavController, Platform} from "@ionic/angular";
+import {ModalController, NavController, Platform} from "@ionic/angular";
 
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.component.html',
     styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent{
+export class AuthComponent {
+    unlocked = false;
     constructor(private faio: FingerprintAIO,
                 private navCtrl: NavController,
-                private plt: Platform) {}
+                private plt: Platform,
+                private modalController: ModalController) {
+    }
 
-    ionViewDidEnter(){
-        if (this.plt.is('cordova')) {
-            this.faio.isAvailable().then(() => {
-                this.faio.show({}).then(() => {
+    ionViewDidEnter() {
+        this.faio.show({}).then(() => {
+            this.unlocked = true;
+            setTimeout(() =>
+                {
                     this.navCtrl.navigateForward(['/tabs'], {animated: false});
-                }).catch(error => console.log(error));
-            }).catch(() => {
-                this.navCtrl.navigateForward(['/tabs'], {animated: false});
-            });
-        } else {
-            this.navCtrl.navigateForward(['/tabs'], {animated: false});
-        }
+                    this.modalController.dismiss();
+                },
+                600);
+        }).catch(error => console.log(error));
     }
 }

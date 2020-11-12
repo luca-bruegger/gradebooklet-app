@@ -2,8 +2,8 @@ import {Module} from "../models/module";
 import {GradesystemType} from "../models/gradesystem";
 import {Color} from "../models/color";
 import {Storage} from "@ionic/storage";
-import {SwissGradesystem} from "../gradesystems/swiss-gradesystem";
-import {SwissAdvancedGradesystem} from "../gradesystems/swiss-advanced-gradesystem";
+import {SwissGradesystem} from "./gradesystems/swiss-gradesystem";
+import {SwissAdvancedGradesystem} from "./gradesystems/swiss-advanced-gradesystem";
 
 export class ModulesController {
     colorController: Color = new Color;

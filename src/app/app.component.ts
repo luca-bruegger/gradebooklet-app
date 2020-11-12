@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-
-import {ModalController, Platform} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {Platform} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {Storage} from '@ionic/storage';
+import {AppearanceService} from "./components/settings/appearance.service";
+
+import {Plugins} from '@capacitor/core';
+import {delay} from "rxjs/operators";
+const {SplashScreen} = Plugins;
 
 @Component({
     selector: 'app-root',
@@ -16,49 +17,36 @@ export class AppComponent {
 
     constructor(
         private platform: Platform,
-        private splashScreen: SplashScreen,
-        private statusBar: StatusBar,
         private translate: TranslateService,
-        public storage: Storage,
-        public modalController: ModalController,
-    ) {
+        private appearanceService: AppearanceService) {
         this.setLocales();
         this.initializeApp();
     }
 
     initializeApp() {
         this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
-
-            if (JSON.parse(localStorage.getItem('darkmodeEnabled')) === false) {
-                localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
-            }
-
-            const darkmode = JSON.parse(localStorage.getItem('darkmodeEnabled'));
-            if (darkmode === null) {
-                this.setLightmodeEnabled();
-            } else {
-                if (darkmode) {
-                    this.setDarkmodeEnabled();
-                } else {
-                    this.setLightmodeEnabled();
-                }
-            }
-            this.splashScreen.hide();
+            this.setAppearance();
+            SplashScreen.hide().then(r => {
+            });
         });
     }
 
-    private setDarkmodeEnabled() {
-        localStorage.setItem('darkmodeEnabled', JSON.stringify(true));
-        this.statusBar.styleLightContent();
-        document.body.classList.toggle('dark', true);
+    private setAppearance() {
+        if (JSON.parse(localStorage.getItem('darkmodeEnabled')) === false) {
+            localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
+        }
+
+        const mql = window.matchMedia("(prefers-color-scheme: dark)");
+        mql.addEventListener("change", value => {
+            console.log(value)
+        });
+
+        const darkmode = JSON.parse(localStorage.getItem('darkmodeEnabled'));
+        if (darkmode) {
+            this.appearanceService.dark();
+        }
     }
 
-    private setLightmodeEnabled() {
-        localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
-        this.statusBar.styleDefault();
-        document.body.classList.toggle('dark', false);
-    }
 
     private setLocales() {
         const customLocale = localStorage.getItem('customLocale');

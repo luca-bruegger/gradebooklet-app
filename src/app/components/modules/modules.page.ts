@@ -12,6 +12,7 @@ import {ModulesController} from '../../controllers/modules-controller';
 import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
 import {SlidesComponent} from "../slides/slides.component";
 import {ModuleViewComponent} from "../module-view/module-view.component";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
     selector: 'app-modules-tab',
@@ -34,7 +35,8 @@ export class ModulesPage implements AfterContentChecked {
                 private faio: FingerprintAIO,
                 private platform: Platform,
                 private navCtrl: NavController,
-                private alertController: AlertController) {
+                private alertController: AlertController,
+                private modalService: ModalService) {
         this.modulesController = new ModulesController(this.storage);
         this.platform.resume.subscribe(() => {
             this.navCtrl.navigateForward([''], {animated: false});
@@ -82,7 +84,13 @@ export class ModulesPage implements AfterContentChecked {
             this.storage.set('modules', JSON.stringify(this.modules));
         });
 
-        return await modal.present();
+        modal.onDidDismiss().then(() => {
+            this.modalService.deactivate();
+        });
+
+        return await modal.present().then(() => {
+            this.modalService.setActive(modal);
+        });
     }
 
     async openAddModal() {
@@ -105,7 +113,13 @@ export class ModulesPage implements AfterContentChecked {
             this.storage.set('modules', JSON.stringify(this.modules));
         });
 
-        return modal.present();
+        modal.onDidDismiss().then(() => {
+            this.modalService.deactivate();
+        });
+
+        return modal.present().then(() => {
+            this.modalService.setActive(modal);
+        });
     }
 
     async exportModulesAsPDF() {

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {ModalController} from '@ionic/angular';
 import {AboutComponent} from '../about/about.component';
+import {AppearanceService} from "./appearance.service";
 
 
 @Component({
@@ -15,43 +15,29 @@ export class SettingsPage {
     languages: string[] = ['de', 'en', 'it', 'fr'];
     customLocale = this.translate.instant('languages.' + localStorage.getItem('customLocale'));
 
-    constructor(private statusBar: StatusBar,
-                public translate: TranslateService,
-                public modalController: ModalController) {
+    constructor(private translate: TranslateService,
+                private modalController: ModalController,
+                private appearanceService: AppearanceService) {
         const darkmode = JSON.parse(localStorage.getItem('darkmodeEnabled'));
         if (darkmode === null) {
-            this.setLightmodeEnabled();
+            this.appearanceService.light();
         } else {
             if (darkmode) {
                 this.darkmodeToggled = true;
-                this.setDarkmodeEnabled();
+                this.appearanceService.dark();
             } else {
                 this.darkmodeToggled = false;
-                this.setLightmodeEnabled();
+                this.appearanceService.light();
             }
         }
     }
 
     updateDarkMode() {
         if (this.darkmodeToggled) {
-            this.setDarkmodeEnabled();
+            this.appearanceService.dark();
         } else {
-            this.setLightmodeEnabled();
+            this.appearanceService.light();
         }
-    }
-
-    private setDarkmodeEnabled() {
-        localStorage.setItem('darkmodeEnabled', JSON.stringify(true));
-        this.darkmodeToggled = true;
-        this.statusBar.styleLightContent();
-        document.body.classList.toggle('dark', this.darkmodeToggled);
-    }
-
-    private setLightmodeEnabled() {
-        localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
-        this.darkmodeToggled = false;
-        this.statusBar.styleDefault();
-        document.body.classList.toggle('dark', this.darkmodeToggled);
     }
 
     changeLang(ev) {
