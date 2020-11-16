@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ModalController} from '@ionic/angular';
 import {AboutComponent} from '../about/about.component';
-import {AppearanceService} from "./appearance.service";
+import {AppearanceService} from "../../services/appearance.service";
 
 
 @Component({
@@ -11,23 +11,21 @@ import {AppearanceService} from "./appearance.service";
     styleUrls: ['settings.page.scss']
 })
 export class SettingsPage {
-    darkmodeToggled: boolean;
+    darkmodeToggled: boolean = false;
     languages: string[] = ['de', 'en', 'it', 'fr'];
     customLocale = this.translate.instant('languages.' + localStorage.getItem('customLocale'));
 
     constructor(private translate: TranslateService,
                 private modalController: ModalController,
                 private appearanceService: AppearanceService) {
-        const darkmode = JSON.parse(localStorage.getItem('darkmodeEnabled'));
-        if (darkmode === null) {
-            this.appearanceService.light();
-        } else {
-            if (darkmode) {
-                this.darkmodeToggled = true;
+        const darkmodeString = localStorage.getItem('darkmodeEnabled');
+
+        if (!!darkmodeString) {
+            const darkmodeEnabled = JSON.parse(darkmodeString);
+
+            if (darkmodeEnabled) {
                 this.appearanceService.dark();
-            } else {
-                this.darkmodeToggled = false;
-                this.appearanceService.light();
+                this.darkmodeToggled = true;
             }
         }
     }
@@ -35,7 +33,9 @@ export class SettingsPage {
     updateDarkMode() {
         if (this.darkmodeToggled) {
             this.appearanceService.dark();
+            localStorage.setItem('darkmodeEnabled', 'true')
         } else {
+            localStorage.removeItem('darkmodeEnabled')
             this.appearanceService.light();
         }
     }

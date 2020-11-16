@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {AppearanceService} from "./components/settings/appearance.service";
+import {AppearanceService} from "./services/appearance.service";
 
 import {Plugins} from '@capacitor/core';
-import {delay} from "rxjs/operators";
 const {SplashScreen} = Plugins;
 
 @Component({
@@ -31,19 +30,21 @@ export class AppComponent {
         });
     }
 
+
+
     private setAppearance() {
-        if (JSON.parse(localStorage.getItem('darkmodeEnabled')) === false) {
-            localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
-        }
-
-        const mql = window.matchMedia("(prefers-color-scheme: dark)");
-        mql.addEventListener("change", value => {
-            console.log(value)
-        });
-
-        const darkmode = JSON.parse(localStorage.getItem('darkmodeEnabled'));
-        if (darkmode) {
-            this.appearanceService.dark();
+        const darkmodeString = localStorage.getItem('darkmodeEnabled');
+        if (!!darkmodeString){
+            const darkmodeEnabled = JSON.parse(darkmodeString);
+            if (darkmodeEnabled === false) {
+                localStorage.removeItem('darkmodeEnabled');
+            }
+            if (darkmodeEnabled) {
+                this.appearanceService.dark();
+            }
+        } else {
+            const mql = window.matchMedia("(prefers-color-scheme: dark)");
+            mql.matches ? this.appearanceService.dark() : this.appearanceService.light();
         }
     }
 
