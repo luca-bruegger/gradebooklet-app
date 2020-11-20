@@ -4,6 +4,7 @@ ion-content ion-toolbar {
 
 ion-item {
   --inner-padding-end: 0;
+  --background: translucent;
 }
 
 ion-list {
@@ -17,4 +18,12 @@ ion-list {
   &::-webkit-scrollbar {
     display: none; // Safari and Chrome
   }
+}
+
+.list-md {
+  background: transparent !important;
+}
+
+.transparent-background {
+  background: transparent !important;
 }

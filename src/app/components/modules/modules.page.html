@@ -23,8 +23,8 @@
         </ion-toolbar>
     </ion-header>
     <ion-grid>
-        <ion-list lines="none" *ngIf="modules.length > 0" style="background: transparent; padding-bottom: 50px">
-            <ion-item *ngFor="let m of modules" class="ion-no-padding">
+        <ion-list lines="none" *ngIf="modules.length > 0" class="transparent-background">
+            <ion-item *ngFor="let m of modules" class="ion-no-padding transparent-background">
                 <ion-card [style.backgroundColor]="m.backgroundColor" (click)="openEditModal(m)" style="width: 100%">
                     <ion-card-content>
                         <ion-card-title>{{m.name}}</ion-card-title>

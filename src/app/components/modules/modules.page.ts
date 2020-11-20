@@ -20,7 +20,6 @@ import {ModuleViewComponent} from "../module-view/module-view.component";
 })
 export class ModulesPage implements AfterContentChecked {
     color: string;
-    pdfController: PdfController;
     modulesController: ModulesController;
     modules: Module[] = [];
 
@@ -34,7 +33,8 @@ export class ModulesPage implements AfterContentChecked {
                 private faio: FingerprintAIO,
                 private platform: Platform,
                 private navCtrl: NavController,
-                private alertController: AlertController) {
+                private alertController: AlertController,
+                private pdfController: PdfController) {
         this.modulesController = new ModulesController(this.storage);
         this.platform.resume.subscribe(() => {
             this.navCtrl.navigateForward([''], {animated: false});
@@ -53,7 +53,6 @@ export class ModulesPage implements AfterContentChecked {
 
         this.modulesController.loadModulesFromDatabase().then(modules => {
             this.modules = modules;
-            this.pdfController = new PdfController(datePipe, plt, file, fileOpener, translate, this.modules);
         })
     }
 
@@ -63,50 +62,41 @@ export class ModulesPage implements AfterContentChecked {
 
     async openEditModal(m) {
         const clonedModule: Module = _.cloneDeep(m);
+        await this.openModal(clonedModule, true, m)
+    }
+
+    async openAddModal() {
+        await this.openModal(new Module(), false);
+    }
+
+    async openModal(editModule: Module, isEditModule: boolean, m?: Module) {
         const modal = await this.modalController.create({
             component: ModuleViewComponent,
             componentProps: {
-                editModule: clonedModule,
-                isEditModule: true
-            }
+                editModule: editModule,
+                isEditModule: isEditModule
+            },
+            backdropDismiss: false
         });
 
-        modal.onWillDismiss().then((data) => {
+        modal.onDidDismiss().then((data) => {
             if (data.data.delete) {
                 this.modules.splice(this.modules.indexOf(m), 1);
             }
             if (data.data.save) {
                 this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade()
-                this.modules[this.modules.indexOf(m)] = data.data.editModule;
-            }
-            this.storage.set('modules', JSON.stringify(this.modules));
-        });
-    }
-
-    async openAddModal() {
-        const modal = await this.modalController.create({
-            component: ModuleViewComponent,
-            componentProps: {
-                editModule: new Module(),
-                isEditModule: false
-            },
-            backdropDismiss: false
-        });
-
-
-        modal.onDidDismiss().then((data) => {
-            if (data.data.save) {
-                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade()
-                this.modules.push(data.data.editModule);
+                isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
             }
 
             this.storage.set('modules', JSON.stringify(this.modules));
         });
+
+        return modal.present();
     }
 
     async exportModulesAsPDF() {
         if (this.modules.length > 0){
-            this.pdfController.createPdf();
+            this.pdfController.createPdf(this.modules);
         } else {
             await this.displayNoModulesPopup();
         }

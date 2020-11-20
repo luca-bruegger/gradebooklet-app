@@ -7,6 +7,7 @@ import {ModulesPage} from './modules.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {ModuleViewComponent} from "../module-view/module-view.component";
 import {ExamComponent} from "../../exam/exam.component";
+import {PdfController} from "../../controllers/pdf-controller";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {ExamComponent} from "../../exam/exam.component";
         TranslateModule,
         ReactiveFormsModule
     ],
+    providers: [PdfController],
     declarations: [ModulesPage, ModuleViewComponent, ExamComponent]
 })
 export class ModulesPageModule {
