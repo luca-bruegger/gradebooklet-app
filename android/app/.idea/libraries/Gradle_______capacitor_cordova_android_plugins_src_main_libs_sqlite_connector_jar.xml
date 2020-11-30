@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./../capacitor-cordova-android-plugins/src/main/libs/sqlite-connector.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../capacitor-cordova-android-plugins/src/main/libs/sqlite-connector.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

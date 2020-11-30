@@ -1,5 +1,6 @@
 import {Color} from "./color";
 import {Module} from "./module";
+import {GermanGradesystem} from "../gradesystems/german-gradesystem";
 
 export abstract class Gradesystem {
     private readonly type: GradesystemType;
@@ -28,6 +29,23 @@ export abstract class Gradesystem {
         }
     }
 
+    germanBackgroundColors(average: number) {
+        if (average <= 2) {
+            return this.color.VERY_GOOD;
+        }
+        if (average >= 3) {
+            return this.color.GOOD;
+        }
+        if (average >= 4) {
+            return this.color.OK;
+        }
+        if (average >= 5) {
+            return this.color.BAD;
+        } else {
+            return this.color.VERY_BAD;
+        }
+    }
+
     getType() {return this.type};
 
     abstract calculateAverageGrade(module: Module);
@@ -35,5 +53,7 @@ export abstract class Gradesystem {
 
 export enum GradesystemType {
     SwissGradesystem = "gradesystem.swiss",
-    SwissAdvancedGradesystem = "gradesystem.swiss_advanced"
+    SwissAdvancedGradesystem = "gradesystem.swiss_advanced",
+    GermanGradesystem = "gradesystem.german",
+    GermanAdvancedGradesystem = "gradesystem.german_advanced"
 }

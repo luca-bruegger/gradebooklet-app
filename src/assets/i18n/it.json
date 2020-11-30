@@ -33,10 +33,12 @@
       "delete": "Eliminare",
       "grade-doesnt-match-example": "Nota Non corrisponde all'esempio.",
       "grade-without-name": "Il controllo esiste senza nome",
-      "max-points": "'Punti massimi'",
+      "max-points": "Punti massimi",
       "max-points-range-error": "Il punteggio massimo dovrebbe essere compreso tra 0,0 e 999,9.",
-      "reached-points": "'Punti guadagnati'",
-      "reached-points-range-error": "Il punteggio ottenuto dovrebbe essere compreso tra 0 e il punteggio massimo."
+      "reached-points": "Punti guadagnati",
+      "reached-points-range-error": "Il punteggio ottenuto dovrebbe essere compreso tra 0 e il punteggio massimo.",
+      "points": "Punti",
+      "grade": "Grado"
     },
     "gradesystem": "Sistema di classificazione",
     "gradesystem-selection-change-error": "I controlli già inseriti vengono eliminati al cambio dell'organico."

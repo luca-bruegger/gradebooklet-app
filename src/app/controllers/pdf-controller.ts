@@ -3,25 +3,24 @@ import pdfFonts from '../../assets/fonts/custom-fonts';
 import {Module} from '../models/module';
 import {DatePipe} from '@angular/common';
 import {Platform} from '@ionic/angular';
-import {File} from '@ionic-native/file';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {TranslateService} from '@ngx-translate/core';
+import {FilesystemDirectory, Plugins} from '@capacitor/core';
+import {Injectable} from "@angular/core";
 
+const {Filesystem} = Plugins;
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+@Injectable()
 export class PdfController {
-
     constructor(public datePipe: DatePipe,
                 public plt: Platform,
-                public file: File,
                 public fileOpener: FileOpener,
-                public translate: TranslateService,
-                public modules: Module[]
-    ) {
+                public translate: TranslateService) {
     }
 
-    createPdf() {
+    createPdf(modules: Module[]) {
         pdfMake.fonts = {
             Pacifico: {
                 normal: 'Pacifico-Regular.ttf',
@@ -47,7 +46,7 @@ export class PdfController {
             {text: ' | gradebooklet.com'}
         ];
 
-        const tables = this.createTables();
+        const tables = this.createTables(modules);
 
         const dd = {
             footer: {
@@ -80,61 +79,36 @@ export class PdfController {
 
 
         if (this.plt.is('cordova')) {
-            try {
-                pdf.getBase64(data => {
-                    this.saveAndOpenPdf(data, 'gradebooklet.pdf');
-                });
-            } catch (error) {
-                console.error('Unable to write file', error);
-            }
+            pdf.getBase64(async data => {
+                try {
+                    let path = 'pdf/gradebooklet.pdf'
+
+                    const result = await Filesystem.writeFile({
+                        path,
+                        data,
+                        directory: FilesystemDirectory.Documents,
+                        recursive: true
+                    })
+                    await this.fileOpener.open(`${result.uri}`, 'application/pdf')
+                } catch (e) {
+                    console.error('Unable to write file', e);
+                }
+            });
         } else {
             pdf.download();
         }
     }
 
-    saveAndOpenPdf(pdf: string, filename: string) {
-        const writeDirectory = this.plt.is('ios') ? this.file.dataDirectory : this.file.externalDataDirectory;
-        this.file.writeFile(writeDirectory, filename, this.convertBase64ToBlob(pdf, 'data:application/pdf;base64'), {replace: true})
-            .then(() => {
-                this.fileOpener.open(writeDirectory + filename, 'application/pdf')
-                    .catch(() => {
-                        console.log('Error opening pdf file');
-                    });
-            })
-            .catch(() => {
-                console.error('Error writing pdf file');
-            });
-    }
-
-    convertBase64ToBlob(b64Data, contentType): Blob {
-        contentType = contentType || '';
-        const sliceSize = 512;
-        b64Data = b64Data.replace(/^[^,]+,/, '');
-        b64Data = b64Data.replace(/\s/g, '');
-        const byteCharacters = window.atob(b64Data);
-        const byteArrays = [];
-        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            const slice = byteCharacters.slice(offset, offset + sliceSize);
-            const byteNumbers = new Array(slice.length);
-            for (let i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            byteArrays.push(byteArray);
-        }
-        return new Blob(byteArrays, {type: contentType});
-    }
-
-    createTables() {
+    createTables(modules: Module[]) {
         const tables = [];
-        if (this.modules.length == 1) {
+        if (modules.length == 1) {
             const currentTable = [];
             currentTable.push({
                     color: '#000000',
                     table: {
                         widths: [300, 100, '*'],
                         headerRows: 3,
-                        body: this.createRows(this.modules[0])
+                        body: this.createRows(modules[0])
                     },
                     layout: 'headerLineOnly',
                     unbreakable: true
@@ -142,7 +116,7 @@ export class PdfController {
             );
             tables.push(currentTable);
         } else {
-            this.modules.forEach(m => {
+            modules.forEach(m => {
                 const currentTable = [];
                 currentTable.push({
                         color: '#000000',
@@ -184,7 +158,6 @@ export class PdfController {
             alignment: 'center',
             margin: [0, 5, 0, 10]
         }, {text: m.average, alignment: 'center', bold: true, margin: [0, 5, 0, 10]}]);
-
 
         return rows;
     }

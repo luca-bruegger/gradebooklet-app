@@ -32,13 +32,15 @@
     "gradesystem": "Notensystem",
     "gradesystem-selection-change-error": "Bereits eingetragene Prüfungen werden gelöscht, wenn das Notensystem geändert wird.",
     "exam": {
-      "reached-points": "'Erreichte Punkte'",
-      "max-points": "'Maximale Punkte'",
+      "reached-points": "Erreichte Punkte",
+      "max-points": "Maximale Punkte",
       "delete": "Löschen",
       "reached-points-range-error": "Erreichte Punktzahl sollte zwischen 0 und Maximaler Punktzahl liegen.",
       "max-points-range-error": "Maximale Punktzahl sollte zwischen 0.0 und 999.9 liegen.",
       "grade-doesnt-match-example": "Note Stimmt nicht mit Beispiel überein.",
-      "grade-without-name": "Prüfung ohne Namen vorhanden"
+      "grade-without-name": "Prüfung ohne Namen vorhanden",
+      "points": "Punkte",
+      "grade": "Note"
     }
   },
   "modules": {
@@ -91,11 +93,15 @@
     "title": "Notensystem:",
     "swiss": "Schweiz Einfach",
     "swiss.exam_warning": "Prüfungsnote, z.B. 5.0",
-    "german": "Deutsch Einfach",
-    "german.exam_warning": "Prüfungsnote, z.B. 2.0",
     "swiss_advanced": "Schweiz Erweitert",
     "swiss_advanced.exam_min": "Erreichte Punkte",
     "swiss_advanced.exam_max": "Maximale Punktzahl",
-    "swiss_advanced.exam_warning": "Prüfungsnote, z.B. 5.0"
+    "swiss_advanced.exam_warning": "Prüfungsnote, z.B. 5.0",
+    "german": "Deutsch Einfach",
+    "german.exam_warning": "Prüfungsnote, z.B. 2.0",
+    "german_advanced": "Deutsch Erweitert",
+    "german_advanced.exam_min": "Erreichte Punkte",
+    "german_advanced.exam_max": "Maximale Punktzahl",
+    "german_advanced.exam_warning": "Prüfungsnote, z.B. 5.0"
   }
 }

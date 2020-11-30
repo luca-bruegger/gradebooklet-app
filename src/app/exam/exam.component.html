@@ -4,10 +4,10 @@
             <ion-segment [(ngModel)]="this.selectedExamGradeType" (ionChange)="segmentChanged($event)"
                          *ngIf="moduleGradeType == this.gradesystem.SwissAdvancedGradesystem">
                 <ion-segment-button value="{{examGradeType.grade}}">
-                    <ion-label>Note</ion-label>
+                    <ion-label>{{ 'module.exam.grade' | translate }}</ion-label>
                 </ion-segment-button>
                 <ion-segment-button aria-selected="true" value="{{examGradeType.points}}">
-                    <ion-label>Punkte</ion-label>
+                    <ion-label>{{ 'module.exam.points' | translate }}</ion-label>
                 </ion-segment-button>
             </ion-segment>
             <div *ngIf="this.selectedExamGradeType !== 'points'">

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
 import {AuthComponent} from "../components/auth/auth.component";
+import {AuthGuard} from "../components/auth/auth.guard";
 
 const routes: Routes = [
     {
@@ -28,7 +29,7 @@ const routes: Routes = [
                     {
                         path: '',
                         loadChildren: () =>
-                            import('../components/settings/settings.module').then(m => m.Tab3PageModule)
+                            import('../components/settings/settings.module').then(m => m.SettingsPageModule)
                     }
                 ]
             },
@@ -41,7 +42,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/auth',
+        canActivate: [AuthGuard],
         pathMatch: 'full'
     }
 ];

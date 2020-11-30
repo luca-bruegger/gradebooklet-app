@@ -29,3 +29,12 @@
 .alert-button.sc-ion-alert-ios {
    color: #d93434;
 }
+
+.ion-color-transparent {
+   --ion-color-base: var(--ion-color-transparent) !important;
+   --ion-color-base-rgb: var(--ion-color-transparent-rgb) !important;
+   --ion-color-contrast: var(--ion-color-transparent-contrast) !important;
+   --ion-color-contrast-rgb: var(--ion-color-transparent-contrast-rgb) !important;
+   --ion-color-shade: var(--ion-color-transparent-shade) !important;
+   --ion-color-tint: var(--ion-color-transparent-tint) !important;
+}
