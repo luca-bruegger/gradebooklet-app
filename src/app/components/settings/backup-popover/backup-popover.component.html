@@ -1,0 +1,30 @@
+<ion-card-header>
+    <ion-card-subtitle>Daten Sichern</ion-card-subtitle>
+    <ion-card-title>Backup Erstellen</ion-card-title>
+</ion-card-header>
+
+<ion-card-content>
+    <ion-grid class="ion-no-padding ion-no-margin">
+        <ion-row class="ion-no-padding">
+            <ion-row>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required">
+                        Passwort benötigt.
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                        Passwort muss mindestens 8 Buchstaben enthalten.
+                    </div>
+                </div>
+                <ion-item lines="none" class="ion-no-padding ion-no-margin">
+                    <ion-label position="floating">Passwort</ion-label>
+                    <ion-input required="true" [formControl]="password" minlength="8" maxlength="50" type="password"></ion-input>
+                </ion-item>
+            </ion-row>
+        </ion-row>
+        <ion-row class="ion-text-center ion-margin-top">
+            <ion-col>
+                <ion-button expand="block" [disabled]="password.invalid" (click)="copyAndEncryptData()">Daten Kopieren</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-card-content>

@@ -9,9 +9,9 @@ import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {File} from '@ionic-native/file/ngx';
 import {PdfController} from '../../controllers/pdf-controller';
 import {ModulesController} from '../../controllers/modules-controller';
-import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
-import {SlidesComponent} from "../slides/slides.component";
-import {ModuleViewComponent} from "../module-view/module-view.component";
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
+import {SlidesComponent} from '../slides/slides.component';
+import {ModuleViewComponent} from '../module-view/module-view.component';
 
 @Component({
     selector: 'app-modules-tab',
@@ -36,8 +36,8 @@ export class ModulesPage implements AfterContentChecked {
                 private alertController: AlertController,
                 private pdfController: PdfController) {
         this.modulesController = new ModulesController(this.storage);
-        this.platform.resume.subscribe(() => {
-            this.navCtrl.navigateForward([''], {animated: false});
+        this.platform.resume.subscribe(async () => {
+            await this.navCtrl.navigateForward([''], {animated: false});
         });
 
         this.storage.get('firstLaunch').then(async val => {
@@ -53,7 +53,7 @@ export class ModulesPage implements AfterContentChecked {
 
         this.modulesController.loadModulesFromDatabase().then(modules => {
             this.modules = modules;
-        })
+        });
     }
 
     ngAfterContentChecked() {
@@ -62,7 +62,7 @@ export class ModulesPage implements AfterContentChecked {
 
     async openEditModal(m) {
         const clonedModule: Module = _.cloneDeep(m);
-        await this.openModal(clonedModule, true, m)
+        await this.openModal(clonedModule, true, m);
     }
 
     async openAddModal() {
@@ -73,8 +73,8 @@ export class ModulesPage implements AfterContentChecked {
         const modal = await this.modalController.create({
             component: ModuleViewComponent,
             componentProps: {
-                editModule: editModule,
-                isEditModule: isEditModule
+                editModule,
+                isEditModule
             },
             backdropDismiss: false
         });
@@ -84,7 +84,7 @@ export class ModulesPage implements AfterContentChecked {
                 this.modules.splice(this.modules.indexOf(m), 1);
             }
             if (data.data.save) {
-                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade()
+                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
                 isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
             }
 
@@ -104,7 +104,7 @@ export class ModulesPage implements AfterContentChecked {
 
     createRoomTextForModule(m: Module) {
         if (!!m.room && !!m.building) {
-            return m.room + "  " + m.building;
+            return m.room + '  ' + m.building;
         }
         if (!!m.room) {
             return m.room;
@@ -112,7 +112,7 @@ export class ModulesPage implements AfterContentChecked {
         if (!!m.building) {
             return m.building;
         }
-        return "";
+        return '';
     }
 
     private async displayNoModulesPopup() {
@@ -120,7 +120,7 @@ export class ModulesPage implements AfterContentChecked {
             header: this.translate.instant('popup.warning'),
             message: this.translate.instant('popup.exams-pdf-warning'),
             buttons: [this.translate.instant('popup.accept')]
-        })
+        });
         await alert.present();
     }
 }

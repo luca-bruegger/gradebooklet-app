@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ModalController} from '@ionic/angular';
+import {ModalController, PopoverController} from '@ionic/angular';
 import {AboutComponent} from '../about/about.component';
 import {AppearanceService} from "../../services/appearance.service";
+import {BackupPopoverComponent} from "./backup-popover/backup-popover.component";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class SettingsPage {
 
     constructor(private translate: TranslateService,
                 private modalController: ModalController,
-                private appearanceService: AppearanceService) {
+                private appearanceService: AppearanceService,
+                private popoverController: PopoverController) {
         const darkmodeString = localStorage.getItem('darkmodeEnabled');
 
         if (!!darkmodeString) {
@@ -52,6 +54,13 @@ export class SettingsPage {
         });
 
         return modal.present();
+    }
+
+    async openExportPopover() {
+        const popover = await this.popoverController.create({
+            component: BackupPopoverComponent
+        });
+        return await popover.present();
     }
 }
 
