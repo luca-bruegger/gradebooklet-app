@@ -43,7 +43,7 @@
     "gradesystem": "Gradesystem",
     "gradesystem-selection-change-error": "Existing exams are deleted when the gradesystem is changed."
   },
-  "modules": {
+  "subjects": {
     "addModule": "Add Subject",
     "title": "Subjects",
     "no-further-information": "No further information",

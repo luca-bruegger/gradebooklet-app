@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {AppearanceService} from "./services/appearance.service";
+import {AppearanceService} from './services/appearance.service';
 
 import {Plugins} from '@capacitor/core';
 const {SplashScreen} = Plugins;
@@ -23,10 +23,9 @@ export class AppComponent {
     }
 
     initializeApp() {
-        this.platform.ready().then(() => {
+        this.platform.ready().then(async () => {
             this.setAppearance();
-            SplashScreen.hide().then(r => {
-            });
+            await SplashScreen.hide();
         });
     }
 
@@ -43,7 +42,7 @@ export class AppComponent {
                 this.appearanceService.dark();
             }
         } else {
-            const mql = window.matchMedia("(prefers-color-scheme: dark)");
+            const mql = window.matchMedia('(prefers-color-scheme: dark)');
             mql.matches ? this.appearanceService.dark() : this.appearanceService.light();
         }
     }

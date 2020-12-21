@@ -43,7 +43,7 @@
     "gradesystem": "Sistema di classificazione",
     "gradesystem-selection-change-error": "I controlli già inseriti vengono eliminati al cambio dell'organico."
   },
-  "modules": {
+  "subjects": {
     "addModule": "Aggiungi modulo",
     "title": "Moduli",
     "no-further-information": "Non ci sono altre informazioni",

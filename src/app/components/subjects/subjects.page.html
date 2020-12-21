@@ -6,7 +6,7 @@
             </ion-button>
         </ion-buttons>
         <ion-title>
-            {{'modules.title' | translate}}
+            {{'subjects.title' | translate}}
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -19,7 +19,7 @@
                     <ion-icon color="medium" name="download-outline"></ion-icon>
                 </ion-button>
             </ion-buttons>
-            <ion-title size="large">{{'modules.title' | translate}}</ion-title>
+            <ion-title size="large">{{'subjects.title' | translate}}</ion-title>
         </ion-toolbar>
     </ion-header>
     <ion-grid>
@@ -48,7 +48,7 @@
                                         size="6"
                                         *ngIf="createRoomTextForModule(m) == '' && m.exams.length !== 0">
                                     <ion-label color="dark"
-                                               class="ion-text-wrap">{{'modules.no-further-information' | translate}}</ion-label>
+                                               class="ion-text-wrap">{{'subjects.no-further-information' | translate}}</ion-label>
                                 </ion-col>
 
                                 <!--Module grades-->
@@ -58,7 +58,7 @@
                                     <div *ngIf="m.exams.length == 0"
                                          style="min-height: 93px !important; display: flex!important; align-content: center!important; align-items: center!important;">
                                         <ion-label color="dark" style="font-weight: bold;">
-                                            {{'modules.no-grades-available' | translate}}
+                                            {{'subjects.no-grades-available' | translate}}
                                         </ion-label>
                                     </div>
                                 </ion-col>
