@@ -9,6 +9,6 @@ describe('app-component test', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getPageTitle()).toContain('Tab 1');
+    expect(page.getPageTitle()).toContain('Subjects');
   });
 });
