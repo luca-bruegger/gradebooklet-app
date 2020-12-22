@@ -8,18 +8,18 @@ export default class ExamsComponentPage implements DefaultPageObject {
   }
 
   getAllInputs() {
-    return element(by.tagName('ion-modal')).all(by.tagName('ion-input'));
+    return element(by.tagName('ion-modal')).all(by.tagName('input'));
   }
 
   getNameField() {
     return this.getAllInputs().first();
   }
 
-  getTeacherField() {
+  getRoomField() {
     return this.getAllInputs().get(1);
   }
 
-  getRoomField() {
+  getTeacherField() {
     return this.getAllInputs().get(2);
   }
 

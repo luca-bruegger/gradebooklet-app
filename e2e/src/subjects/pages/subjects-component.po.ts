@@ -25,7 +25,11 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getModuleNameField() {
-    return this.getEditModal().all(by.tagName('input')).first();
+    return this.getModalInputs().first();
+  }
+
+  getModalInputs() {
+    return this.getEditModal().all(by.tagName('input'));
   }
 
   getSubmitButtonInEditModal() {
