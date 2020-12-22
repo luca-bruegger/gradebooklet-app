@@ -2,6 +2,8 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 const {SpecReporter} = require('jasmine-spec-reporter');
+const path = require('path');
+const downloadsPath = path.resolve(__dirname, './downloads');
 
 exports.config = {
   allScriptsTimeout: 11000,
@@ -14,7 +16,13 @@ exports.config = {
       args: [
         '--headless',
         '--window-size=920, 1080'
-      ]
+      ],
+      prefs: {
+        'download': {
+          'prompt_for_download': false,
+          'default_directory': downloadsPath
+        }
+      }
     }
   },
   directConnect: true,
