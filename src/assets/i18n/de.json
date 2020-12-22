@@ -43,7 +43,7 @@
       "grade": "Note"
     }
   },
-  "modules": {
+  "subjects": {
     "addModule": "Modul hinzufügen",
     "title": "Module",
     "no-further-information": "Keine weitere Informationen",

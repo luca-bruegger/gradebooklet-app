@@ -43,7 +43,7 @@
     "gradesystem": "Système d'évaluation",
     "gradesystem-selection-change-error": "Les données de contrôle déjà saisies sont supprimées lors d'un changement de personnel."
   },
-  "modules": {
+  "subjects": {
     "addModule": "Ajouter un module",
     "title": "Modules",
     "no-further-information": "Pas d'informations complémentaires",

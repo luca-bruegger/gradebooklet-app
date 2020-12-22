@@ -1,4 +1,4 @@
-import { AppComponentPage } from './app-component.po';
+import { AppComponentPage } from './pages/app-component.po';
 
 describe('app-component test', () => {
   let page: AppComponentPage;

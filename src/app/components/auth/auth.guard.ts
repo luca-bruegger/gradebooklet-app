@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
-import {ModalController, NavController, Platform} from "@ionic/angular";
-import {AuthComponent} from "./auth.component";
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
+import {ModalController, NavController, Platform} from '@ionic/angular';
+import {AuthComponent} from './auth.component';
 
 @Injectable({
     providedIn: 'root'
@@ -36,6 +36,6 @@ export class AuthGuard implements CanActivate {
     }
 
     private redirectToModules() {
-        this.router.navigateByUrl('/tabs/modules', {replaceUrl: true});
+        this.router.navigateByUrl('/tabs/subjects', {replaceUrl: true});
     }
 }

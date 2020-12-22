@@ -1,6 +1,7 @@
 import { browser, by, element } from 'protractor';
+import {  DefaultPageObject } from '../../default.po';
 
-export class AppComponentPage {
+export class AppComponentPage implements DefaultPageObject {
   navigateTo() {
     return browser.get('/');
   }

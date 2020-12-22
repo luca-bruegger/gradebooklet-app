@@ -1,4 +1,4 @@
-import {AfterContentChecked, Component} from '@angular/core';
+import { AfterContentChecked, Component, isDevMode } from '@angular/core';
 import {AlertController, ModalController, NavController, Platform} from '@ionic/angular';
 import {Module} from '../../models/module';
 import {Storage} from '@ionic/storage';
@@ -9,16 +9,16 @@ import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {File} from '@ionic-native/file/ngx';
 import {PdfController} from '../../controllers/pdf-controller';
 import {ModulesController} from '../../controllers/modules-controller';
-import {FingerprintAIO} from "@ionic-native/fingerprint-aio/ngx";
-import {SlidesComponent} from "../slides/slides.component";
-import {ModuleViewComponent} from "../module-view/module-view.component";
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
+import {SlidesComponent} from '../slides/slides.component';
+import {ModuleViewComponent} from '../module-view/module-view.component';
 
 @Component({
     selector: 'app-modules-tab',
-    templateUrl: 'modules.page.html',
-    styleUrls: ['modules.page.scss']
+    templateUrl: 'subjects.page.html',
+    styleUrls: ['subjects.page.scss']
 })
-export class ModulesPage implements AfterContentChecked {
+export class SubjectsPage implements AfterContentChecked {
     color: string;
     modulesController: ModulesController;
     modules: Module[] = [];
@@ -41,7 +41,7 @@ export class ModulesPage implements AfterContentChecked {
         });
 
         this.storage.get('firstLaunch').then(async val => {
-            if (val === null) {
+            if (val === null && !isDevMode()) {
                 await this.storage.set('firstLaunch', JSON.stringify(false));
                 const modal = await this.modalController.create({
                     component: SlidesComponent,
@@ -53,7 +53,7 @@ export class ModulesPage implements AfterContentChecked {
 
         this.modulesController.loadModulesFromDatabase().then(modules => {
             this.modules = modules;
-        })
+        });
     }
 
     ngAfterContentChecked() {
@@ -62,7 +62,7 @@ export class ModulesPage implements AfterContentChecked {
 
     async openEditModal(m) {
         const clonedModule: Module = _.cloneDeep(m);
-        await this.openModal(clonedModule, true, m)
+        await this.openModal(clonedModule, true, m);
     }
 
     async openAddModal() {
@@ -73,8 +73,8 @@ export class ModulesPage implements AfterContentChecked {
         const modal = await this.modalController.create({
             component: ModuleViewComponent,
             componentProps: {
-                editModule: editModule,
-                isEditModule: isEditModule
+                editModule,
+                isEditModule
             },
             backdropDismiss: false
         });
@@ -84,7 +84,7 @@ export class ModulesPage implements AfterContentChecked {
                 this.modules.splice(this.modules.indexOf(m), 1);
             }
             if (data.data.save) {
-                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade()
+                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
                 isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
             }
 
@@ -104,7 +104,7 @@ export class ModulesPage implements AfterContentChecked {
 
     createRoomTextForModule(m: Module) {
         if (!!m.room && !!m.building) {
-            return m.room + "  " + m.building;
+            return m.room + '  ' + m.building;
         }
         if (!!m.room) {
             return m.room;
@@ -112,7 +112,7 @@ export class ModulesPage implements AfterContentChecked {
         if (!!m.building) {
             return m.building;
         }
-        return "";
+        return '';
     }
 
     private async displayNoModulesPopup() {
@@ -120,7 +120,7 @@ export class ModulesPage implements AfterContentChecked {
             header: this.translate.instant('popup.warning'),
             message: this.translate.instant('popup.exams-pdf-warning'),
             buttons: [this.translate.instant('popup.accept')]
-        })
+        });
         await alert.present();
     }
 }
