@@ -59,5 +59,6 @@ describe('exam-component test', () => {
 
     textOfFirstSubjectItemInList = subjectsPage.getFirstItemInSubjectsList().getWebElement().getText();
     expect(textOfFirstSubjectItemInList).toContain(moduleName);
+    subjectsPage.deleteAllSubjects();
   });
 });

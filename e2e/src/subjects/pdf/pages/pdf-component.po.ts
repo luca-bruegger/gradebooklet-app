@@ -32,8 +32,8 @@ export default class PdfComponentPage implements DefaultPageObject {
     }
   }
 
-  verifyFileDownload() {
-    return browser.driver.wait(async () => {
+  async verifyFileDownload() {
+    return await browser.driver.wait(async () => {
       return fs.existsSync(filename);
     }, 30000).then(() => {
       console.log('Getting the ERROR while downloading file as file is not downloaded.');

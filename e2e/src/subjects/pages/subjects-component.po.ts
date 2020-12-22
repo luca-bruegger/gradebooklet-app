@@ -1,7 +1,8 @@
 import { DefaultPageObject } from '../../default.po';
-import { browser, by, element } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 
 export default class SubjectsComponentPage implements DefaultPageObject {
+  private readonly until = protractor.ExpectedConditions;
 
   async navigateTo() {
     await browser.get('/');
@@ -44,5 +45,24 @@ export default class SubjectsComponentPage implements DefaultPageObject {
 
   getDeleteButton() {
     return this.getEditModal().all(by.css('ion-button[color="danger"]')).first();
+  }
+
+  getAllItems() {
+    return this.getSubjectsList().all(by.tagName('ion-item'));
+  }
+
+  getExitFromEditModalButton() {
+    return this.getEditModal().element(by.tagName('ion-buttons')).element(by.tagName('ion-button'));
+  }
+
+  async deleteAllSubjects() {
+    if (await this.getSubjectsList().isPresent()) {
+      this.getAllItems().each(async item => {
+        await item.click();
+        browser.wait(this.until.visibilityOf(this.getEditModal()), 5000);
+        await this.getDeleteButton().click();
+        browser.wait(this.until.invisibilityOf(this.getEditModal()), 5000);
+      });
+    }
   }
 }

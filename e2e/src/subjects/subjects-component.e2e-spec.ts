@@ -11,6 +11,7 @@ describe('subject-component test', () => {
   beforeEach(() => {
     page = new SubjectsComponentPage();
     page.navigateTo();
+    page.deleteAllSubjects();
   });
 
   it('should navigate to subjects and create a new one', () => {
