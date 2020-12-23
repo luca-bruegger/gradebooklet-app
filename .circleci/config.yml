@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: Start Node Server
-          command: npm run serve
+          command: npm run ng-serve
           background: true
 
       - save_cache:

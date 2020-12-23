@@ -13,6 +13,7 @@
     "e2e-headless": "protractor e2e/protractor-headless.conf.js",
     "dev-ios": "ionic build && ionic capacitor copy ios && ionic capacitor open ios",
     "serve": "ionic serve",
+    "ng-serve": "ng serve",
     "lab": "ionic lab",
     "resources": "capacitor-resources -p ios -i ./resources/icon_ios.png && capacitor-resources -p android -i ./resources/icon_android.png"
   },
