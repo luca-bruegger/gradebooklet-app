@@ -42,6 +42,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   async setExamName(examName: string) {
+    browser.wait(this.until.elementToBeClickable(this.getExamNameField()));
     await this.getExamNameField().clear();
     await this.getExamNameField().sendKeys(examName);
   }
