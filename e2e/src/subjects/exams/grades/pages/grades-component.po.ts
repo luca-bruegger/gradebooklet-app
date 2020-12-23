@@ -22,7 +22,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   getAddExamButton() {
-    return this.getExamComponent().element(by.tagName('ion-button'));
+    return element(by.css('ion-button.add-exam-button'));
   }
 
   getExamAlert() {

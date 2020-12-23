@@ -28,8 +28,8 @@ describe('grade-component test', () => {
   });
 
   afterEach(() => {
-    // subjectPage.getExitFromEditModalButton().click();
-    // browser.wait(until.invisibilityOf(subjectPage.getEditModal()));
+    subjectPage.getExitFromEditModalButton().click();
+    browser.wait(until.invisibilityOf(subjectPage.getEditModal()));
   });
 
   it('should proof that grade name validations are working within edit modal', () => {
@@ -79,13 +79,13 @@ describe('grade-component test', () => {
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
     expect(gradePage.getAddExamButton().isPresent()).toBeTruthy();
-    // gradePage.getAddExamButton().click();
-    // expect(gradePage.getExamAlert().isDisplayed()).toBeTruthy();
-    // //
-    // gradePage.clickExamAlertCloseButton();
-    // browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
-    // expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
-    //
-    // expect(gradePage.getExamListElements().count()).toEqual(0);
+    gradePage.getAddExamButton().click();
+    expect(gradePage.getExamAlert().isDisplayed()).toBeTruthy();
+
+    gradePage.clickExamAlertCloseButton();
+    browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
+    expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
+
+    expect(gradePage.getExamListElements().count()).toEqual(0);
   });
 });
