@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-slides',
@@ -28,9 +28,7 @@ export class SlidesComponent implements OnInit {
       },
       setTranslate() {
         const swiper = this;
-        const {
-          width: swiperWidth, height: swiperHeight, slides, $wrapperEl, slidesSizesGrid, $
-        } = swiper;
+        const { width: swiperWidth, height: swiperHeight, slides, $wrapperEl, slidesSizesGrid } = swiper;
         const params = swiper.params.coverflowEffect;
         const isHorizontal = swiper.isHorizontal();
         const transform$$1 = swiper.translate;
@@ -53,11 +51,21 @@ export class SlidesComponent implements OnInit {
           let translateX = isHorizontal ? params.stretch * (offsetMultiplier) : 0;
 
           // Fix for ultra small values
-          if (Math.abs(translateX) < 0.001) { translateX = 0; }
-          if (Math.abs(translateY) < 0.001) { translateY = 0; }
-          if (Math.abs(translateZ) < 0.001) { translateZ = 0; }
-          if (Math.abs(rotateY) < 0.001) { rotateY = 0; }
-          if (Math.abs(rotateX) < 0.001) { rotateX = 0; }
+          if (Math.abs(translateX) < 0.001) {
+            translateX = 0;
+          }
+          if (Math.abs(translateY) < 0.001) {
+            translateY = 0;
+          }
+          if (Math.abs(translateZ) < 0.001) {
+            translateZ = 0;
+          }
+          if (Math.abs(rotateY) < 0.001) {
+            rotateY = 0;
+          }
+          if (Math.abs(rotateX) < 0.001) {
+            rotateX = 0;
+          }
 
           // tslint:disable-next-line:max-line-length
           const slideTransform = `translate3d(${translateX}px,${translateY}px,${translateZ}px)  rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -76,8 +84,12 @@ export class SlidesComponent implements OnInit {
               $shadowAfterEl = swiper.$(`<div class="swiper-slide-shadow-${isHorizontal ? 'right' : 'bottom'}"></div>`);
               $slideEl.append($shadowAfterEl);
             }
-            if ($shadowBeforeEl.length) { $shadowBeforeEl[0].style.opacity = offsetMultiplier > 0 ? offsetMultiplier : 0; }
-            if ($shadowAfterEl.length) { $shadowAfterEl[0].style.opacity = (-offsetMultiplier) > 0 ? -offsetMultiplier : 0; }
+            if ($shadowBeforeEl.length) {
+              $shadowBeforeEl[0].style.opacity = offsetMultiplier > 0 ? offsetMultiplier : 0;
+            }
+            if ($shadowAfterEl.length) {
+              $shadowAfterEl[0].style.opacity = (-offsetMultiplier) > 0 ? -offsetMultiplier : 0;
+            }
           }
         }
 
@@ -90,18 +102,20 @@ export class SlidesComponent implements OnInit {
       setTransition(duration) {
         const swiper = this;
         swiper.slides
-            .transition(duration)
-            .find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left')
-            .transition(duration);
+          .transition(duration)
+          .find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left')
+          .transition(duration);
       }
     }
   };
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   closeSlides() {
-      this.modalController.dismiss();
+    this.modalController.dismiss();
   }
 }

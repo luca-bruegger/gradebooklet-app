@@ -1,16 +1,16 @@
-import {Exam} from './exam';
-import {GradesystemType} from "./gradesystem";
+import { Exam } from './exam';
+import { GradesystemType } from './gradesystem';
 
 export class Module {
-    name: string;
-    teacher: string;
-    room: string;
-    building: string;
-    exams: Exam[] = [];
-    average: number;
-    gradesystemType: GradesystemType;
-    backgroundColor: string;
-    passingPercentage: number = 60;
+  name: string;
+  teacher: string;
+  room: string;
+  building: string;
+  exams: Exam[] = [];
+  average: number;
+  gradesystemType: GradesystemType;
+  backgroundColor: string;
+  passingPercentage = 60;
 }
 
 
