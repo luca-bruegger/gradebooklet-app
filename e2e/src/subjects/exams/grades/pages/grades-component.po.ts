@@ -30,7 +30,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   async clickExamAlertCloseButton() {
-    await browser.actions().mouseMove(element(by.css('button.alert-button'))).click().perform();
+    await element(by.css('button.alert-button')).click();
   }
 
   getExamList() {
