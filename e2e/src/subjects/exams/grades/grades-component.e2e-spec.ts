@@ -24,10 +24,6 @@ describe('grade-component test', () => {
   beforeEach(() => {
     gradePage = new GradesComponentPage();
     gradePage.navigateTo();
-    subjectPage.deleteAllSubjects();
-
-    subjectPage.getFabButton().click();
-    browser.wait(until.presenceOf(subjectPage.getEditModal()));
   });
 
   afterEach(() => {
@@ -36,6 +32,8 @@ describe('grade-component test', () => {
   });
 
   it('should proof that grade name validations are working within edit modal', () => {
+    subjectPage.getFabButton().click();
+    browser.wait(until.presenceOf(subjectPage.getEditModal()));
     subjectPage.fillEditModalWith('Subject 1');
     browser.wait(until.invisibilityOf(subjectPage.getEditModal()));
 
@@ -73,6 +71,8 @@ describe('grade-component test', () => {
   });
 
   it('should show alert when trying to add exam without values', () => {
+    subjectPage.getFabButton().click();
+    browser.wait(until.presenceOf(subjectPage.getEditModal()));
     expect(subjectPage.getEditModal().isDisplayed()).toBeTruthy();
     expect(gradePage.getExamComponent().isDisplayed()).toBeTruthy();
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
