@@ -10,10 +10,10 @@ import { ModalController } from '@ionic/angular';
 })
 export class SubjectService {
   private modulesController: ModulesController;
-  private modules: Module[] = [];
+  private modules: Module[] = [];
 
   constructor(private storage: Storage,
-              private modalController: ModalController) {
+              private modalController: ModalController) {
     this.modulesController = new ModulesController(this.storage);
 
     this.modulesController.loadModulesFromDatabase().then(modules => {

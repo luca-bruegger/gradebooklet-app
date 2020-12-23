@@ -1,34 +1,37 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 import { DefaultPageObject } from '../../../../default.po';
 
 export default class GradesComponentPage implements DefaultPageObject {
+  readonly until = protractor.ExpectedConditions;
+
   navigateTo() {
     browser.get('/');
     return browser.waitForAngular();
   }
 
-  getExamCard() {
-    return element(by.tagName('ion-modal')).all(by.tagName('ion-card')).get(2);
+  getExamComponent() {
+    return element(by.tagName('ion-modal')).element(by.tagName('app-exam'));
   }
 
   getExamNameField() {
-    return element.all(by.tagName('input')).get(5);
+    return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).first();
   }
 
   getExamGradeField() {
-    return element.all(by.tagName('input')).get(6);
+    return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).last();
   }
 
   getAddExamButton() {
-    return this.getExamCard().element(by.tagName('ion-button'));
+    browser.wait(this.until.elementToBeClickable(element(by.css('ion-button.add-exam-button'))), 5000);
+    return element(by.css('ion-button.add-exam-button'));
   }
 
   getExamAlert() {
     return element(by.tagName('ion-alert'));
   }
 
-  getExamCloseButton() {
-    return this.getExamAlert().element(by.tagName('button'));
+  async clickExamAlertCloseButton() {
+    await element(by.css('button[tabindex="0"]')).click();
   }
 
   getExamList() {
@@ -40,6 +43,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   async setExamName(examName: string) {
+    browser.wait(this.until.elementToBeClickable(this.getExamNameField()));
     await this.getExamNameField().clear();
     await this.getExamNameField().sendKeys(examName);
   }

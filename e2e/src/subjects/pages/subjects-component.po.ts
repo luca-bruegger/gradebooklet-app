@@ -10,7 +10,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getSubjectsList() {
-    return element(by.css('ion-list'));
+    return element(by.css('div.container'));
   }
 
   getEditModal() {
@@ -22,7 +22,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getFirstItemInSubjectsList() {
-    return this.getSubjectsList().all(by.tagName('ion-item')).first();
+    return this.getSubjectsList().all(by.tagName('ion-card')).first();
   }
 
   getModuleNameField() {
@@ -48,7 +48,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getAllItems() {
-    return this.getSubjectsList().all(by.tagName('ion-item'));
+    return this.getSubjectsList().all(by.tagName('ion-card'));
   }
 
   getExitFromEditModalButton() {

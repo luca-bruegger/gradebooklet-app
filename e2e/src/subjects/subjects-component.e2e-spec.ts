@@ -16,7 +16,7 @@ describe('subject-component test', () => {
 
   it('should navigate to subjects and create a new one', () => {
     expect(page.getEditModal().isPresent()).toBeFalsy();
-    expect(page.getSubjectsList().isPresent()).toBeFalsy();
+    expect(page.getSubjectsList().isPresent()).toBeTruthy();
 
     page.getFabButton().click();
 
@@ -26,7 +26,7 @@ describe('subject-component test', () => {
 
     expect(page.getSubjectsList().isPresent()).toBeTruthy();
     browser.wait(until.invisibilityOf(page.getEditModal()), 5000);
-    expect(page.getFirstItemInSubjectsList().getWebElement().getText()).toContain(moduleName);
+    expect(page.getSubjectsList().getWebElement().getText()).toContain(moduleName);
     expect(page.getEditModal().isPresent()).toBeFalsy();
   });
 
