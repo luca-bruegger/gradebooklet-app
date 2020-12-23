@@ -21,8 +21,8 @@ export default class GradesComponentPage implements DefaultPageObject {
     return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).last();
   }
 
-  getAddExamButton() {
-    return this.getExamComponent().all(by.tagName('div')).first().element(by.tagName('button'));
+  async clickExamAddButton() {
+    await browser.actions().mouseMove(element(by.css('app-exam ion-button'))).click().perform();
   }
 
   getExamAlert() {

@@ -43,7 +43,7 @@ describe('grade-component test', () => {
     browser.wait(until.visibilityOf(subjectPage.getEditModal()));
 
     gradePage.getExamNameField().sendKeys(examName);
-    gradePage.getAddExamButton().click();
+    gradePage.clickExamAddButton();
 
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
 
@@ -56,14 +56,14 @@ describe('grade-component test', () => {
     gradePage.setExamName(invalidExamName);
     gradePage.getExamGradeField().sendKeys(examGrade);
 
-    gradePage.getAddExamButton().click();
+    gradePage.clickExamAddButton();
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
     gradePage.getExamGradeField().clear();
     gradePage.getExamGradeField().sendKeys(invalidGrade);
     gradePage.getExamNameField().sendKeys(examGrade);
 
-    gradePage.getAddExamButton().click();
+    gradePage.clickExamAddButton();
 
     browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
@@ -76,7 +76,7 @@ describe('grade-component test', () => {
   it('should show alert when trying to add exam without values', () => {
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
-    gradePage.getAddExamButton().click();
+    gradePage.clickExamAddButton();
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
 
     gradePage.getExamCloseButton().click();
