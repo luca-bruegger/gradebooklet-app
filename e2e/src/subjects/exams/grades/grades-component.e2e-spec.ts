@@ -79,9 +79,9 @@ describe('grade-component test', () => {
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
     expect(gradePage.getAddExamButton().isPresent()).toBeTruthy();
-    gradePage.getAddExamButton().click();
-    expect(gradePage.getExamAlert().isDisplayed()).toBeTruthy();
-    //
+    // gradePage.getAddExamButton().click();
+    // expect(gradePage.getExamAlert().isDisplayed()).toBeTruthy();
+    // //
     // gradePage.clickExamAlertCloseButton();
     // browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
     // expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
