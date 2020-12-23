@@ -31,6 +31,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: npm run tslint
+      - run: npm run lint
       - run: xvfb-run -a npm run e2e
       - run: npm run build:prod
