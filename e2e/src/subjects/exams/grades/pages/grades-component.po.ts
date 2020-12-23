@@ -22,6 +22,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   getAddExamButton() {
+    browser.wait(this.until.elementToBeClickable(element(by.css('ion-button.add-exam-button'))), 5000);
     return element(by.css('ion-button.add-exam-button'));
   }
 
