@@ -43,9 +43,7 @@ describe('grade-component test', () => {
     browser.wait(until.visibilityOf(subjectPage.getEditModal()));
 
     gradePage.getExamNameField().sendKeys(examName);
-    gradePage.clickExamAddButton();
-    browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
-
+    gradePage.getAddExamButton().click();
 
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
 
@@ -57,16 +55,14 @@ describe('grade-component test', () => {
     gradePage.setExamName(invalidExamName);
     gradePage.getExamGradeField().sendKeys(examGrade);
 
-    gradePage.clickExamAddButton();
-    browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
-
+    gradePage.getAddExamButton().click();
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
     gradePage.getExamGradeField().clear();
     gradePage.getExamGradeField().sendKeys(invalidGrade);
     gradePage.getExamNameField().sendKeys(examGrade);
 
-    gradePage.clickExamAddButton();
+    gradePage.getAddExamButton().click();
 
     browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
@@ -77,16 +73,18 @@ describe('grade-component test', () => {
   });
 
   it('should show alert when trying to add exam without values', () => {
+    expect(subjectPage.getEditModal().isDisplayed()).toBeTruthy();
+    expect(gradePage.getExamComponent().isDisplayed()).toBeTruthy();
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 
-    gradePage.clickExamAddButton();
-    browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
-    expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
+    expect(gradePage.getAddExamButton().isPresent()).toBeTruthy();
+    gradePage.getAddExamButton().click();
+    expect(gradePage.getExamAlert().isDisplayed()).toBeTruthy();
 
-    // gradePage.clickExamAlertCloseButton();
-    // browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
-    // expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
-    //
-    // expect(gradePage.getExamListElements().count()).toEqual(0);
+    gradePage.clickExamAlertCloseButton();
+    browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
+    expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
+
+    expect(gradePage.getExamListElements().count()).toEqual(0);
   });
 });

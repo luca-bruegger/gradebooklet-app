@@ -9,7 +9,7 @@ export default class GradesComponentPage implements DefaultPageObject {
     return browser.waitForAngular();
   }
 
-  private getExamComponent() {
+  getExamComponent() {
     return element(by.tagName('ion-modal')).element(by.tagName('app-exam'));
   }
 
@@ -21,8 +21,8 @@ export default class GradesComponentPage implements DefaultPageObject {
     return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).last();
   }
 
-  async clickExamAddButton() {
-    await browser.actions().mouseMove(element(by.css('app-exam ion-button'))).click().perform();
+  getAddExamButton() {
+    return this.getExamComponent().element(by.tagName('ion-button'));
   }
 
   getExamAlert() {
@@ -30,7 +30,7 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   async clickExamAlertCloseButton() {
-    await element(by.css('button.alert-button')).click();
+    await element(by.css('button[tabindex="0"]')).click();
   }
 
   getExamList() {
