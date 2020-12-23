@@ -30,6 +30,11 @@ describe('exam-component test', () => {
 
     browser.wait(until.visibilityOf(subjectsPage.getEditModal()));
 
+    browser.wait(until.elementToBeClickable(examPage.getNameField()));
+    browser.wait(until.elementToBeClickable(examPage.getRoomField()));
+    browser.wait(until.elementToBeClickable(examPage.getTeacherField()));
+    browser.wait(until.elementToBeClickable(examPage.getBuildingField()));
+
     examPage.getNameField().sendKeys(nameLongerThanAllowed);
     examPage.getRoomField().sendKeys(roomName);
     examPage.getTeacherField().sendKeys(teacherName);
