@@ -48,7 +48,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getAllItems() {
-    return this.getSubjectsList().all(by.tagName('ion-item'));
+    return this.getSubjectsList().all(by.tagName('ion-card'));
   }
 
   getExitFromEditModalButton() {
