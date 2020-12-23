@@ -47,8 +47,7 @@ describe('grade-component test', () => {
 
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
 
-    expect(gradePage.getExamCloseButton().isPresent()).toBeTruthy();
-    gradePage.getExamCloseButton().click();
+    gradePage.clickExamAlertCloseButton();
 
     browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
@@ -67,7 +66,7 @@ describe('grade-component test', () => {
 
     browser.wait(until.visibilityOf(gradePage.getExamAlert()), 5000);
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
-    gradePage.getExamCloseButton().click();
+    gradePage.clickExamAlertCloseButton();
     browser.wait(until.invisibilityOf(gradePage.getExamAlert()), 5000);
 
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
@@ -79,7 +78,7 @@ describe('grade-component test', () => {
     gradePage.clickExamAddButton();
     expect(gradePage.getExamAlert().isPresent()).toBeTruthy();
 
-    gradePage.getExamCloseButton().click();
+    gradePage.clickExamAlertCloseButton();
     browser.wait(until.invisibilityOf(gradePage.getExamAlert()));
     expect(gradePage.getExamAlert().isPresent()).toBeFalsy();
 

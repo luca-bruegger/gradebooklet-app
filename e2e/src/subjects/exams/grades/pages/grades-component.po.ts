@@ -29,8 +29,8 @@ export default class GradesComponentPage implements DefaultPageObject {
     return element(by.tagName('ion-alert'));
   }
 
-  getExamCloseButton() {
-    return this.getExamAlert().element(by.tagName('button'));
+  async clickExamAlertCloseButton() {
+    await browser.actions().mouseMove(element(by.css('button.alert-button'))).click().perform();
   }
 
   getExamList() {
