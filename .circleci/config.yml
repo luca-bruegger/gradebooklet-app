@@ -26,6 +26,11 @@ jobs:
       - run: node node_modules/protractor/bin/webdriver-manager update
       # - run: npm rebuild node-sass
 
+      - run:
+          name: Start Node Server
+          command: npm run serve
+          background: true
+
       - save_cache:
           paths:
             - node_modules
