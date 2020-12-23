@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SubjectService } from '../services/subject.service';
+import { Module } from '../models/module';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,9 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private subjectService: SubjectService) {}
 
+  async addSubject() {
+    await this.subjectService.openModal(new Module(), false);
+  }
 }
