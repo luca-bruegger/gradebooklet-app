@@ -1,13 +1,37 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="subjects">
-      <ion-icon name="reorder-three"></ion-icon>
-      <ion-label>{{'subjects.title' | translate}}</ion-label>
-    </ion-tab-button>
+<!--<ion-tabs>-->
+<!--  <ion-tab-bar slot="bottom">-->
+<!--    <ion-tab-button tab="subjects">-->
+<!--      <ion-icon name="reorder-three"></ion-icon>-->
+<!--      <ion-label>{{'subjects.title' | translate}}</ion-label>-->
+<!--    </ion-tab-button>-->
 
-    <ion-tab-button tab="settings">
-      <ion-icon name="cog"></ion-icon>
-      <ion-label>{{'settings.title' | translate}}</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
+<!--    <ion-tab-button tab="settings">-->
+<!--      <ion-icon name="cog"></ion-icon>-->
+<!--      <ion-label>{{'settings.title' | translate}}</ion-label>-->
+<!--    </ion-tab-button>-->
+<!--  </ion-tab-bar>-->
+<!--</ion-tabs>-->
+
+<ion-tabs>
+
+    <ion-fab vertical="bottom" horizontal="center" translucent="true">
+        <ion-fab-button (click)="addSubject()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+        <ion-tab-button tab="subjects">
+            <ion-icon name="reorder-three"></ion-icon>
+        </ion-tab-button>
+
+        <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red"
+                  fill-rule="evenodd"></path>
+        </svg>
+
+        <ion-tab-button tab="settings">
+            <ion-icon name="cog"></ion-icon>
+        </ion-tab-button>
+    </ion-tab-bar>
 </ion-tabs>

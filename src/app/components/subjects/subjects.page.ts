@@ -1,17 +1,16 @@
 import { AfterContentChecked, Component, isDevMode } from '@angular/core';
-import {AlertController, ModalController, NavController, Platform} from '@ionic/angular';
-import {Module} from '../../models/module';
-import {Storage} from '@ionic/storage';
+import { AlertController, ModalController, NavController, Platform } from '@ionic/angular';
+import { Module } from '../../models/module';
+import { Storage } from '@ionic/storage';
 import * as _ from 'lodash';
-import {TranslateService} from '@ngx-translate/core';
-import {DatePipe} from '@angular/common';
-import {FileOpener} from '@ionic-native/file-opener/ngx';
-import {File} from '@ionic-native/file/ngx';
-import {PdfController} from '../../controllers/pdf-controller';
-import {ModulesController} from '../../controllers/modules-controller';
-import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
-import {SlidesComponent} from '../slides/slides.component';
-import {ModuleViewComponent} from '../module-view/module-view.component';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { PdfController } from '../../controllers/pdf-controller';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { SlidesComponent } from '../slides/slides.component';
+import { SubjectService } from '../../services/subject.service';
 
 @Component({
     selector: 'app-modules-tab',
@@ -20,8 +19,7 @@ import {ModuleViewComponent} from '../module-view/module-view.component';
 })
 export class SubjectsPage implements AfterContentChecked {
     color: string;
-    modulesController: ModulesController;
-    modules: Module[] = [];
+    subjectService: SubjectService;
 
     constructor(private modalController: ModalController,
                 private storage: Storage,
@@ -34,8 +32,9 @@ export class SubjectsPage implements AfterContentChecked {
                 private platform: Platform,
                 private navCtrl: NavController,
                 private alertController: AlertController,
-                private pdfController: PdfController) {
-        this.modulesController = new ModulesController(this.storage);
+                private pdfController: PdfController,
+                subjectService: SubjectService) {
+        this.subjectService = subjectService;
         this.platform.resume.subscribe(() => {
             this.navCtrl.navigateForward([''], {animated: false});
         });
@@ -50,10 +49,6 @@ export class SubjectsPage implements AfterContentChecked {
                 return modal.present();
             }
         });
-
-        this.modulesController.loadModulesFromDatabase().then(modules => {
-            this.modules = modules;
-        });
     }
 
     ngAfterContentChecked() {
@@ -62,41 +57,12 @@ export class SubjectsPage implements AfterContentChecked {
 
     async openEditModal(m) {
         const clonedModule: Module = _.cloneDeep(m);
-        await this.openModal(clonedModule, true, m);
-    }
-
-    async openAddModal() {
-        await this.openModal(new Module(), false);
-    }
-
-    async openModal(editModule: Module, isEditModule: boolean, m?: Module) {
-        const modal = await this.modalController.create({
-            component: ModuleViewComponent,
-            componentProps: {
-                editModule,
-                isEditModule
-            },
-            backdropDismiss: false
-        });
-
-        modal.onDidDismiss().then((data) => {
-            if (data.data.delete) {
-                this.modules.splice(this.modules.indexOf(m), 1);
-            }
-            if (data.data.save) {
-                this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
-                isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
-            }
-
-            this.storage.set('modules', JSON.stringify(this.modules));
-        });
-
-        return modal.present();
+        await this.subjectService.openModal(clonedModule, true, m);
     }
 
     async exportModulesAsPDF() {
-        if (this.modules.length > 0){
-            this.pdfController.createPdf(this.modules);
+        if (this.subjectService.allModules.length > 0){
+            this.pdfController.createPdf(this.subjectService.allModules);
         } else {
             await this.displayNoModulesPopup();
         }
@@ -123,4 +89,8 @@ export class SubjectsPage implements AfterContentChecked {
         });
         await alert.present();
     }
+
+  get modulesEmpty() {
+    return this.subjectService.allModules.length === 0;
+  }
 }

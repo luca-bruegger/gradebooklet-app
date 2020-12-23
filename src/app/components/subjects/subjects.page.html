@@ -22,9 +22,9 @@
             <ion-title size="large">{{'subjects.title' | translate}}</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-grid>
-        <ion-list lines="none" *ngIf="modules.length > 0" class="transparent-background">
-            <ion-item *ngFor="let m of modules" class="ion-no-padding transparent-background">
+    <ion-grid *ngIf="!modulesEmpty">
+        <ion-list lines="none" class="transparent-background">
+            <ion-item *ngFor="let m of subjectService.allModules" class="ion-no-padding transparent-background">
                 <ion-card [style.backgroundColor]="m.backgroundColor" (click)="openEditModal(m)" style="width: 100%">
                     <ion-card-content>
                         <ion-card-title>{{m.name}}</ion-card-title>
@@ -69,16 +69,4 @@
             </ion-item>
         </ion-list>
     </ion-grid>
-
-    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-        <div *ngIf="modules.length == 0" class="animated headShake slower infinite"
-             style="width:200px;position: absolute;right: 60px;align-items: center; height: 56px; display: flex;margin-bottom: 0;"
-             [style.color]="this.color">
-            {{'module.add' | translate}}
-            <ion-icon style="font-size: 1.8rem; margin-left: 10px" name="arrow-forward"></ion-icon>
-        </div>
-        <ion-fab-button color="primary" (click)="openAddModal()">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
 </ion-content>

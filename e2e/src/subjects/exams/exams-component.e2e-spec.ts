@@ -21,6 +21,7 @@ describe('exam-component test', () => {
   beforeEach(() => {
     examPage = new ExamsComponentPage();
     examPage.navigateTo();
+    subjectsPage.deleteAllSubjects();
   });
 
   it('should proof that validations are working when making a new modal', () => {
