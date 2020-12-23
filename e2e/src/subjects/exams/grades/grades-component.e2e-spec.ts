@@ -19,6 +19,7 @@ describe('grade-component test', () => {
   beforeAll(() => {
     subjectPage = new SubjectsComponentPage();
     examPage = new ExamsComponentPage();
+    browser.driver.manage().window().maximize();
   });
 
   beforeEach(() => {
