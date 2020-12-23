@@ -2,8 +2,6 @@ import { browser, protractor } from 'protractor';
 import SubjectsComponentPage from '../../pages/subjects-component.po';
 import ExamsComponentPage from '../pages/exams-component.po';
 import GradesComponentPage from './pages/grades-component.po';
-import { unescapeIdentifier } from "@angular/compiler";
-import { getImportRewriter } from "@angular/compiler-cli/ngcc/src/rendering/utils";
 
 describe('grade-component test', () => {
   let subjectPage: SubjectsComponentPage;
