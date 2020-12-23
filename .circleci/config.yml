@@ -23,6 +23,7 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
+      - run: node node_modules/protractor/bin/webdriver-manager update
       # - run: npm rebuild node-sass
 
       - save_cache:
