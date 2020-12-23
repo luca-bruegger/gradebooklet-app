@@ -3,7 +3,7 @@ import SubjectsComponentPage from '../../pages/subjects-component.po';
 import ExamsComponentPage from '../pages/exams-component.po';
 import GradesComponentPage from './pages/grades-component.po';
 
-describe('exam-component test', () => {
+describe('grade-component test', () => {
   let subjectPage: SubjectsComponentPage;
   let examPage: ExamsComponentPage;
   let gradePage: GradesComponentPage;

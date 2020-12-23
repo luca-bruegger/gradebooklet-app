@@ -1,7 +1,9 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, protractor } from 'protractor';
 import { DefaultPageObject } from '../../../../default.po';
 
 export default class GradesComponentPage implements DefaultPageObject {
+  readonly until = protractor.ExpectedConditions;
+
   navigateTo() {
     browser.get('/');
     return browser.waitForAngular();
@@ -12,11 +14,15 @@ export default class GradesComponentPage implements DefaultPageObject {
   }
 
   getExamNameField() {
-    return element.all(by.tagName('input')).get(5);
+    const field = element.all(by.tagName('input')).get(5);
+    browser.wait(this.until.elementToBeClickable(field));
+    return field;
   }
 
   getExamGradeField() {
-    return element.all(by.tagName('input')).get(6);
+    const field = element.all(by.tagName('input')).get(6);
+    browser.wait(this.until.elementToBeClickable(field));
+    return field;
   }
 
   getAddExamButton() {
