@@ -34,4 +34,4 @@ jobs:
       # run tests!
       - run: npm run lint
       - run: npm run e2e
-      - run: npm run build:prod
+      - run: npm run build --prod
