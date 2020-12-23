@@ -26,11 +26,6 @@ jobs:
       - run: node node_modules/protractor/bin/webdriver-manager update
       # - run: npm rebuild node-sass
 
-      - run:
-          name: Start Node Server
-          command: npm run ng-serve
-          background: true
-
       - save_cache:
           paths:
             - node_modules
@@ -38,5 +33,5 @@ jobs:
         
       # run tests!
       - run: npm run lint
-      - run: npm run e2e-headless
+      - run: npm run e2e
       - run: npm run build:prod
