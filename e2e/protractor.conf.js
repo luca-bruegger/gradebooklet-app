@@ -8,8 +8,7 @@ const downloadsPath = path.resolve(__dirname, './downloads');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    // './src/**/*.e2e-spec.ts'
-    './src/app/subjects/exams/grades/*.e2e-spec.ts'
+    './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
     'browserName': 'chrome',
