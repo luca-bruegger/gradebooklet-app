@@ -9,24 +9,20 @@ export default class GradesComponentPage implements DefaultPageObject {
     return browser.waitForAngular();
   }
 
-  getExamCard() {
-    return element(by.tagName('ion-modal')).all(by.tagName('ion-card')).get(2);
+  private getExamComponent() {
+    return element(by.tagName('ion-modal')).element(by.tagName('app-exam'));
   }
 
   getExamNameField() {
-    const field = element.all(by.tagName('input')).get(5);
-    browser.wait(this.until.elementToBeClickable(field));
-    return field;
+    return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).first();
   }
 
   getExamGradeField() {
-    const field = element.all(by.tagName('input')).get(6);
-    browser.wait(this.until.elementToBeClickable(field));
-    return field;
+    return this.getExamComponent().all(by.tagName('div')).first().all(by.tagName('input')).last();
   }
 
   getAddExamButton() {
-    return this.getExamCard().element(by.tagName('ion-button'));
+    return element(by.css('app-exam ion-button'));
   }
 
   getExamAlert() {
