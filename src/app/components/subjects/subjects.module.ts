@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubjectsPage } from './subjects.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { ModuleViewComponent } from '../module-view/module-view.component';
+import { SubjectViewComponent } from '../subject-view/subject-view.component';
 import { ExamComponent } from '../../exam/exam.component';
 import { PdfController } from '../../controllers/pdf-controller';
 
@@ -19,7 +19,7 @@ import { PdfController } from '../../controllers/pdf-controller';
     ReactiveFormsModule
   ],
   providers: [PdfController],
-  declarations: [SubjectsPage, ModuleViewComponent, ExamComponent]
+  declarations: [SubjectsPage, SubjectViewComponent, ExamComponent]
 })
 export class SubjectsPageModule {
 }

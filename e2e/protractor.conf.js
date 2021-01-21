@@ -11,7 +11,8 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome',
+    chromeOnly: false,
+    browserName: 'chrome',
     chromeOptions: {
       prefs: {
         'download': {

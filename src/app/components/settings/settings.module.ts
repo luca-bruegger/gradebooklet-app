@@ -12,7 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     RouterModule.forChild([{path: '', component: SettingsPage}]),
-    TranslateModule
+    TranslateModule,
   ],
   declarations: [SettingsPage]
 })

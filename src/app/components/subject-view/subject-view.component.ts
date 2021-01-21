@@ -8,10 +8,10 @@ import { GradesystemType } from '../../models/gradesystem';
 
 @Component({
   selector: 'app-module',
-  templateUrl: './module-view.component.html',
-  styleUrls: ['./module-view.component.scss'],
+  templateUrl: './subject-view.component.html',
+  styleUrls: ['./subject-view.component.scss'],
 })
-export class ModuleViewComponent implements OnInit {
+export class SubjectViewComponent implements OnInit {
   @Input() isEditModule: boolean;
   @Input() editModule: Module;
   @ViewChild(ExamComponent, {static: false}) examComponent;

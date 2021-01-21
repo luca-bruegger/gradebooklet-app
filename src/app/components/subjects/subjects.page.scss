@@ -73,3 +73,24 @@
 .bold {
   font-weight: bold;
 }
+
+.image-container {
+  height: calc(100% - 175px);
+  position: relative;
+  display: flex;
+  text-align: center;
+}
+
+.centered-image {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-33%, -50%);
+  text-align: center;
+}
+
+.arrow {
+  bottom: 0;
+  animation-iteration-count: 5;
+  --animate-duration: slow;
+}

@@ -60,14 +60,6 @@ export class SubjectsPage implements AfterContentChecked {
     await this.subjectService.openModal(clonedModule, true, m);
   }
 
-  async exportModulesAsPDF() {
-    if (this.subjectService.allModules.length > 0) {
-      this.pdfController.createPdf(this.subjectService.allModules);
-    } else {
-      await this.displayNoModulesPopup();
-    }
-  }
-
   createRoomTextForModule(m: Module) {
     if (!!m.room && !!m.building) {
       return m.room + '  ' + m.building;
@@ -81,16 +73,11 @@ export class SubjectsPage implements AfterContentChecked {
     return '';
   }
 
-  private async displayNoModulesPopup() {
-    const alert = await this.alertController.create({
-      header: this.translate.instant('popup.warning'),
-      message: this.translate.instant('popup.exams-pdf-warning'),
-      buttons: [this.translate.instant('popup.accept')]
-    });
-    await alert.present();
-  }
-
   get modulesEmpty() {
     return this.subjectService.allModules.length === 0;
+  }
+
+  openOptions() {
+
   }
 }
