@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, isDevMode } from '@angular/core';
+import { AfterContentChecked, Component } from '@angular/core';
 import { AlertController, ModalController, NavController, Platform } from '@ionic/angular';
 import { Module } from '../../models/module';
 import { Storage } from '@ionic/storage';
@@ -9,17 +9,16 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { PdfController } from '../../controllers/pdf-controller';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
-import { SlidesComponent } from '../slides/slides.component';
 import { SubjectService } from '../../services/subject.service';
 import { AppearanceService } from '../../services/appearance.service';
+import { SlidesComponent } from '../slides/slides.component';
 
 @Component({
   selector: 'app-modules-tab',
   templateUrl: 'subjects.page.html',
   styleUrls: ['subjects.page.scss']
 })
-export class SubjectsPage implements AfterContentChecked {
-  color: string;
+export class SubjectsPage {
   subjectService: SubjectService;
 
   constructor(private modalController: ModalController,
@@ -35,26 +34,13 @@ export class SubjectsPage implements AfterContentChecked {
               private alertController: AlertController,
               private pdfController: PdfController,
               private appearanceService: AppearanceService,
+              private slidesComponent: SlidesComponent,
               subjectService: SubjectService) {
+    slidesComponent.present();
     this.subjectService = subjectService;
     this.platform.resume.subscribe(() => {
       this.navCtrl.navigateForward([''], {animated: false});
     });
-
-    this.storage.get('firstLaunch').then(async val => {
-      if (val === null && !isDevMode()) {
-        await this.storage.set('firstLaunch', JSON.stringify(false));
-        const modal = await this.modalController.create({
-          component: SlidesComponent,
-          backdropDismiss: false
-        });
-        return modal.present();
-      }
-    });
-  }
-
-  ngAfterContentChecked() {
-    JSON.parse(localStorage.getItem('darkmodeEnabled')) ? this.color = 'white' : this.color = 'black';
   }
 
   async openEditModal(m) {

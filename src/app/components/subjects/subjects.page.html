@@ -34,7 +34,7 @@
     </div>
 
     <div class="wrapper">
-        <ion-card class="subject-card" *ngFor="let m of subjectService.allModules"
+        <ion-card class="subject-card" *ngFor="let m of subjectService.allModules" color="light"
                   [style.background-color]="getBackgroundColor(m.backgroundColor)" (click)="openEditModal(m)">
             <ion-card-content>
                 <ion-card-title [style.color]="getFontColor(m.backgroundColor)">{{m.name}}</ion-card-title>

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, isDevMode } from '@angular/core';
+import { ModalController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppearanceService } from './services/appearance.service';
 
 import { Plugins } from '@capacitor/core';
+import { SlidesComponent } from './components/slides/slides.component';
+import { Storage } from '@ionic/storage';
 
 const {SplashScreen} = Plugins;
 
@@ -15,10 +17,10 @@ const {SplashScreen} = Plugins;
 export class AppComponent {
   languages: string[] = ['de', 'en', 'it', 'fr'];
 
-  constructor(
-    private platform: Platform,
-    private translate: TranslateService,
-    private appearanceService: AppearanceService) {
+  constructor(private storage: Storage,
+              private platform: Platform,
+              private translate: TranslateService,
+              private appearanceService: AppearanceService) {
     this.setLocales();
     this.initializeApp();
   }
