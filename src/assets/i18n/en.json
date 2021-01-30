@@ -44,6 +44,7 @@
     "gradesystem-selection-change-error": "Existing exams are deleted when the gradesystem is changed."
   },
   "subjects": {
+    "entry-header": "Pretty empty here. Create a new subject.",
     "addModule": "Add Subject",
     "title": "Subjects",
     "no-further-information": "No further information",
@@ -67,9 +68,10 @@
     "warning-grades-deletion": "If you do so, all exams will be deleted"
   },
   "settings": {
-    "darkmode": "Darkmode",
+    "darkmode": "Force darkmode",
     "language": "Language",
-    "title": "Settings"
+    "title": "Settings",
+    "pdf-download": "Download PDF"
   },
   "slides": {
     "first": {

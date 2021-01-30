@@ -44,6 +44,7 @@
     "gradesystem-selection-change-error": "I controlli già inseriti vengono eliminati al cambio dell'organico."
   },
   "subjects": {
+    "entry-header": "È piuttosto vuoto qui dentro.\nPerché non create un nuovo modulo?",
     "addModule": "Aggiungi modulo",
     "title": "Moduli",
     "no-further-information": "Non ci sono altre informazioni",
@@ -67,8 +68,9 @@
     "warning-grades-deletion": "Se lo fate, tutti i controlli saranno cancellati"
   },
   "settings": {
-    "darkmode": "Darkmode",
+    "darkmode": "Forza darkmode",
     "language": "Linguaggio",
+    "pdf-download": "Scaricare PDF",
     "title": "Impostazioni"
   },
   "slides": {

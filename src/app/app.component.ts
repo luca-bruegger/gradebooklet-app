@@ -31,18 +31,8 @@ export class AppComponent {
   }
 
   private setAppearance() {
-    const darkmodeString = localStorage.getItem('darkmodeEnabled');
-    if (!!darkmodeString) {
-      const darkmodeEnabled = JSON.parse(darkmodeString);
-      if (darkmodeEnabled === false) {
-        localStorage.removeItem('darkmodeEnabled');
-      }
-      if (darkmodeEnabled) {
-        this.appearanceService.dark();
-      }
-    } else {
-      const mql = window.matchMedia('(prefers-color-scheme: dark)');
-      mql.matches ? this.appearanceService.dark() : this.appearanceService.light();
+    if (this.appearanceService.isDarkModeEnabled) {
+      this.appearanceService.enableDarkMode();
     }
   }
 

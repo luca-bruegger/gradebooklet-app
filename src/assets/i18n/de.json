@@ -44,6 +44,7 @@
     }
   },
   "subjects": {
+    "entry-header": "Ziemlich leer hier.\nErstelle doch ein neues Modul.",
     "addModule": "Modul hinzufügen",
     "title": "Module",
     "no-further-information": "Keine weitere Informationen",
@@ -67,9 +68,10 @@
     "adjust-exams": "Bitte Prüfungen anpassen."
   },
   "settings": {
-    "darkmode": "Darkmode",
+    "darkmode": "Darkmode erzwingen",
     "language": "Sprache",
-    "title": "Einstellungen"
+    "title": "Einstellungen",
+    "pdf-download": "PDF Herunterladen"
   },
   "slides": {
     "first": {

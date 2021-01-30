@@ -11,6 +11,7 @@ import { PdfController } from '../../controllers/pdf-controller';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { SlidesComponent } from '../slides/slides.component';
 import { SubjectService } from '../../services/subject.service';
+import { AppearanceService } from '../../services/appearance.service';
 
 @Component({
   selector: 'app-modules-tab',
@@ -33,6 +34,7 @@ export class SubjectsPage implements AfterContentChecked {
               private navCtrl: NavController,
               private alertController: AlertController,
               private pdfController: PdfController,
+              private appearanceService: AppearanceService,
               subjectService: SubjectService) {
     this.subjectService = subjectService;
     this.platform.resume.subscribe(() => {
@@ -79,5 +81,15 @@ export class SubjectsPage implements AfterContentChecked {
 
   openOptions() {
 
+  }
+
+  getBackgroundColor(backgroundColor: string) {
+    return !this.appearanceService.isDarkModeEnabled ?
+     backgroundColor : '';
+  }
+
+  getFontColor(fontColor: string) {
+    return this.appearanceService.isDarkModeEnabled ?
+      fontColor : '#333333';
   }
 }

@@ -1,3 +1,13 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.container {
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  @media (min-width: 601px) {
+    width: 552px;
+    margin: 0 auto;
+  }
+}

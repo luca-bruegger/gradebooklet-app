@@ -29,7 +29,7 @@ export class SettingsPage {
       const darkmodeEnabled = JSON.parse(darkmodeString);
 
       if (darkmodeEnabled) {
-        this.appearanceService.dark();
+        this.appearanceService.enableDarkMode();
         this.darkmodeToggled = true;
       }
     }
@@ -37,11 +37,11 @@ export class SettingsPage {
 
   updateDarkMode() {
     if (this.darkmodeToggled) {
-      this.appearanceService.dark();
+      this.appearanceService.enableDarkMode();
       localStorage.setItem('darkmodeEnabled', 'true');
     } else {
       localStorage.removeItem('darkmodeEnabled');
-      this.appearanceService.light();
+      this.appearanceService.disableDarkMode();
     }
   }
 
