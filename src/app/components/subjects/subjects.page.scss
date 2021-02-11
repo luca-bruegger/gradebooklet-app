@@ -16,7 +16,7 @@ $breakpoint-xxl: 1491px;
   }
 }
 
-@media (min-width: $breakpoint-l) and (max-width: $breakpoint-xl){
+@media (min-width: $breakpoint-l) and (max-width: $breakpoint-xl) {
   .preview-image {
     max-height: 400px;
   }
@@ -30,6 +30,10 @@ $breakpoint-xxl: 1491px;
 }
 
 @media (min-width: $breakpoint-xxl) {
+  .preview-image {
+    max-height: 800px;
+  }
+
   .wrapper {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

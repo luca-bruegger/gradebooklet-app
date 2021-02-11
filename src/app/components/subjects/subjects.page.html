@@ -25,10 +25,8 @@
 
     <div class="image-wrapper" *ngIf="modulesEmpty">
         <div class="center-container">
-            <div class="image-container">
-                <img src="assets/images/empty.png" class="ion-margin-bottom preview-image" alt="no-modules-found">
-                <p class="ion-margin-bottom">{{'subjects.entry-header' | translate}}</p>
-            </div>
+            <img src="assets/images/empty.png" class="ion-margin-bottom preview-image" alt="no-modules-found">
+            <p class="ion-margin-bottom">{{'subjects.entry-header' | translate}}</p>
         </div>
         <ion-icon name="arrow-down-outline" class="animated fadeInDown arrow"></ion-icon>
     </div>
@@ -53,7 +51,8 @@
 
                         <!--Module doesn't contain room, teacher nor Exams-->
                         <ion-col class="col" *ngIf="createRoomTextForModule(m) == '' && m.exams.length !== 0">
-                            <ion-label color="dark" [style.color]="getFontColor(m.backgroundColor)" class="ion-text-wrap">
+                            <ion-label color="dark" [style.color]="getFontColor(m.backgroundColor)"
+                                       class="ion-text-wrap">
                                 {{'subjects.no-further-information' | translate}}
                             </ion-label>
                         </ion-col>

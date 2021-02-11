@@ -2,15 +2,15 @@ import { DefaultPageObject } from '../../default.po';
 import { browser, by, element, protractor } from 'protractor';
 
 export default class SubjectsComponentPage implements DefaultPageObject {
-  private readonly until = protractor.ExpectedConditions;
+  private readonly until = protractor.ExpectedConditions;
 
   async navigateTo() {
     await browser.get('/');
     return browser.waitForAngular();
   }
 
-  getSubjectsList() {
-    return element(by.css('div.container'));
+  getSubjectsArrayElement() {
+    return element(by.css('div.wrapper'));
   }
 
   getEditModal() {
@@ -22,7 +22,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getFirstItemInSubjectsList() {
-    return this.getSubjectsList().all(by.tagName('ion-card')).first();
+    return this.getSubjectsArrayElement().all(by.tagName('ion-card')).first();
   }
 
   getModuleNameField() {
@@ -48,7 +48,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   getAllItems() {
-    return this.getSubjectsList().all(by.tagName('ion-card'));
+    return this.getSubjectsArrayElement().all(by.tagName('ion-card'));
   }
 
   getExitFromEditModalButton() {
@@ -56,7 +56,7 @@ export default class SubjectsComponentPage implements DefaultPageObject {
   }
 
   async deleteAllSubjects() {
-    if (await this.getSubjectsList().isPresent()) {
+    if (await this.getSubjectsArrayElement().isPresent()) {
       this.getAllItems().each(async item => {
         await item.click();
         browser.wait(this.until.visibilityOf(this.getEditModal()), 5000);
@@ -64,5 +64,9 @@ export default class SubjectsComponentPage implements DefaultPageObject {
         browser.wait(this.until.invisibilityOf(this.getEditModal()), 5000);
       });
     }
+  }
+
+  getImageElement() {
+    return element(by.css('div.image-wrapper'));
   }
 }

@@ -16,7 +16,7 @@ describe('subject-component test', () => {
 
   it('should navigate to subjects and create a new one', () => {
     expect(page.getEditModal().isPresent()).toBeFalsy();
-    expect(page.getSubjectsList().isPresent()).toBeTruthy();
+    expect(page.getSubjectsArrayElement().isPresent()).toBeTruthy();
 
     page.getFabButton().click();
 
@@ -24,9 +24,9 @@ describe('subject-component test', () => {
 
     page.fillEditModalWith(moduleName);
 
-    expect(page.getSubjectsList().isPresent()).toBeTruthy();
+    expect(page.getSubjectsArrayElement().isPresent()).toBeTruthy();
     browser.wait(until.invisibilityOf(page.getEditModal()), 5000);
-    expect(page.getSubjectsList().getWebElement().getText()).toContain(moduleName);
+    expect(page.getSubjectsArrayElement().getWebElement().getText()).toContain(moduleName);
     expect(page.getEditModal().isPresent()).toBeFalsy();
   });
 
@@ -36,7 +36,7 @@ describe('subject-component test', () => {
 
     browser.wait(until.invisibilityOf(page.getEditModal()), 5000);
 
-    expect(page.getSubjectsList().isPresent()).toBeTruthy();
+    expect(page.getSubjectsArrayElement().isPresent()).toBeTruthy();
     expect(page.getEditModal().isPresent()).toBeFalsy();
 
     page.getFirstItemInSubjectsList().click();
@@ -57,7 +57,7 @@ describe('subject-component test', () => {
 
     browser.wait(until.invisibilityOf(page.getEditModal()), 5000);
 
-    const allModuleItems = page.getSubjectsList().all(by.tagName('ion-item'));
+    const allModuleItems = page.getSubjectsArrayElement().all(by.tagName('ion-item'));
     allModuleItems.each(item => {
       expect(item.isPresent()).toBeTruthy();
       item.click();
@@ -70,6 +70,6 @@ describe('subject-component test', () => {
       expect(item.isPresent()).toBeFalsy();
     });
 
-    expect(page.getSubjectsList().all(by.tagName('ion-item')).count()).toEqual(0);
+    expect(page.getSubjectsArrayElement().all(by.tagName('ion-item')).count()).toEqual(0);
   });
 });

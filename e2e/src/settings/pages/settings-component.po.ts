@@ -1,21 +1,21 @@
-import { DefaultPageObject } from '../../../default.po';
+import { DefaultPageObject } from '../../default.po';
 import { browser, by, element } from 'protractor';
 
 const path = require('path');
 const downloadsPath = path.resolve(__dirname, '../../../../downloads');
 const fs = require('fs');
-const file = '/file.pdf';
+const file = '/file.pdf';
 const filename = downloadsPath + file;
 
 
-export default class PdfComponentPage implements DefaultPageObject {
+export default class SettingsComponentPage implements DefaultPageObject {
   navigateTo() {
-    browser.get('/');
+    browser.get('/tabs/settings');
     return browser.waitForAngular();
   }
 
   getExportPDFButton() {
-    return element(by.tagName('ion-buttons')).all(by.tagName('ion-button')).first();
+    return element.all(by.tagName('ion-button')).last();
   }
 
   getAlert() {
@@ -36,7 +36,7 @@ export default class PdfComponentPage implements DefaultPageObject {
     return await browser.driver.wait(async () => {
       return fs.existsSync(filename);
     }, 30000).then(() => {
-      console.log('Getting the ERROR while downloading file as file is not downloaded.');
+      console.log('Getting the ERROR while downloading file because file is not downloaded.');
     });
   }
 }
