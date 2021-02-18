@@ -32,10 +32,10 @@ export class SubjectService {
     });
 
     modal.onDidDismiss().then((data) => {
-      if (data.data.delete) {
+      if (data.data && data.data.delete) {
         this.modules.splice(this.modules.indexOf(m), 1);
       }
-      if (data.data.save) {
+      if (data.data && data.data.save) {
         this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
         isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
       }

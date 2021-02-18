@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component } from '@angular/core';
+import { AfterContentChecked, Component, isDevMode } from '@angular/core';
 import { AlertController, ModalController, NavController, Platform } from '@ionic/angular';
 import { Module } from '../../models/module';
 import { Storage } from '@ionic/storage';
@@ -36,7 +36,11 @@ export class SubjectsPage {
               private appearanceService: AppearanceService,
               private slidesComponent: SlidesComponent,
               subjectService: SubjectService) {
-    slidesComponent.present();
+    this.storage.get('firstLaunch').then(async val => {
+      if (val === null && !isDevMode()) {
+        await slidesComponent.present();
+      }
+    });
     this.subjectService = subjectService;
     this.platform.resume.subscribe(() => {
       this.navCtrl.navigateForward([''], {animated: false});
@@ -71,7 +75,7 @@ export class SubjectsPage {
 
   getBackgroundColor(backgroundColor: string) {
     return !this.appearanceService.isDarkModeEnabled ?
-     backgroundColor : '';
+      backgroundColor : '';
   }
 
   getFontColor(fontColor: string) {

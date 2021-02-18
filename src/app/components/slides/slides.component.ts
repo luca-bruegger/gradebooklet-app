@@ -1,4 +1,4 @@
-import { Component, Injectable, isDevMode, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
@@ -11,28 +11,23 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root',
 })
 export class SlidesComponent {
-
   constructor(private modalController: ModalController,
               private storage: Storage) {
   }
 
   slideOpts = {
     initialSlide: 0,
-    speed: 400,
+    speed: 600,
     autoplay: true
   };
 
-  public present() {
-    this.storage.get('firstLaunch').then(async val => {
-      if (val === null && !isDevMode()) {
-        const modal = await this.modalController.create({
-          component: SlidesComponent,
-          backdropDismiss: false,
-          showBackdrop: true
-        });
-        return modal.present();
-      }
+  public async present() {
+    const modal = await this.modalController.create({
+      component: SlidesComponent,
+      backdropDismiss: false,
+      showBackdrop: true
     });
+    return modal.present();
   }
 
   async closeSlides() {
