@@ -57,6 +57,4 @@ export abstract class Gradesystem {
 export enum GradesystemType {
   SwissGradesystem = 'gradesystem.swiss',
   SwissAdvancedGradesystem = 'gradesystem.swiss_advanced',
-  GermanGradesystem = 'gradesystem.german',
-  GermanAdvancedGradesystem = 'gradesystem.german_advanced'
 }

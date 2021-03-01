@@ -30,6 +30,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
       }
     })],
   providers: [
+    SlidesComponent,
     DatePipe,
     FingerprintAIO,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},

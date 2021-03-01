@@ -44,6 +44,7 @@
     }
   },
   "subjects": {
+    "entry-header": "Ziemlich leer hier.\nErstelle doch ein neues Modul.",
     "addModule": "Modul hinzufügen",
     "title": "Module",
     "no-further-information": "Keine weitere Informationen",
@@ -67,9 +68,10 @@
     "adjust-exams": "Bitte Prüfungen anpassen."
   },
   "settings": {
-    "darkmode": "Darkmode",
+    "darkmode": "Darkmode erzwingen",
     "language": "Sprache",
-    "title": "Einstellungen"
+    "title": "Einstellungen",
+    "pdf-download": "PDF erstellen"
   },
   "slides": {
     "first": {
@@ -85,7 +87,7 @@
       "title": "Was ist gradebooklet?"
     },
     "third": {
-      "text": "Der Ersteller des Notenbuchs ist noch ein Schüler, daher weiß er, welche <b> Sie wirklich benötigen</b>, um Ihre Noten zu verfolgen.",
+      "text": "Der Ersteller des Notenbuchs ist noch ein Schüler, daher werden nur Funktionen welche <b> einfach zu bedienen </b> und wirklich <b> nützlich zur Notenverfolgung </b> sind, eingebaut.",
       "title": "Einfach zu verwenden"
     }
   },

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="light">
+    <ion-toolbar>
         <ion-title>
             {{isEditModule ? editModule.name : ('module.new-title' | translate)}}
         </ion-title>
@@ -16,7 +16,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" color="light">
     <div class="container-wrapper">
         <div class="container">
             <ion-text>

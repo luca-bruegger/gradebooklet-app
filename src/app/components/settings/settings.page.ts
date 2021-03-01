@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { AboutComponent } from '../about/about.component';
 import { AppearanceService } from '../../services/appearance.service';
+import { SubjectService } from '../../services/subject.service';
+import { PdfController } from '../../controllers/pdf-controller';
 
 
 @Component({
@@ -17,14 +19,17 @@ export class SettingsPage {
 
   constructor(private translate: TranslateService,
               private modalController: ModalController,
-              private appearanceService: AppearanceService) {
+              private appearanceService: AppearanceService,
+              private subjectService: SubjectService,
+              private alertController: AlertController,
+              private pdfController: PdfController) {
     const darkmodeString = localStorage.getItem('darkmodeEnabled');
 
     if (!!darkmodeString) {
       const darkmodeEnabled = JSON.parse(darkmodeString);
 
       if (darkmodeEnabled) {
-        this.appearanceService.dark();
+        this.appearanceService.enableDarkMode();
         this.darkmodeToggled = true;
       }
     }
@@ -32,11 +37,11 @@ export class SettingsPage {
 
   updateDarkMode() {
     if (this.darkmodeToggled) {
-      this.appearanceService.dark();
+      this.appearanceService.enableDarkMode();
       localStorage.setItem('darkmodeEnabled', 'true');
     } else {
       localStorage.removeItem('darkmodeEnabled');
-      this.appearanceService.light();
+      this.appearanceService.disableDarkMode();
     }
   }
 
@@ -52,6 +57,23 @@ export class SettingsPage {
     });
 
     return modal.present();
+  }
+
+  async exportModulesAsPDF() {
+    if (this.subjectService.allModules.length > 0) {
+      this.pdfController.createPdf(this.subjectService.allModules);
+    } else {
+      await this.displayNoModulesPopup();
+    }
+  }
+
+  private async displayNoModulesPopup() {
+    const alert = await this.alertController.create({
+      header: this.translate.instant('popup.warning'),
+      message: this.translate.instant('popup.exams-pdf-warning'),
+      buttons: [this.translate.instant('popup.accept')]
+    });
+    await alert.present();
   }
 }
 

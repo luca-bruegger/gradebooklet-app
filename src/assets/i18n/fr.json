@@ -45,6 +45,7 @@
   },
   "subjects": {
     "addModule": "Ajouter un module",
+    "entry-header": "C'est assez vide ici.\nPourquoi ne pas créer un nouveau module?",
     "title": "Modules",
     "no-further-information": "Pas d'informations complémentaires",
     "no-grades-available": "Pas de notes disponibles"
@@ -67,8 +68,9 @@
     "warning-grades-deletion": "Si vous faites cela, tous les contrôles seront supprimés"
   },
   "settings": {
-    "darkmode": "Darkmode",
+    "darkmode": "Force darkmode",
     "language": "Langue",
+    "pdf-download": "Créer un PDF",
     "title": "Réglages"
   },
   "slides": {

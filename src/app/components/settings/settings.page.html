@@ -19,21 +19,27 @@
         </ion-toolbar>
     </ion-header>
 
-    <ion-card>
-        <ion-item lines="none">
-            <ion-label style="opacity: .5">{{'settings.darkmode' | translate}}</ion-label>
-            <ion-toggle slot="end" color="success" [(ngModel)]="darkmodeToggled" (ngModelChange)="updateDarkMode()"></ion-toggle>
-        </ion-item>
-    </ion-card>
+    <div class="container">
+        <ion-card>
+            <ion-item lines="none">
+                <ion-label style="opacity: .5">{{'settings.darkmode' | translate}}</ion-label>
+                <ion-toggle slot="end" color="success" [(ngModel)]="darkmodeToggled" (ngModelChange)="updateDarkMode()"></ion-toggle>
+            </ion-item>
+        </ion-card>
 
-    <ion-card>
-        <ion-item lines="none">
-            <ion-label style="opacity: .5">{{'settings.language' | translate}}</ion-label>
-            <ion-select style="opacity: .5" slot="end" interface="action-sheet" [selectedText]="customLocale"
-                        (ionChange)="changeLang($event)">
-                <ion-select-option *ngFor="let lang of languages"
-                                   value="{{lang}}">{{'languages.' + lang | translate}}</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </ion-card>
+        <ion-card>
+            <ion-item lines="none">
+                <ion-label style="opacity: .5">{{'settings.language' | translate}}</ion-label>
+                <ion-select style="opacity: .5" slot="end" interface="action-sheet" [selectedText]="customLocale"
+                            (ionChange)="changeLang($event)">
+                    <ion-select-option *ngFor="let lang of languages"
+                                       value="{{lang}}">{{'languages.' + lang | translate}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-button size="block" class="ion-no-margin" (click)="exportModulesAsPDF()">{{'settings.pdf-download' | translate}}</ion-button>
+        </ion-card>
+    </div>
 </ion-content>

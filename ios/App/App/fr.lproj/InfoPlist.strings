@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  App
+
+  Created by Luca Brügger on 30.01.21.
+  
+*/
+
+"NSFaceIDUsageDescription" = 'Pour débloquer vos notes garanties';

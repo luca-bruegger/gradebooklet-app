@@ -12,7 +12,9 @@ const {Filesystem} = Plugins;
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PdfController {
   constructor(public datePipe: DatePipe,
               public plt: Platform,
