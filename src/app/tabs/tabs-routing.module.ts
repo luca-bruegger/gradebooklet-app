@@ -3,12 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthComponent } from '../components/auth/auth.component';
 import { AuthGuard } from '../components/auth/auth.guard';
+import { RegisterComponent } from '../components/auth/register/register.component';
+import { LoginComponent } from '../components/auth/login/login.component';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    component: AuthComponent
-  },
   {
     path: 'tabs',
     component: TabsPage,
@@ -34,15 +32,27 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'auth',
+        component: AuthComponent
+      },
+      {
         path: '',
-        redirectTo: '/tabs/subjects',
+        canActivate: [AuthGuard],
         pathMatch: 'full'
       }
     ]
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
-    canActivate: [AuthGuard],
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugins, StatusBarStyle } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 
-const {StatusBar} = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +33,7 @@ export class AppearanceService {
     localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
     document.body.classList.toggle('dark', AppearanceService.isSystemDarkmodeEnabled());
     if (this.plt.is('cordova')) {
-      StatusBar.setStyle({style: AppearanceService.isSystemDarkmodeEnabled() ? StatusBarStyle.Dark : StatusBarStyle.Light});
+      StatusBar.setStyle({style: AppearanceService.isSystemDarkmodeEnabled() ? Style.Dark : Style.Light});
     }
   }
 
@@ -46,14 +45,14 @@ export class AppearanceService {
   private setDark() {
     document.body.classList.toggle('dark', true);
     if (this.plt.is('cordova') && this.isDarkModeEnabled) {
-      StatusBar.setStyle({style: StatusBarStyle.Dark});
+      StatusBar.setStyle({style: Style.Dark});
     }
   }
 
   private setLight() {
     document.body.classList.toggle('dark', false);
     if (this.plt.is('cordova')) {
-      StatusBar.setStyle({style: StatusBarStyle.Light});
+      StatusBar.setStyle({style: Style.Light});
     }
   }
 

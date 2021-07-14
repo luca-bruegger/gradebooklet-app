@@ -5,10 +5,8 @@ import { DatePipe } from '@angular/common';
 import { Platform } from '@ionic/angular';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { TranslateService } from '@ngx-translate/core';
-import { FilesystemDirectory, Plugins } from '@capacitor/core';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Injectable } from '@angular/core';
-
-const {Filesystem} = Plugins;
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -88,7 +86,7 @@ export class PdfController {
           const result = await Filesystem.writeFile({
             path,
             data,
-            directory: FilesystemDirectory.Documents,
+            directory: Directory.Documents,
             recursive: true
           });
           await this.fileOpener.open(`${result.uri}`, 'application/pdf');

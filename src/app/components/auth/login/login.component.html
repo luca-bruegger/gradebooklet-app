@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="false" [forceOverscroll]="false">
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ion-align-self-center" offset-lg="4" offset-md="2" sizeLg="4" size-md="8"
+                     *ngIf="!signInStarted">
+                <ion-row class="ion-margin-bottom">
+                    <ion-col size-lg="8" size-md="8">
+                        <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png"/>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label position="floating">Email</ion-label>
+                            <ion-input maxlength="50" type="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Password</ion-label>
+                            <ion-input maxlength="50" type="password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-button (click)="signIn()" expand="block" color="primary" class="ion-margin-bottom ion-margin-top">
+                    Anmelden
+                </ion-button>
+                <ion-button routerLink="/register" expand="block" fill="outline" color="primary">
+                    Neu? Account erstellen
+                </ion-button>
+
+                <span class="divider line one-line">oder</span>
+
+                <ion-button routerLink="/tabs" class="ion-margin-top" fill="clear" expand="block">
+                    Vorerst überspringen...
+                </ion-button>
+
+            </ion-col>
+            <ion-col class="ion-align-self-center ion-text-center" size="12" *ngIf="signInStarted">
+                <ion-row class="ion-margin-bottom">
+                    <ion-col size-lg="8" size-md="8">
+                        <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png"/>
+                    </ion-col>
+                </ion-row>
+                <ion-spinner name="crescent"></ion-spinner>
+                <br>
+                <ion-text>Signing In...</ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

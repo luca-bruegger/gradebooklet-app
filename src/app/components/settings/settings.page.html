@@ -41,5 +41,12 @@
         <ion-card class="ion-no-padding">
             <ion-button size="block" class="ion-no-margin" (click)="exportModulesAsPDF()">{{'settings.pdf-download' | translate}}</ion-button>
         </ion-card>
+
+        <ion-card class="ion-no-padding">
+            <ion-button (click)="navigateToLogin()" class="ion-no-margin" size="block" fill="outline" color="primary">
+                Ausloggen
+            </ion-button>
+        </ion-card>
+
     </div>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { AboutComponent } from '../about/about.component';
 import { AppearanceService } from '../../services/appearance.service';
 import { SubjectService } from '../../services/subject.service';
@@ -22,7 +22,8 @@ export class SettingsPage {
               private appearanceService: AppearanceService,
               private subjectService: SubjectService,
               private alertController: AlertController,
-              private pdfController: PdfController) {
+              private pdfController: PdfController,
+              private navController: NavController) {
     const darkmodeString = localStorage.getItem('darkmodeEnabled');
 
     if (!!darkmodeString) {
@@ -74,6 +75,10 @@ export class SettingsPage {
       buttons: [this.translate.instant('popup.accept')]
     });
     await alert.present();
+  }
+
+  navigateToLogin() {
+    this.navController.navigateBack('/');
   }
 }
 

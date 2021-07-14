@@ -1,13 +1,9 @@
-import { Component, isDevMode } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppearanceService } from './services/appearance.service';
-
-import { Plugins } from '@capacitor/core';
-import { SlidesComponent } from './components/slides/slides.component';
 import { Storage } from '@ionic/storage';
-
-const {SplashScreen} = Plugins;
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
