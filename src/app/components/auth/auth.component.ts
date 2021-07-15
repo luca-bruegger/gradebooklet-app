@@ -20,7 +20,7 @@ export class AuthComponent {
     this.faio.show({}).then(() => {
       this.unlocked = true;
       setTimeout(() => {
-          this.navCtrl.navigateForward(['/tabs'], {animated: false});
+          this.navCtrl.navigateForward(['/tabs/subjects'], {animated: false});
           this.modalController.dismiss();
         },
         600);

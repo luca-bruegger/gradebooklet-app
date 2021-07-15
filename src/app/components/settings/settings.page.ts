@@ -5,6 +5,7 @@ import { AboutComponent } from '../about/about.component';
 import { AppearanceService } from '../../services/appearance.service';
 import { SubjectService } from '../../services/subject.service';
 import { PdfController } from '../../controllers/pdf-controller';
+import { AuthService } from "../../services/auth.service";
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SettingsPage {
   darkmodeToggled = false;
   languages: string[] = ['de', 'en', 'it', 'fr'];
   customLocale = this.translate.instant('languages.' + localStorage.getItem('customLocale'));
+  extendedSecurity: boolean;
 
   constructor(private translate: TranslateService,
               private modalController: ModalController,
@@ -23,7 +25,8 @@ export class SettingsPage {
               private subjectService: SubjectService,
               private alertController: AlertController,
               private pdfController: PdfController,
-              private navController: NavController) {
+              private navController: NavController,
+              private authService: AuthService) {
     const darkmodeString = localStorage.getItem('darkmodeEnabled');
 
     if (!!darkmodeString) {
@@ -79,6 +82,14 @@ export class SettingsPage {
 
   navigateToLogin() {
     this.navController.navigateBack('/');
+  }
+
+  logOut() {
+    this.authService.signOut();
+  }
+
+  updateExtendedSecurity() {
+
   }
 }
 

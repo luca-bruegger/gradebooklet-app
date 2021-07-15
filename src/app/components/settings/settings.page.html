@@ -21,10 +21,23 @@
 
     <div class="container">
         <ion-card>
-            <ion-item lines="none">
+            <ion-item>
                 <ion-label style="opacity: .5">{{'settings.darkmode' | translate}}</ion-label>
                 <ion-toggle slot="end" color="success" [(ngModel)]="darkmodeToggled" (ngModelChange)="updateDarkMode()"></ion-toggle>
             </ion-item>
+            <ion-card-content>
+                Überschreibt die aktuelle Sichtbarkeitsmodi des Geräts zum Darkmode.
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-item>
+                <ion-label style="opacity: .5">Erweiterte Sicherheit</ion-label>
+                <ion-toggle slot="end" color="success" [(ngModel)]="extendedSecurity" (ngModelChange)="updateExtendedSecurity()"></ion-toggle>
+            </ion-item>
+            <ion-card-content>
+                Diese Option ermöglicht erweiterte Sicherheit durch aktivieren von Authentifizierungsmöglichkeiten, welche Ihr Gerät bietet.
+            </ion-card-content>
         </ion-card>
 
         <ion-card>
@@ -43,7 +56,7 @@
         </ion-card>
 
         <ion-card class="ion-no-padding">
-            <ion-button (click)="navigateToLogin()" class="ion-no-margin" size="block" fill="outline" color="primary">
+            <ion-button (click)="logOut()" class="ion-no-margin" size="block" fill="outline" color="primary">
                 Ausloggen
             </ion-button>
         </ion-card>

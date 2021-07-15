@@ -25,7 +25,9 @@
 
     <div class="image-wrapper" *ngIf="modulesEmpty">
         <div class="center-container">
-            <img src="assets/images/empty.png" class="ion-margin-bottom preview-image" alt="no-modules-found">
+            <div class="ion-margin-bottom preview-image">
+                <img src="assets/images/no-data.svg" alt="no-modules-found">
+            </div>
             <p class="ion-margin-bottom">{{'subjects.entry-header' | translate}}</p>
         </div>
         <ion-icon name="arrow-down-outline" class="animated fadeInDown arrow"></ion-icon>

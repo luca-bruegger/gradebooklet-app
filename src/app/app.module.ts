@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, SlidesComponent, LoginComponent, RegisterComponent],
@@ -45,7 +46,8 @@ import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    PasswordStrengthMeterModule
+    PasswordStrengthMeterModule,
+    ReactiveFormsModule
   ],
   providers: [
     SlidesComponent,

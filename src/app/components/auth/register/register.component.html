@@ -8,23 +8,34 @@
                         <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png"/>
                     </ion-col>
                 </ion-row>
-
                 <ion-row>
                     <ion-col>
-                        <ion-item>
-                            <ion-label position="floating">Email</ion-label>
-                            <ion-input maxlength="50"></ion-input>
-                        </ion-item>
-                        <ion-item style="padding-left: 0">
-                            <ion-label position="floating">Password</ion-label>
-                            <ion-input maxlength="50"></ion-input>
-                        </ion-item>
-                        <password-strength-meter [password]="'HAlajkvoioafieojjö345'" [enableFeedback]="true"></password-strength-meter>
+                        <form [formGroup]="registerFormGroup">
+                            <ion-item>
+                                <ion-label position="floating">Anzeigenamen</ion-label>
+                                <ion-input maxlength="30" minlength="3" formControlName="displayName" class="ion-valid"></ion-input>
+                            </ion-item>
+                            <small class="ion-margin-bottom">* zwischen drei und 30 Buchstaben</small>
+                            <ion-item class="ion-margin-top">
+                                <ion-label position="floating">Email</ion-label>
+                                <ion-input type="email" maxlength="50" formControlName="email" autocomplete="email"></ion-input>
+                            </ion-item>
+                            <ion-item detail-icon="eye">
+                                <ion-label position="floating">Password</ion-label>
+                                <ion-input id="new-password-text-field" type="{{isPasswordVisible ? 'text' : 'password'}}" maxlength="50" minlength="8" formControlName="password" autocomplete="new-password"></ion-input>
+                                <ion-icon style="padding-top: 7px;" slot="end" name="{{isPasswordVisible ? 'eye-off' : 'eye'}}" (click)="changeMode()"></ion-icon>
+                            </ion-item>
+                            <small>* min. 8 Zeichen, Gross- und Kleinbuchstaben sowie Ziffern.</small>
+                            <ion-item class="ion-margin-top">
+                                <ion-label position="floating">Password Bestätigen</ion-label>
+                                <ion-input id="confirm-password-text-field" type="password" maxlength="50" minlength="8" formControlName="passwordConfirmation"></ion-input>
+                            </ion-item>
+                            <password-strength-meter [password]="registerFormGroup.get('password').value" [enableFeedback]="true"></password-strength-meter>
+                        </form>
                     </ion-col>
                 </ion-row>
-
-                <ion-button expand="block" color="primary" class="ion-margin-bottom ion-margin-top">
-                    Registieren
+                <ion-button [disabled]="!formValid()" (click)="registerUser()" expand="block" color="primary" class="ion-margin-bottom ion-margin-top">
+                    Registrieren
                 </ion-button>
 
                 <span class="divider line one-line">oder</span>
