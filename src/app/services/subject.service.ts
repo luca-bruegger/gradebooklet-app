@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ModulesController } from '../controllers/modules-controller';
 import { Storage } from '@ionic/storage';
 import { Module } from '../models/module';
 import { SubjectViewComponent } from '../components/subject-view/subject-view.component';
 import { ModalController } from '@ionic/angular';
+import { SubjectsController } from '../controllers/subjects.controller';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectService {
-  private modulesController: ModulesController;
   private modules: Module[] = [];
 
   constructor(private storage: Storage,
-              private modalController: ModalController) {
-    this.modulesController = new ModulesController(this.storage);
+              private modalController: ModalController,
+              private subjectsController: SubjectsController) {
 
-    this.modulesController.loadModulesFromDatabase().then(modules => {
+    this.subjectsController.loadModulesFromDatabase().then(modules => {
       this.modules = modules;
     });
   }
@@ -36,7 +35,7 @@ export class SubjectService {
         this.modules.splice(this.modules.indexOf(m), 1);
       }
       if (data.data && data.data.save) {
-        this.modulesController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
+        this.subjectsController.getGradesystemObject(data.data.editModule).calculateAverageGrade();
         isEditModule ? this.modules[this.modules.indexOf(m)] = data.data.editModule : this.modules.push(data.data.editModule);
       }
 

@@ -11,3 +11,9 @@ ion-content ion-toolbar {
     margin: 0 auto;
   }
 }
+
+ion-item ion-label,
+ion-item ion-select,
+ion-item small {
+  opacity: .5 !important;
+}

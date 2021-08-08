@@ -7,10 +7,10 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { AuthComponent } from '../components/auth/auth.component';
+import { ExtendedSecurityComponent } from '../components/auth/extended-security.component';
 
 @NgModule({
-  entryComponents: [AuthComponent],
+  entryComponents: [ExtendedSecurityComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -18,7 +18,7 @@ import { AuthComponent } from '../components/auth/auth.component';
     TabsPageRoutingModule,
     TranslateModule
   ],
-  declarations: [AuthComponent, TabsPage]
+  declarations: [ExtendedSecurityComponent, TabsPage]
 })
 export class TabsPageModule {
 }

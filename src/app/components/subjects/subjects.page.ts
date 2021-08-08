@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, isDevMode } from '@angular/core';
+import { Component, isDevMode } from '@angular/core';
 import { AlertController, ModalController, NavController, Platform } from '@ionic/angular';
 import { Module } from '../../models/module';
 import { Storage } from '@ionic/storage';
@@ -7,11 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { PdfController } from '../../controllers/pdf-controller';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { SubjectService } from '../../services/subject.service';
 import { AppearanceService } from '../../services/appearance.service';
 import { SlidesComponent } from '../slides/slides.component';
+import { PdfController } from '../../controllers/pdf.controller';
 
 @Component({
   selector: 'app-modules-tab',
@@ -42,9 +42,6 @@ export class SubjectsPage {
       }
     });
     this.subjectService = subjectService;
-    this.platform.resume.subscribe(() => {
-      this.navCtrl.navigateForward([''], {animated: false});
-    });
   }
 
   async openEditModal(m) {
@@ -65,7 +62,7 @@ export class SubjectsPage {
     return '';
   }
 
-  get modulesEmpty() {
+  get noneSubjectsArePresent() {
     return this.subjectService.allModules.length === 0;
   }
 

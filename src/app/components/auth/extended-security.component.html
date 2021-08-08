@@ -1,0 +1,24 @@
+<ion-content>
+    <ion-grid style="height: 100%; display: flex; flex-flow: column">
+        <ion-row style="flex: 1;">
+            <ion-col class="ion-text-center" style="display: flex; align-items: center; justify-content: center"
+                     size="12">
+                <ion-icon *ngIf="!unlocked" name="lock-closed-outline" style="font-size: 5em"></ion-icon>
+                <ion-icon *ngIf="unlocked" name="lock-open-outline" style="font-size: 5em"></ion-icon>
+            </ion-col>
+        </ion-row>
+        <ion-row style="flex: 1;">
+            <ion-col class="ion-text-center" style="display: flex; align-items: center; justify-content: center"
+                     size="12">
+                <div *ngIf="attemptFailed" style="width: 100%; display: flex; justify-content: center">
+                    <ion-button size="small" (click)="retry()">{{'extended-security.retry' | translate}}</ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row style="flex: 1;">
+            <ion-col size="6" size-lg="6" offset-lg="3" size-xs="10" offset-xs="1" style="display: flex; align-items: center; justify-content: center">
+                <img src="assets/images/banner.png" alt="gradebooklet banner">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

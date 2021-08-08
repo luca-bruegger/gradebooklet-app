@@ -1,16 +1,13 @@
 {
-  "appId": "ch.lucabruegger.gradebooklet",
-  "appName": "gradebooklet",
-  "webDir": "www",
-  "npmClient": "npm",
-  "cordova": {
-    "preferences": {
-      "ScrollEnabled": "false",
-      "android-minSdkVersion": "19",
-      "BackupWebStorage": "none",
-      "SplashMaintainAspectRatio": "true",
-      "SplashShowOnlyFirstTime": "false",
-      "SplashScreen": "screen"
-    }
-  }
+	"appId": "ch.lucabruegger.gradebooklet",
+	"appName": "gradebooklet",
+	"webDir": "www",
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false
+		}
+	},
+	"server": {
+		"url": "http://192.168.1.148:8100"
+	}
 }

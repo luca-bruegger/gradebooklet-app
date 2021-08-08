@@ -17,18 +17,39 @@ import { DatePipe } from '@angular/common';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/auth/gradebooklet-account/login/login.component';
+import { RegisterComponent } from './components/auth/gradebooklet-account/register/register.component';
+import { VerifyEmailComponent } from './components/auth/gradebooklet-account/verify-email/verify-email.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, SlidesComponent],
-  entryComponents: [AboutComponent, SlidesComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule,
+  declarations: [AppComponent, AboutComponent, SlidesComponent, LoginComponent, RegisterComponent, VerifyEmailComponent],
+  entryComponents: [AboutComponent, SlidesComponent, LoginComponent, RegisterComponent, VerifyEmailComponent],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })],
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    PasswordStrengthMeterModule,
+    ReactiveFormsModule
+  ],
   providers: [
     SlidesComponent,
     DatePipe,

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugins, StatusBarStyle } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 
-const {StatusBar} = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class AppearanceService {
   constructor(private plt: Platform) {
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', event => {
-        if (!AppearanceService.isForceDarkmodeActivted()){
+        if (!AppearanceService.isForceDarkmodeActivated()){
           if (event.matches) {
             this.setDark();
           } else {
@@ -26,15 +25,15 @@ export class AppearanceService {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
-  private static isForceDarkmodeActivted() {
+  private static isForceDarkmodeActivated() {
     return localStorage.getItem('darkmodeEnabled') === 'true';
   }
 
   disableDarkMode() {
-    localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
+    localStorage.setItem('darkmode  Enabled', JSON.stringify(false));
     document.body.classList.toggle('dark', AppearanceService.isSystemDarkmodeEnabled());
     if (this.plt.is('cordova')) {
-      StatusBar.setStyle({style: AppearanceService.isSystemDarkmodeEnabled() ? StatusBarStyle.Dark : StatusBarStyle.Light});
+      StatusBar.setStyle({style: AppearanceService.isSystemDarkmodeEnabled() ? Style.Dark : Style.Light});
     }
   }
 
@@ -46,18 +45,18 @@ export class AppearanceService {
   private setDark() {
     document.body.classList.toggle('dark', true);
     if (this.plt.is('cordova') && this.isDarkModeEnabled) {
-      StatusBar.setStyle({style: StatusBarStyle.Dark});
+      StatusBar.setStyle({style: Style.Dark});
     }
   }
 
   private setLight() {
     document.body.classList.toggle('dark', false);
     if (this.plt.is('cordova')) {
-      StatusBar.setStyle({style: StatusBarStyle.Light});
+      StatusBar.setStyle({style: Style.Light});
     }
   }
 
   get isDarkModeEnabled(): boolean {
-    return AppearanceService.isSystemDarkmodeEnabled() || AppearanceService.isForceDarkmodeActivted();
+    return AppearanceService.isSystemDarkmodeEnabled() || AppearanceService.isForceDarkmodeActivated();
   }
 }
