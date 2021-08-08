@@ -69,9 +69,15 @@
   },
   "settings": {
     "darkmode": "Force darkmode",
+    "darkmode-info": "Overwrites the system theme to dark mode.",
+    "extended-security": "Security+ (Recommended)",
+    "extended-security-info": "This option makes use of extended security measures on this device e.g., a finger- or face scanner.",
     "language": "Language",
     "title": "Settings",
-    "pdf-download": "Create PDF"
+    "pdf-download": "Create PDF",
+    "account": {
+      "signed-in-as": "Signed in as:"
+    }
   },
   "slides": {
     "first": {
@@ -101,5 +107,49 @@
     "swiss_advanced": "Switzerland Extended",
     "swiss": "Switzerland Simple",
     "swiss.exam_warning": "Examination mark, e.g. 5.0"
+  },
+  "account": {
+    "or": "or",
+    "logout": "Logout",
+    "success": "Success",
+    "reset-password-link-sent": "If this email exists, a password reset link has been sent.",
+    "email": "Email",
+    "successfully-signed-out": "Successfully signed out!",
+    "successfully-signed-out-info": "Your session has been terminated. See you soon!",
+    "password": "Password",
+    "login": {
+      "title": "Login",
+      "sign-in": "Sign In",
+      "create-account": "New? Create account",
+      "skip-for-now": "Skip for now",
+      "getting-signed-in": "You're getting signed in...",
+      "forgot-password": "Forgot password",
+      "password-not-forgotten": "Password not forgotten after all",
+      "reset-password": "Reset password",
+      "finished": "Login finished!",
+      "success": "Successfully signed in."
+    },
+    "register": {
+      "title": "Register",
+      "display-name": "Display Name",
+      "display-name-info": "* between three and 30 letters",
+      "password-info": "* min. 8 chars, upper- and lowercase letters as well as numbers.",
+      "password-confirmation": "Confirm password",
+      "info-text": "Welcome! Your account is being created...",
+      "success": "Registration finished!",
+      "registered": "Successfully registered."
+    },
+    "verify-email": {
+      "continue": "Please verify your email to continue...",
+      "refresh": "Refresh",
+      "retry-in": "Retry in:",
+      "takes-longer": "It takes a little longer. Please update manually."
+    }
+  },
+  "extended-security": {
+    "retry": "Try again"
+  },
+  "toast": {
+    "error-title": "An error occurred!"
   }
 }

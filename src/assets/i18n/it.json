@@ -5,7 +5,7 @@
     "me": "gradebooklet get è gestito e sviluppato da",
     "privacy": "Riservatezza",
     "text": "Prima di tutto, grazie per aver scaricato gradebooklet. gradebooklet ti aiuta a organizzare i tuoi voti in un modo più intuitivo e più facile. Se non la pensi così, richiedi una funzione o segnala un bug.",
-    "title": "gradebooklet"
+    "title": "Informazioni su gradebooklet"
   },
   "languages": {
     "de": "Deutsch",
@@ -71,7 +71,13 @@
     "darkmode": "Forza darkmode",
     "language": "Linguaggio",
     "pdf-download": "Crea PDF",
-    "title": "Impostazioni"
+    "title": "Impostazioni",
+    "account": {
+      "signed-in-as": "Firmato come:"
+    },
+    "darkmode-info": "Sovrascrive il tema di sistema in modalità scura.",
+    "extended-security": "Security+ (Raccomandato)",
+    "extended-security-info": "Questa opzione fa uso di misure di sicurezza estese su questo dispositivo, ad esempio, uno scanner del dito o del volto."
   },
   "slides": {
     "first": {
@@ -101,5 +107,49 @@
     "swiss_advanced.exam_max": "Massimo di punti",
     "swiss_advanced.exam_min": "Punti ottenuti",
     "swiss_advanced.exam_warning": "Segno d'esame, ad es. 5.0"
+  },
+  "account": {
+    "email": "Email",
+    "login": {
+      "finished": "Accesso terminato!",
+      "create-account": "Nuovo? Crea il tuo account",
+      "forgot-password": "Password dimenticata",
+      "getting-signed-in": "Sarete registrati...",
+      "password-not-forgotten": "Non dimenticare la tua password",
+      "reset-password": "Ripristina la password",
+      "sign-in": "Entrare",
+      "skip-for-now": "Salta per ora",
+      "success": "Registrato con successo.",
+      "title": "Entrare"
+    },
+    "logout": "Disconnettersi",
+    "or": "o",
+    "password": "Password",
+    "reset-password-link-sent": "Se questa e-mail esiste, è stato inviato un link per resettare la password.",
+    "register": {
+      "display-name": "Nome del display",
+      "display-name-info": "* tra tre e 30 lettere",
+      "info-text": "Benvenuti! Il tuo account sarà creato...",
+      "password-confirmation": "Conferma la password",
+      "password-info": "* min. 8 caratteri, lettere maiuscole e minuscole e numeri.",
+      "registered": "Registrato con successo.",
+      "success": "Registrazione completata!",
+      "title": "Registra"
+    },
+    "success": "Successo",
+    "successfully-signed-out": "Cancellato con successo!",
+    "successfully-signed-out-info": "La tua sessione è finita. A presto!",
+    "verify-email": {
+      "continue": "Per favore, verifica la tua email per continuare...",
+      "refresh": "Aggiorna",
+      "retry-in": "Riprova in:",
+      "takes-longer": "Ci vuole un po' più di tempo. Si prega di aggiornare manualmente."
+    }
+  },
+  "extended-security": {
+    "retry": "Prova di nuovo"
+  },
+  "toast": {
+    "error-title": "Si è verificato un errore!"
   }
 }

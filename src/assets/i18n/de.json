@@ -71,7 +71,13 @@
     "darkmode": "Darkmode erzwingen",
     "language": "Sprache",
     "title": "Einstellungen",
-    "pdf-download": "PDF erstellen"
+    "pdf-download": "PDF erstellen",
+    "account": {
+      "signed-in-as": "Angemeldet als:"
+    },
+    "darkmode-info": "Überschreibt das Erscheinungsbild in den dunklen Modus.",
+    "extended-security": "Sicherheit+ (Empfohlen)",
+    "extended-security-info": "Diese Option nutzt erweiterte Sicherheitsfunktionen des Geräts, z. B. einen Finger- oder Gesichtsscanner."
   },
   "slides": {
     "first": {
@@ -105,5 +111,49 @@
     "german_advanced.exam_min": "Erreichte Punkte",
     "german_advanced.exam_max": "Maximale Punktzahl",
     "german_advanced.exam_warning": "Prüfungsnote, z.B. 5.0"
+  },
+  "account": {
+    "email": "Email",
+    "login": {
+      "create-account": "Neu? Account erstellen",
+      "finished": "Login beendet!",
+      "forgot-password": "Passwort vergessen",
+      "getting-signed-in": "Du wirst angemeldet...",
+      "password-not-forgotten": "Passwort doch nicht vergessen",
+      "skip-for-now": "Vorerst überspringen",
+      "success": "Erfolgreich angemeldet.",
+      "title": "Anmelden",
+      "reset-password": "Passwort zurücksetzen",
+      "sign-in": "Anmelden"
+    },
+    "logout": "Abmelden",
+    "or": "oder",
+    "password": "Passwort",
+    "register": {
+      "display-name": "Anzeigename",
+      "display-name-info": "* zwischen drei und 30 Buchstaben",
+      "info-text": "Willkommen! Dein Konto wird erstellt...",
+      "password-confirmation": "Passwort bestätigen",
+      "password-info": "* min. 8 Zeichen, Gross- und Kleinbuchstaben sowie Zahlen.",
+      "registered": "Erfolgreich registriert.",
+      "success": "Registrierung abgeschlossen!",
+      "title": "Registrieren"
+    },
+    "reset-password-link-sent": "Sollte diese Email existieren, wurde ein Link zum zurücksetzten des Passworts versendet.",
+    "success": "Erfolg",
+    "successfully-signed-out": "Erfolgreich abgemeldet!",
+    "successfully-signed-out-info": "Ihre Sitzung wurde beendet. Bis bald!",
+    "verify-email": {
+      "takes-longer": "Es dauert ein wenig länger. Bitte aktualisiere manuell.",
+      "retry-in": "Erneut versuchen in:",
+      "refresh": "Aktualisieren",
+      "continue": "Bitte bestätige deine E-Mail Adresse zum fortfahren..."
+    }
+  },
+  "extended-security": {
+    "retry": "Erneut versuchen"
+  },
+  "toast": {
+    "error-title": "Es ist ein Fehler aufgetreten!"
   }
 }
