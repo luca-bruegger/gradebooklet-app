@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { AuthComponent } from '../components/auth/auth.component';
-import { AuthGuard } from '../components/auth/auth.guard';
-import { RegisterComponent } from '../components/auth/register/register.component';
-import { LoginComponent } from '../components/auth/login/login.component';
+import { ExtendedSecurityComponent } from '../components/auth/extended-security.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { RegisterComponent } from '../components/auth/gradebooklet-account/register/register.component';
+import { LoginComponent } from '../components/auth/gradebooklet-account/login/login.component';
+import { VerifyEmailComponent } from '../components/auth/gradebooklet-account/verify-email/verify-email.component';
 
 const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'subjects',
@@ -31,29 +33,39 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'auth',
-        component: AuthComponent
-      },
+
       {
         path: '',
-        canActivate: [AuthGuard],
-        pathMatch: 'full'
+        pathMatch: 'full',
+        redirectTo: 'subjects'
       }
     ]
   },
   {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    path: 'account',
+    children: [
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'verify-email',
+        component: VerifyEmailComponent
+      },
+      {
+        path: 'extended-security',
+        component: ExtendedSecurityComponent
+      },
+    ]
   },
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: 'tabs'
   }
 ];
 

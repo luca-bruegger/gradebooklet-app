@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="!signInStarted">
+            <ion-button color="primary" (click)="navigateBackToLogin()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-title>{{'account.register.title' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ion-align-self-center ion-text-center" offset-lg="4" offset-md="2" sizeLg="4" size-md="8">
+                <ion-row class="ion-margin-bottom">
+                    <ion-col size-lg="10" size-md="8" offset-lg="1" offset-md="1" size-xs="10" offset-xs="1">
+                        <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png" alt="gradebooklet logo"/>
+                    </ion-col>
+                </ion-row>
+                <div *ngIf="!signInStarted">
+                    <form [formGroup]="registerFormGroup">
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">{{'account.register.display-name' | translate}}</ion-label>
+                                    <ion-input maxlength="30" minlength="3" formControlName="displayName"
+                                               class="ion-valid"></ion-input>
+                                </ion-item>
+                                <small class="ion-margin-bottom">{{'account.register.display-name-info' | translate}}</small>
+                                <ion-item class="ion-margin-top">
+                                    <ion-label position="floating">{{'account.email' | translate}}</ion-label>
+                                    <ion-input type="email" maxlength="50" formControlName="email"
+                                               autocomplete="email" inputmode="email"></ion-input>
+                                </ion-item>
+                                <ion-item detail-icon="eye">
+                                    <ion-label position="floating">{{'account.password' | translate}}</ion-label>
+                                    <ion-input id="new-password-text-field"
+                                               type="{{isPasswordVisible ? 'text' : 'password'}}" maxlength="50"
+                                               minlength="8" formControlName="password"
+                                               autocomplete="new-password"></ion-input>
+                                    <ion-icon slot="end"
+                                              name="{{isPasswordVisible ? 'eye-off' : 'eye'}}"
+                                              (click)="changeMode()"></ion-icon>
+                                </ion-item>
+                                <small>{{'account.register.password-info' | translate}}</small>
+                                <ion-item class="ion-margin-top">
+                                    <ion-label position="floating">{{'account.register.password-confirmation' | translate}}</ion-label>
+                                    <ion-input id="confirm-password-text-field" type="password" maxlength="50"
+                                               minlength="8"
+                                               formControlName="passwordConfirmation"></ion-input>
+                                </ion-item>
+                                <password-strength-meter
+                                        [password]="registerFormGroup.get('password').value"></password-strength-meter>
+                            </ion-col>
+                        </ion-row>
+                        <ion-button type="submit" (keyup.enter)="registerUser()" (click)="registerUser()" expand="block" color="primary"
+                                    class="ion-margin-bottom ion-margin-top">
+                            {{'account.register.title' | translate}}
+                        </ion-button>
+                    </form>
+                </div>
+                <div *ngIf="signInStarted">
+                    <ion-spinner name="crescent"></ion-spinner>
+                    <br>
+                    <ion-text>
+                        {{'account.register.info-text' | translate}}
+                    </ion-text>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

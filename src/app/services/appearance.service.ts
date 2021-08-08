@@ -11,7 +11,7 @@ export class AppearanceService {
   constructor(private plt: Platform) {
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', event => {
-        if (!AppearanceService.isForceDarkmodeActivted()){
+        if (!AppearanceService.isForceDarkmodeActivated()){
           if (event.matches) {
             this.setDark();
           } else {
@@ -25,12 +25,12 @@ export class AppearanceService {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
-  private static isForceDarkmodeActivted() {
+  private static isForceDarkmodeActivated() {
     return localStorage.getItem('darkmodeEnabled') === 'true';
   }
 
   disableDarkMode() {
-    localStorage.setItem('darkmodeEnabled', JSON.stringify(false));
+    localStorage.setItem('darkmode  Enabled', JSON.stringify(false));
     document.body.classList.toggle('dark', AppearanceService.isSystemDarkmodeEnabled());
     if (this.plt.is('cordova')) {
       StatusBar.setStyle({style: AppearanceService.isSystemDarkmodeEnabled() ? Style.Dark : Style.Light});
@@ -57,6 +57,6 @@ export class AppearanceService {
   }
 
   get isDarkModeEnabled(): boolean {
-    return AppearanceService.isSystemDarkmodeEnabled() || AppearanceService.isForceDarkmodeActivted();
+    return AppearanceService.isSystemDarkmodeEnabled() || AppearanceService.isForceDarkmodeActivated();
   }
 }

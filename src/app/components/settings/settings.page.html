@@ -1,7 +1,9 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="end" collapse="true">
-            <ion-button (click)="openAboutModal()"><ion-icon color="medium" name="information-circle-outline"></ion-icon></ion-button>
+            <ion-button (click)="openAboutModal()">
+                <ion-icon color="medium" name="information-circle-outline"></ion-icon>
+            </ion-button>
         </ion-buttons>
         <ion-title>
             {{'settings.title' | translate}}
@@ -9,11 +11,13 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
     <ion-header collapse="condense">
         <ion-toolbar>
             <ion-buttons slot="end" collapse="true">
-                <ion-button (click)="openAboutModal()"><ion-icon color="medium" name="information-circle-outline"></ion-icon></ion-button>
+                <ion-button (click)="openAboutModal()">
+                    <ion-icon color="medium" name="information-circle-outline"></ion-icon>
+                </ion-button>
             </ion-buttons>
             <ion-title size="large">{{'settings.title' | translate}}</ion-title>
         </ion-toolbar>
@@ -22,28 +26,34 @@
     <div class="container">
         <ion-card>
             <ion-item>
-                <ion-label style="opacity: .5">{{'settings.darkmode' | translate}}</ion-label>
-                <ion-toggle slot="end" color="success" [(ngModel)]="darkmodeToggled" (ngModelChange)="updateDarkMode()"></ion-toggle>
+                <ion-label >{{'settings.darkmode' | translate}}</ion-label>
+                <ion-toggle slot="end" color="success" [(ngModel)]="isDarkmodeActive"
+                            (ngModelChange)="updateDarkMode()"></ion-toggle>
             </ion-item>
-            <ion-card-content>
-                Überschreibt die aktuelle Sichtbarkeitsmodi des Geräts zum Darkmode.
-            </ion-card-content>
+            <ion-item lines="none">
+                <ion-text class="ion-padding-vertical">
+                    <small>{{'settings.darkmode-info' | translate}}</small>
+                </ion-text>
+            </ion-item>
         </ion-card>
 
-        <ion-card>
+        <ion-card *ngIf="isExtendedSecurityAvailable()">
             <ion-item>
-                <ion-label style="opacity: .5">Erweiterte Sicherheit</ion-label>
-                <ion-toggle slot="end" color="success" [(ngModel)]="extendedSecurity" (ngModelChange)="updateExtendedSecurity()"></ion-toggle>
+                <ion-label >{{'settings.extended-security' | translate}}</ion-label>
+                <ion-toggle slot="end" color="success" [(ngModel)]="isEnhancedSecurityActive"
+                            (ngModelChange)="updateExtendedSecurity()"></ion-toggle>
             </ion-item>
-            <ion-card-content>
-                Diese Option ermöglicht erweiterte Sicherheit durch aktivieren von Authentifizierungsmöglichkeiten, welche Ihr Gerät bietet.
-            </ion-card-content>
+            <ion-item lines="none">
+                <ion-text class="ion-padding-vertical">
+                    <small>{{'settings.extended-security-info' | translate}}</small>
+                </ion-text>
+            </ion-item>
         </ion-card>
 
         <ion-card>
             <ion-item lines="none">
-                <ion-label style="opacity: .5">{{'settings.language' | translate}}</ion-label>
-                <ion-select style="opacity: .5" slot="end" interface="action-sheet" [selectedText]="customLocale"
+                <ion-label>{{'settings.language' | translate}}</ion-label>
+                <ion-select  slot="end" interface="action-sheet" [selectedText]="customLocale"
                             (ionChange)="changeLang($event)">
                     <ion-select-option *ngFor="let lang of languages"
                                        value="{{lang}}">{{'languages.' + lang | translate}}</ion-select-option>
@@ -52,12 +62,26 @@
         </ion-card>
 
         <ion-card class="ion-no-padding">
-            <ion-button size="block" class="ion-no-margin" (click)="exportModulesAsPDF()">{{'settings.pdf-download' | translate}}</ion-button>
+            <ion-button size="block" class="ion-no-margin"
+                        (click)="exportModulesAsPDF()">{{'settings.pdf-download' | translate}}</ion-button>
         </ion-card>
 
-        <ion-card class="ion-no-padding">
-            <ion-button (click)="logOut()" class="ion-no-margin" size="block" fill="outline" color="primary">
-                Ausloggen
+        <ion-card class="ion-no-padding ion-text-center">
+            <ion-card-header *ngIf="!!user">
+                {{'settings.account.signed-in-as' | translate}} {{user.displayName}}<br>
+                {{'account.email' | translate}}: {{user.email}}
+            </ion-card-header>
+            <ion-button *ngIf="isLoading" class="ion-no-margin" fill="clear">
+                <ion-spinner name="crescent"></ion-spinner>
+            </ion-button>
+
+            <ion-button *ngIf="user == null" (click)="logIn()" class="ion-no-margin" size="block" fill="outline"
+                        color="primary">
+                {{'account.login.title' | translate}}
+            </ion-button>
+            <ion-button (click)="logOut()" *ngIf="!!user" class="ion-no-margin" size="block" fill="outline"
+                        color="primary">
+                {{'account.logout' | translate}}
             </ion-button>
         </ion-card>
 

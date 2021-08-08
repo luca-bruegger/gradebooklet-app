@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border" [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            {{'account.login.title' | translate}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ion-align-self-center ion-text-center" offset-lg="4" offset-md="2" sizeLg="4" size-md="8">
+                <ion-row class="ion-margin-bottom">
+                    <ion-col size-lg="10" size-md="8" offset-lg="1" offset-md="2">
+                        <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png" alt="gradebooklet logo"/>
+                    </ion-col>
+                </ion-row>
+                <div *ngIf="!signInStarted">
+                    <ion-row>
+                        <ion-col>
+                            <form [formGroup]="loginFormGroup">
+                                <ion-item>
+                                    <ion-label position="floating">{{'account.email' | translate}}</ion-label>
+                                    <ion-input formControlName="email" maxlength="50" type="email"
+                                               autocomplete="username"></ion-input>
+                                </ion-item>
+                                <ion-item *ngIf="!forgotPassword">
+                                    <ion-label position="floating">{{'account.password' | translate}}</ion-label>
+                                    <ion-input formControlName="password" maxlength="50" type="password"
+                                               autocomplete="current-password"></ion-input>
+                                </ion-item>
+                            </form>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-button *ngIf="!forgotPassword" (keyup.enter)="signIn()" (click)="signIn()" expand="block" color="primary"
+                                class="ion-margin-bottom ion-margin-top">
+                        {{'account.login.sign-in' | translate}}
+                    </ion-button>
+                    <ion-button [disabled]="passwordResetStarted" *ngIf="forgotPassword" (click)="resetPassword()" expand="block" color="primary"
+                                class="ion-margin-bottom ion-margin-top">
+                        {{passwordResetStarted ? '' : 'account.login.reset-password' | translate}}
+                        <ion-spinner name="crescent" *ngIf="passwordResetStarted"></ion-spinner>
+                    </ion-button>
+                    <ion-button *ngIf="!forgotPassword" routerLink="/account/register" expand="block" fill="outline"
+                                color="primary">
+                        {{'account.login.create-account' | translate}}
+                    </ion-button>
+
+                    <span *ngIf="!forgotPassword" class="divider line one-line">{{'account.or' | translate}}</span>
+
+                    <ion-button *ngIf="!forgotPassword" (click)="skipSignIn()" class="ion-margin-top" fill="clear"
+                                expand="block">
+                        {{'account.login.skip-for-now' | translate}}
+                    </ion-button>
+
+                    <ion-button (click)="toggleForgotPassword()" class="ion-margin-top" fill="clear" expand="block">
+                        <small>{{(forgotPassword ? 'account.login.password-not-forgotten' : 'account.login.forgot-password') | translate}}</small>
+                    </ion-button>
+                </div>
+
+                <div *ngIf="signInStarted">
+                        <ion-spinner name="crescent"></ion-spinner>
+                        <br>
+                        <ion-text>{{'account.login.getting-signed-in' | translate}}</ion-text>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

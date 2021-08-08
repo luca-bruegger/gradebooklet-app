@@ -1,0 +1,18 @@
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="ion-align-self-center ion-text-center" offset-lg="3" offset-md="2" sizeLg="6" size-md="8" offset-xs="1" size-sm="12" size-xs="10">
+                <ion-col size-lg="8" size-md="8">
+                    <img src="assets/images/logo-{{ isDark ? 'light' : 'dark' }}.png" alt="gradebooklet logo"/>
+                </ion-col>
+                <ion-spinner name="crescent" class="ion-margin-bottom"></ion-spinner>
+                <br>
+                <ion-text style="display: block">{{'account.verify-email.continue' | translate}}</ion-text>
+                <div *ngIf="reloadCount === 10">
+                    <ion-button [disabled]="countdownValue !== 0" class="ion-margin-top" size="small" fill="outline" (click)="refresh()"><ion-icon name="refresh-circle-outline" slot="start"></ion-icon>{{'account.verify-email.refresh' | translate}}</ion-button>
+                    <small *ngIf="countdownValue !== 0" style="display: block">{{'account.verify-email.retry-in' | translate}} {{countdownValue}}s</small>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

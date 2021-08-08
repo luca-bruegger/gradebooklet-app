@@ -1,47 +1,52 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { NavController } from '@ionic/angular';
+import { ToastDisplayController } from '../controllers/toast-display.controller';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   constructor(private fireAuth: AngularFireAuth,
-              private navController: NavController) {
-    this.setupAuthStateListener();
+              private navController: NavController,
+              private toastDisplayController: ToastDisplayController) {
+    this.fireAuth.useDeviceLanguage();
   }
 
-  async registerUserWithEmail(email: string, password: string) {
-    return await this.fireAuth.createUserWithEmailAndPassword(email, password).then(async userCredential => {
+  registerUserWithEmail(email: string, password: string, displayName: string) {
+    return this.fireAuth.createUserWithEmailAndPassword(email, password).then(async userCredential => {
       const user = userCredential.user;
-      await user.sendEmailVerification();
-      await this.navController.navigateForward('/tabs');
-    }).catch(err => {
-      console.error(err);
+      await user.updateProfile({displayName});
+      await user.sendEmailVerification({
+        url: 'https://grblt.page.link/welcome/?d=1&email=' + user.email,
+        iOS: {
+          bundleId: 'ch.lucabruegger.gradebooklet-app'
+        },
+        android: {
+          packageName: 'com.example.android',
+          installApp: true,
+          minimumVersion: '12'
+        },
+        dynamicLinkDomain: 'grblt.page.link'
+      });
     });
   }
 
-  async signUserInWithEmail(email: string, password: string) {
-    return await this.fireAuth.signInWithEmailAndPassword(email, password).then(async userCredential => {
-      const user = userCredential.user;
-      await user.sendEmailVerification();
-    }).catch(err => {
-      console.error(err);
-    });
+  signUserInWithEmail(email: string, password: string) {
+    return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
   signOut() {
-    this.fireAuth.signOut().then(() => this.navController.navigateBack('/login'));
+    return this.fireAuth.signOut();
   }
 
   get user() {
     return this.fireAuth.user;
   }
 
-  private setupAuthStateListener() {
-    this.fireAuth.onAuthStateChanged(state => {
-      console.log('Current auth state: ', state);
+  async resetUserPassword(email: string) {
+    await this.fireAuth.sendPasswordResetEmail(email).catch(error => {
+      this.toastDisplayController.showErrorToast(error, 10000);
     });
   }
 }

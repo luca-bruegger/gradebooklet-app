@@ -22,14 +22,15 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
 import { PasswordStrengthMeterModule } from 'angular-password-strength-meter';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/auth/gradebooklet-account/login/login.component';
+import { RegisterComponent } from './components/auth/gradebooklet-account/register/register.component';
+import { VerifyEmailComponent } from './components/auth/gradebooklet-account/verify-email/verify-email.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, SlidesComponent, LoginComponent, RegisterComponent],
-  entryComponents: [AboutComponent, SlidesComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, AboutComponent, SlidesComponent, LoginComponent, RegisterComponent, VerifyEmailComponent],
+  entryComponents: [AboutComponent, SlidesComponent, LoginComponent, RegisterComponent, VerifyEmailComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,

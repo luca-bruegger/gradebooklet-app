@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubjectsPage } from './subjects.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { SubjectViewComponent } from '../subject-view/subject-view.component';
-import { ExamComponent } from '../../exam/exam.component';
-import { PdfController } from '../../controllers/pdf-controller';
+import { PdfController } from '../../controllers/pdf.controller';
+import { ExamComponent } from '../exam/exam.component';
 
 @NgModule({
   imports: [

@@ -40,3 +40,7 @@ plugins
 *.swp
 *.swo
 *.DS_Store
+
+GoogleService-Info.plist
+
+src/environments/*

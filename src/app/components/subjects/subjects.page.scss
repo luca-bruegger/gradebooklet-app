@@ -97,7 +97,8 @@ $breakpoint-xxl: 1491px;
 }
 
 .arrow {
-  margin-top: 150px;
+  position: absolute;
+  bottom: 120px;
   width: 100%;
   text-align: center;
   font-size: 2em;
