@@ -1,0 +1,8 @@
+{
+  "name": "gradebooklet",
+  "type": "angular",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  }
+}

@@ -39,9 +39,7 @@
       "reached-points-range-error": "Il punteggio ottenuto dovrebbe essere compreso tra 0 e il punteggio massimo.",
       "points": "Punti",
       "grade": "Grado"
-    },
-    "gradesystem": "Sistema di classificazione",
-    "gradesystem-selection-change-error": "I controlli già inseriti vengono eliminati al cambio dell'organico."
+    }
   },
   "subjects": {
     "entry-header": "È piuttosto vuoto qui dentro.\nPerché non create un nuovo modulo?",
@@ -96,17 +94,6 @@
       "text": "Il creatore di gradebooklet è ancora uno studente, quindi sa di quali <b> avrai davvero bisogno </b> per tenere traccia dei tuoi voti.",
       "title": "Facile da usare"
     }
-  },
-  "gradesystem": {
-    "german": "Tedesco semplice",
-    "german.exam_warning": "Segno d'esame, ad es. 2.0",
-    "title": "Sistema di classificazione:",
-    "swiss": "Svizzera Semplice",
-    "swiss.exam_warning": "Segno d'esame, ad es. 5.0",
-    "swiss_advanced": "Svizzera Estesa",
-    "swiss_advanced.exam_max": "Massimo di punti",
-    "swiss_advanced.exam_min": "Punti ottenuti",
-    "swiss_advanced.exam_warning": "Segno d'esame, ad es. 5.0"
   },
   "account": {
     "email": "Email",

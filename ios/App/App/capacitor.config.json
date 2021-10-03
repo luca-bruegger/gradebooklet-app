@@ -6,8 +6,5 @@
 		"SplashScreen": {
 			"launchAutoHide": false
 		}
-	},
-	"server": {
-		"url": "http://192.168.1.148:8100"
 	}
 }

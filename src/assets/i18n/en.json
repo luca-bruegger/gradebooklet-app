@@ -39,9 +39,7 @@
       "reached-points-range-error": "Achieved score should be between 0 and maximum score.",
       "grade": "Grade",
       "points": "Points"
-    },
-    "gradesystem": "Gradesystem",
-    "gradesystem-selection-change-error": "Existing exams are deleted when the gradesystem is changed."
+    }
   },
   "subjects": {
     "entry-header": "Pretty empty here. Create a new subject.",
@@ -96,17 +94,6 @@
       "text": "The Creator of gradebooklet is still a Student, therefore he knows what <b> you'll really need </b> to keep track your grades.",
       "title": "Easy to use"
     }
-  },
-  "gradesystem": {
-    "german": "German Simple",
-    "german.exam_warning": "Examination mark, e.g. 2.0",
-    "title": "Gradesystem:",
-    "swiss_advanced.exam_warning": "Exam grade, e.g. 5.0",
-    "swiss_advanced.exam_min": "Achieved points",
-    "swiss_advanced.exam_max": "Maximum score",
-    "swiss_advanced": "Switzerland Extended",
-    "swiss": "Switzerland Simple",
-    "swiss.exam_warning": "Examination mark, e.g. 5.0"
   },
   "account": {
     "or": "or",

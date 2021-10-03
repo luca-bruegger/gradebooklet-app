@@ -1,6 +1,6 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from '../../assets/fonts/custom-fonts';
-import { Module } from '../models/module';
+import { Subject } from '../models/subject';
 import { DatePipe } from '@angular/common';
 import { Platform } from '@ionic/angular';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -20,7 +20,7 @@ export class PdfController {
               public translate: TranslateService) {
   }
 
-  createPdf(modules: Module[]) {
+  createPdf(modules: Subject[]) {
     pdfMake.fonts = {
       Pacifico: {
         normal: 'Pacifico-Regular.ttf',
@@ -99,7 +99,7 @@ export class PdfController {
     }
   }
 
-  createTables(modules: Module[]) {
+  createTables(modules: Subject[]) {
     const tables = [];
     if (modules.length === 1) {
       const currentTable = [];
@@ -135,7 +135,7 @@ export class PdfController {
     return tables;
   }
 
-  createRows(m: Module) {
+  createRows(m: Subject) {
     const rows = [];
 
     rows.push([{text: m.name, fontSize: 14, bold: true, margin: [20, 20, 0, 8]}, {}, {}],

@@ -39,9 +39,7 @@
       "reached-points-range-error": "Le score obtenu doit être compris entre 0 et le score maximum.",
       "points": "Points",
       "grade": "Note"
-    },
-    "gradesystem": "Système d'évaluation",
-    "gradesystem-selection-change-error": "Les données de contrôle déjà saisies sont supprimées lors d'un changement de personnel."
+    }
   },
   "subjects": {
     "addModule": "Ajouter un module",
@@ -96,17 +94,6 @@
       "text": "Le Créateur de carnet de notes est toujours un étudiant, il sait donc de quoi <b> vous aurez vraiment besoin </b> pour suivre vos notes.",
       "title": "Facile à utiliser"
     }
-  },
-  "gradesystem": {
-    "german": "Allemange simple",
-    "german.exam_warning": "Note d'examen, par exemple 2.0",
-    "title": "Système de notation :",
-    "swiss": "Suisse Simple",
-    "swiss.exam_warning": "Note d'examen, par exemple 5.0",
-    "swiss_advanced": "Extension de la Suisse",
-    "swiss_advanced.exam_max": "Maximum de points",
-    "swiss_advanced.exam_min": "Points obtenus",
-    "swiss_advanced.exam_warning": "Note d'examen, par exemple 5.0"
   },
   "account": {
     "email": "Email",

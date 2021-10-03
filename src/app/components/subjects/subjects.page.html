@@ -1,10 +1,8 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
-        <!--        <ion-buttons slot="end" collapse="true">-->
-        <!--            <ion-button (click)="openOptions()">-->
-        <!--                <ion-icon name="ellipsis-horizontal-outline"></ion-icon>-->
-        <!--            </ion-button>-->
-        <!--        </ion-buttons>-->
+        <ion-buttons collapse="true">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
         <ion-title>
             {{'subjects.title' | translate}}
         </ion-title>
@@ -14,10 +12,8 @@
 <ion-content>
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-buttons slot="end" collapse="true">
-                <!--                <ion-button (click)="openOptions()">-->
-                <!--                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>-->
-                <!--                </ion-button>-->
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
             </ion-buttons>
             <ion-title size="large">{{'subjects.title' | translate}}</ion-title>
         </ion-toolbar>
@@ -26,7 +22,8 @@
     <!--Displayed if none Subjects are present-->
     <ion-grid *ngIf="noneSubjectsArePresent">
         <ion-row class="ion-margin-top">
-            <ion-col size-xs="10" size-sm="8" size-md="6" offset-xs="1" offset-sm="2" offset-md="3" class="ion-text-center ion-margin-top">
+            <ion-col size-xs="10" size-sm="8" size-md="6" offset-xs="1" offset-sm="2" offset-md="3"
+                     class="ion-text-center ion-margin-top">
                 <img src="assets/images/no-data.svg" alt="no-modules-found">
                 <p class="ion-margin-bottom">{{'subjects.entry-header' | translate}}</p>
             </ion-col>

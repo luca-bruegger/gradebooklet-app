@@ -1,8 +1,7 @@
 import { Component, isDevMode } from '@angular/core';
 import { AlertController, ModalController, NavController, Platform } from '@ionic/angular';
-import { Module } from '../../models/module';
+import { Subject } from '../../models/subject';
 import { Storage } from '@ionic/storage';
-import * as _ from 'lodash';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -44,12 +43,11 @@ export class SubjectsPage {
     this.subjectService = subjectService;
   }
 
-  async openEditModal(m) {
-    const clonedModule: Module = _.cloneDeep(m);
-    await this.subjectService.openModal(clonedModule, true, m);
+  async openEditModal(subject) {
+    await this.subjectService.openModal(subject, true);
   }
 
-  createRoomTextForModule(m: Module) {
+  createRoomTextForModule(m: Subject) {
     if (!!m.room && !!m.building) {
       return m.room + '  ' + m.building;
     }

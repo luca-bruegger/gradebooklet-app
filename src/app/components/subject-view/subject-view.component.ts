@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Module } from '../../models/module';
+import { Subject } from '../../models/subject';
 import { AlertController, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { GradesystemType } from '../../models/gradesystem';
 import { AlertDisplayController } from '../../controllers/alert-display.controller';
 import { ExamComponent } from '../exam/exam.component';
+
 
 @Component({
   selector: 'app-module',
@@ -12,57 +12,45 @@ import { ExamComponent } from '../exam/exam.component';
   styleUrls: ['./subject-view.component.scss'],
 })
 export class SubjectViewComponent implements OnInit {
-  @Input() isEditModule: boolean;
-  @Input() editModule: Module;
+  @Input() readonly isEdit: boolean;
+  @Input() readonly subject: Subject;
+
   @ViewChild(ExamComponent, {static: false}) examComponent;
 
-  gradesystemTypes = Object.values(GradesystemType);
-  editModuleBackup = new Module();
-
+  subjectCopy = new Subject();
 
   constructor(private alertController: AlertController,
               private translateService: TranslateService,
               private modalController: ModalController,
               private alertDisplayController: AlertDisplayController) {
-
   }
 
   ngOnInit() {
-    if (this.editModule.gradesystemType === undefined) {
-      this.editModule.gradesystemType = GradesystemType.SwissGradesystem;
-    }
-    Object.assign(this.editModuleBackup, this.editModule);
+    this.subjectCopy = this.clone(this.subject);
   }
 
   async closeModal() {
-    JSON.stringify(this.editModule) === JSON.stringify(this.editModuleBackup) ?
-      await this.modalController.dismiss() :
-      await this.alertDisplayController.notSavedPopup();
+    this.isCurrentSubjectUnchanged() ? await this.modalController.dismiss() : await this.alertDisplayController.notSavedPopup();
   }
 
-  async prepareModuleSave() {
-    if (!!this.editModule.name) {
-      if (this.examComponent.areExamsValid()) {
-        await this.modalController.dismiss({editModule: this.editModule, save: true});
-      } else {
-        await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
-          this.translateService.instant('popup.adjust-exams'),
-          this.translateService.instant('popup.accept'));
-      }
+  async saveSubject() {
+    if (!!this.subjectCopy.name) {
+      this.examComponent.areExamsValid() ?  await this.modalController.dismiss({
+        editModule: this.subjectCopy,
+        save: true
+      }) : await this.examsNotValidPopup();
     } else {
-      await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
-        this.translateService.instant('popup.module-no-name'),
-        this.translateService.instant('popup.accept'));
+      await this.noNameEnteredPopup();
     }
   }
 
   resetExams() {
     this.examComponent.setSelectedSegmentGrade();
-    this.editModule.exams = [];
+    this.subjectCopy.exams = [];
   }
 
   async promptUser() {
-    if (this.editModule.exams.length > 0) {
+    if (this.subjectCopy.exams.length > 0) {
       await this.alertDisplayController.gradeErrorPopup(this.translateService.instant('popup.warning-grades-deletion'));
     }
   }
@@ -71,5 +59,25 @@ export class SubjectViewComponent implements OnInit {
     await this.modalController.dismiss({
       delete: true
     });
+  }
+
+  private isCurrentSubjectUnchanged() {
+    return JSON.stringify(this.subject) === JSON.stringify(this.subjectCopy);
+  }
+
+  private async noNameEnteredPopup() {
+    await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
+      this.translateService.instant('popup.module-no-name'),
+      this.translateService.instant('popup.accept'));
+  }
+
+  private async examsNotValidPopup() {
+    await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
+      this.translateService.instant('popup.adjust-exams'),
+      this.translateService.instant('popup.accept'));
+  }
+
+  private clone(subject: Subject) {
+    return JSON.parse(JSON.stringify(subject));
   }
 }

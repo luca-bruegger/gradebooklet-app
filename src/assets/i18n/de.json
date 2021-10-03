@@ -29,8 +29,6 @@
     "average": "Durchschnitt",
     "date": "Datum",
     "grade": "Note",
-    "gradesystem": "Notensystem",
-    "gradesystem-selection-change-error": "Bereits eingetragene Prüfungen werden gelöscht, wenn das Notensystem geändert wird.",
     "exam": {
       "reached-points": "Erreichte Punkte",
       "max-points": "Maximale Punkte",
@@ -40,7 +38,10 @@
       "grade-doesnt-match-example": "Note Stimmt nicht mit Beispiel überein.",
       "grade-without-name": "Prüfung ohne Namen vorhanden",
       "points": "Punkte",
-      "grade": "Note"
+      "grade": "Note",
+      "min": "Erreichte Punkte",
+      "max": "Maximale Punktzahl",
+      "warning": "Prüfungsnote, z.B. 5.0"
     }
   },
   "subjects": {
@@ -96,21 +97,6 @@
       "text": "Der Ersteller des Notenbuchs ist noch ein Schüler, daher werden nur Funktionen welche <b> einfach zu bedienen </b> und wirklich <b> nützlich zur Notenverfolgung </b> sind, eingebaut.",
       "title": "Einfach zu verwenden"
     }
-  },
-  "gradesystem": {
-    "title": "Notensystem:",
-    "swiss": "Schweiz Einfach",
-    "swiss.exam_warning": "Prüfungsnote, z.B. 5.0",
-    "swiss_advanced": "Schweiz Erweitert",
-    "swiss_advanced.exam_min": "Erreichte Punkte",
-    "swiss_advanced.exam_max": "Maximale Punktzahl",
-    "swiss_advanced.exam_warning": "Prüfungsnote, z.B. 5.0",
-    "german": "Deutsch Einfach",
-    "german.exam_warning": "Prüfungsnote, z.B. 2.0",
-    "german_advanced": "Deutsch Erweitert",
-    "german_advanced.exam_min": "Erreichte Punkte",
-    "german_advanced.exam_max": "Maximale Punktzahl",
-    "german_advanced.exam_warning": "Prüfungsnote, z.B. 5.0"
   },
   "account": {
     "email": "Email",

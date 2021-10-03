@@ -1,44 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
-import { GradesystemType } from '../../models/gradesystem';
 import { Exam, ExamGradeType } from '../../models/exam';
 import { AlertDisplayController } from '../../controllers/alert-display.controller';
-import { ExamsController } from '../../controllers/exams.controller';
+import { ExamService } from '../../services/exam.service';
 
 @Component({
   selector: 'app-exam',
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.scss'],
 })
-export class ExamComponent implements OnInit {
-  @Input() moduleGradeType: GradesystemType;
+export class ExamComponent {
   @Input() moduleExams: Exam[];
 
   selectedExamGradeType: ExamGradeType = ExamGradeType.grade;
-  gradesystem = GradesystemType;
   exam = new Exam();
-  examGradeType = ExamGradeType;
-  examsController = new ExamsController();
   today: string = new Date().toISOString();
   isFirstTimeExamRemovalForUser: boolean;
+  reachedPoints: string;
+  maxPoints: string;
 
   constructor(private storage: Storage,
               private translateService: TranslateService,
-              private alertDisplayController: AlertDisplayController) {
-    this.loadIsFirstExamRemovalForUser().then(() => {
-    });
-  }
-
-  ngOnInit() {
-    this.examsController.migrateExamGradeWeight(this.moduleExams);
+              private alertDisplayController: AlertDisplayController,
+              private examService: ExamService) {
+    this.loadIsFirstExamRemovalForUser();
   }
 
   segmentChanged($event: CustomEvent) {
-    this.exam.maxPointsPossible = undefined;
-    this.exam.reachedPoints = undefined;
+    const value = $event.detail.value;
+
+    if (value === '') {
+      return;
+    }
+
+    this.maxPoints = undefined;
+    this.reachedPoints = undefined;
     this.exam.grade = undefined;
-    this.selectedExamGradeType = $event.detail.value;
+    this.selectedExamGradeType = value;
   }
 
   saveExam() {
@@ -94,27 +93,22 @@ export class ExamComponent implements OnInit {
   }
 
   private async validateAndSaveExamWithPoints() {
-    if (this.examsController.arePointsInRange(this.exam.maxPointsPossible)) {
-      if (this.examsController.arePointsInRange(this.exam.reachedPoints) &&
-        Number(this.exam.reachedPoints) <= Number(this.exam.maxPointsPossible)) {
-        this.exam.reachedPoints = this.replaceCommaWithDot(this.exam.reachedPoints);
-        this.exam.maxPointsPossible = this.replaceCommaWithDot(this.exam.maxPointsPossible);
-        this.exam.grade = this.examsController.calculateGradeFromPoints(this.exam.reachedPoints, this.exam.maxPointsPossible);
+    if (this.examService.arePointsInRange(this.maxPoints)) {
+      if (this.examService.arePointsInRange(this.reachedPoints) && Number(this.reachedPoints) <= Number(this.maxPoints)) {
+        this.reachedPoints = this.replaceCommaWithDot(this.reachedPoints);
+        this.maxPoints = this.replaceCommaWithDot(this.maxPoints);
+        (this.exam as Exam).calculateGradeFromPoints(this.reachedPoints, this.maxPoints);
         this.saveExam();
       } else {
-        await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
-          this.translateService.instant('module.exam.reached-points-range-error'),
-          this.translateService.instant('popup.accept'));
+        await this.showReachedPointsNotInRangePopup();
       }
     } else {
-      await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
-        this.translateService.instant('module.exam.max-points-range-error'),
-        this.translateService.instant('popup.accept'));
+      await this.showMaxPointsNotInRangePopup();
     }
   }
 
   private async validateAndSaveExamWithGrade() {
-    if (this.examsController.gradeIsWithinSwissGradeRange(this.exam.grade)) {
+    if (this.examService.gradeIsWithinSwissGradeRange(this.exam.grade)) {
       this.exam.grade = this.replaceCommaWithDot(this.exam.grade);
       this.saveExam();
     } else {
@@ -124,5 +118,17 @@ export class ExamComponent implements OnInit {
 
   replaceCommaWithDot(inputString: string) {
     return String(inputString).replace(',', '.');
+  }
+
+  private async showMaxPointsNotInRangePopup() {
+    await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
+      this.translateService.instant('module.exam.max-points-range-error'),
+      this.translateService.instant('popup.accept'));
+  }
+
+  private async showReachedPointsNotInRangePopup() {
+    await this.alertDisplayController.genericPopup(this.translateService.instant('popup.warning'),
+      this.translateService.instant('module.exam.reached-points-range-error'),
+      this.translateService.instant('popup.accept'));
   }
 }

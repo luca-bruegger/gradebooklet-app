@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
-            {{isEditModule ? editModule.name : ('module.new-title' | translate)}}
+            {{isEdit ? subjectCopy.name : ('module.new-title' | translate)}}
         </ion-title>
-        <ion-buttons *ngIf="isEditModule" slot="start">
+        <ion-buttons *ngIf="isEdit" slot="start">
             <ion-button color="danger" (click)="deleteModule()">
                 <ion-icon name="trash"></ion-icon>
             </ion-button>
@@ -25,35 +25,18 @@
             <ion-card class="module-information-card">
                 <ion-row>
                     <ion-col>
-                        <ion-input [placeholder]="'module.name' | translate" [(ngModel)]="this.editModule.name"
+                        <ion-input [placeholder]="'module.name' | translate" [(ngModel)]="subjectCopy.name"
                                    maxlength="50"></ion-input>
-                        <ion-input [placeholder]="'module.room' | translate" [(ngModel)]="this.editModule.room"
+                        <ion-input [placeholder]="'module.room' | translate" [(ngModel)]="subjectCopy.room"
                                    maxlength="50"></ion-input>
                     </ion-col>
                     <ion-col style="float: bottom">
-                        <ion-input [placeholder]="'module.teacher' | translate" [(ngModel)]="this.editModule.teacher"
+                        <ion-input [placeholder]="'module.teacher' | translate" [(ngModel)]="subjectCopy.teacher"
                                    maxlength="50"></ion-input>
-                        <ion-input [placeholder]="'module.building' | translate" [(ngModel)]="this.editModule.building"
+                        <ion-input [placeholder]="'module.building' | translate" [(ngModel)]="subjectCopy.building"
                                    maxlength="50"></ion-input>
                     </ion-col>
                 </ion-row>
-            </ion-card>
-
-            <ion-card class="gradesystem-card">
-                <ion-item lines="none">
-                    <ion-label class="faded-label">{{ 'module.gradesystem' | translate }}</ion-label>
-                    <ion-select
-                            [interfaceOptions]="editModule.exams.length > 0 ? {header: 'module.gradesystem' | translate, subHeader: 'module.gradesystem-selection-change-error' | translate}: {}"
-                            interface="alert" slot="end"
-                            okText="{{'popup.ok' | translate}}" cancelText="{{'popup.close' | translate}}"
-                            class="gradesystem-select"
-                            (ngModelChange)="resetExams()" [(ngModel)]="editModule.gradesystemType"
-                            [disabled]="isEditModule">
-                        <ion-select-option *ngFor="let gradesystem of gradesystemTypes" [value]="gradesystem">
-                            {{gradesystem | translate}}
-                        </ion-select-option>
-                    </ion-select>
-                </ion-item>
             </ion-card>
 
             <ion-text class="mt-16">
@@ -61,11 +44,11 @@
             </ion-text>
         </div>
 
-        <app-exam [moduleGradeType]="editModule.gradesystemType" [moduleExams]="editModule.exams"></app-exam>
+        <app-exam [moduleExams]="subjectCopy.exams"></app-exam>
     </div>
 
     <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-        <ion-fab-button color="success" (click)="prepareModuleSave()">
+        <ion-fab-button color="success" (click)="saveSubject()">
             <ion-icon name="checkmark"></ion-icon>
         </ion-fab-button>
     </ion-fab>
